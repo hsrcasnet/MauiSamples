@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0-android</TargetFramework>
+    <SupportedOSPlatformVersion>27</SupportedOSPlatformVersion>
+    <OutputType>Exe</OutputType>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <ApplicationId>com.companyname.AndroidApp</ApplicationId>
+    <ApplicationVersion>1</ApplicationVersion>
+    <ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <AndroidResource Remove="Resources\assets\XMLFile1.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Resources\assets\XMLFile1.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Resources\assets\XMLFile1.xml" />
+  </ItemGroup>
+</Project>
