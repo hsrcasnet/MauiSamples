@@ -12,21 +12,21 @@ namespace iOSApp
         public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
         {
             // create a new window instance based on the screen size
-            Window = new UIWindow(UIScreen.MainScreen.Bounds);
+            this.Window = new UIWindow(UIScreen.MainScreen.Bounds);
 
             // create a UIViewController with a single UILabel
             var vc = new UIViewController();
-            vc.View!.AddSubview(new UILabel(Window!.Frame)
+            vc.View!.AddSubview(new UILabel(this.Window!.Frame)
             {
                 BackgroundColor = UIColor.SystemBackground,
                 TextAlignment = UITextAlignment.Center,
                 Text = "Hello, iOS!",
                 AutoresizingMask = UIViewAutoresizing.All,
             });
-            Window.RootViewController = vc;
+            this.Window.RootViewController = vc;
 
             // make the window visible
-            Window.MakeKeyAndVisible();
+            this.Window.MakeKeyAndVisible();
 
             return true;
         }
