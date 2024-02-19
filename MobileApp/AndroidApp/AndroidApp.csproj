@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>net8.0-android</TargetFramework>
     <SupportedOSPlatformVersion>27</SupportedOSPlatformVersion>
@@ -8,11 +8,4 @@
     <ApplicationVersion>1</ApplicationVersion>
     <ApplicationDisplayVersion>1.0.0</ApplicationDisplayVersion>
   </PropertyGroup>
-	
-  <ItemGroup>
-    <None Remove="Resources\assets\*" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidAsset Include="Resources\assets\XMLFile1.xml" />
-  </ItemGroup>
 </Project>
