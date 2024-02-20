@@ -6,4 +6,8 @@
     <ImplicitUsings>true</ImplicitUsings>
     <SupportedOSPlatformVersion>13.0</SupportedOSPlatformVersion>
   </PropertyGroup>
+  <Import Project="..\MobileApp.Shared\MobileApp.Shared.projitems" Label="Shared" />
+  <ItemGroup>
+    <ProjectReference Include="..\MobileApp.Common\MobileApp.Common.csproj" />
+  </ItemGroup>
 </Project>

@@ -8,4 +8,8 @@
     <ApplicationVersion>1</ApplicationVersion>
     <ApplicationDisplayVersion>1.0.0</ApplicationDisplayVersion>
   </PropertyGroup>
+  <Import Project="..\MobileApp.Shared\MobileApp.Shared.projitems" Label="Shared" />
+  <ItemGroup>
+    <ProjectReference Include="..\MobileApp.Common\MobileApp.Common.csproj" />
+  </ItemGroup>
 </Project>

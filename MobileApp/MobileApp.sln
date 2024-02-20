@@ -5,7 +5,11 @@ VisualStudioVersion = 17.9.34607.119
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AndroidApp", "AndroidApp\AndroidApp.csproj", "{B00E434F-7374-49FD-933A-677449456A61}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iOSApp", "iOSApp\iOSApp.csproj", "{7088F005-4C3C-42DB-9CF2-921EE009EBC4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "iOSApp", "iOSApp\iOSApp.csproj", "{7088F005-4C3C-42DB-9CF2-921EE009EBC4}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "MobileApp.Shared", "MobileApp.Shared\MobileApp.Shared.shproj", "{C968313C-7A02-4A9E-85F1-D790D8F92972}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MobileApp.Common", "MobileApp.Common\MobileApp.Common.csproj", "{326B7A1A-12BD-45CB-B5CA-EF4E7E8BB15F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,11 +29,20 @@ Global
 		{7088F005-4C3C-42DB-9CF2-921EE009EBC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7088F005-4C3C-42DB-9CF2-921EE009EBC4}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7088F005-4C3C-42DB-9CF2-921EE009EBC4}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{326B7A1A-12BD-45CB-B5CA-EF4E7E8BB15F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{326B7A1A-12BD-45CB-B5CA-EF4E7E8BB15F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{326B7A1A-12BD-45CB-B5CA-EF4E7E8BB15F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{326B7A1A-12BD-45CB-B5CA-EF4E7E8BB15F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0C31F0CD-B19F-4D69-B9C5-F43E9BA8809F}
+	EndGlobalSection
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		MobileApp.Shared\MobileApp.Shared.projitems*{7088f005-4c3c-42db-9cf2-921ee009ebc4}*SharedItemsImports = 5
+		MobileApp.Shared\MobileApp.Shared.projitems*{b00e434f-7374-49fd-933a-677449456a61}*SharedItemsImports = 5
+		MobileApp.Shared\MobileApp.Shared.projitems*{c968313c-7a02-4a9e-85f1-d790d8f92972}*SharedItemsImports = 13
 	EndGlobalSection
 EndGlobal
