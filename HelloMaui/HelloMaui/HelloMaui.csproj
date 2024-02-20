@@ -66,6 +66,16 @@
 	  <Folder Include="Controls\" />
 	  <Folder Include="Extensions\" />
 	  <Folder Include="Converters\" />
+	  <Folder Include="Platforms\Android\Handlers\" />
+	  <Folder Include="Platforms\Android\Services\" />
+	  <Folder Include="Platforms\iOS\Handlers\" />
+	  <Folder Include="Platforms\iOS\Services\" />
+	  <Folder Include="Platforms\MacCatalyst\Handlers\" />
+	  <Folder Include="Platforms\MacCatalyst\Services\" />
+	  <Folder Include="Platforms\Tizen\Handlers\" />
+	  <Folder Include="Platforms\Tizen\Services\" />
+	  <Folder Include="Platforms\Windows\Handlers\" />
+	  <Folder Include="Platforms\Windows\Services\" />
 	  <Folder Include="Utils\" />
 	  <Folder Include="Services\" />
 	  <Folder Include="ViewModels\" />
