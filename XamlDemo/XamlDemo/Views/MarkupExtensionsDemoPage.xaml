@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="XamlDemo.Views.MarkupExtensionsDemoPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:l="clr-namespace:XamlDemo"
+    Title="MarkupExtensionsDemoPage">
+
+    <ContentPage.Resources>
+        <x:String x:Key="StringKey1">String from resource dictionary</x:String>
+    </ContentPage.Resources>
+
+    <VerticalStackLayout>
+        <!--  DEMO: x:Static  -->
+        <Label Text="{x:Static l:Constants.ConstantString}" />
+        <Label Text="{x:Static l:Constants.StaticReadonlyString}" />
+
+        <!--  DEMO: StaticResource  -->
+        <Label Text="{StaticResource StringKey1}" />
+
+        <!--  DEMO: DynamicResource  -->
+        <Label Text="{DynamicResource StringKey1}" />
+    </VerticalStackLayout>
+</ContentPage>
