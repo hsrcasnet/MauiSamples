@@ -9,8 +9,8 @@ namespace XamlDemo
             this.InitializeComponent();
 
             // DEMO: Use MainPage XAML or C#
-            //this.MainPage = new MainPage();
-            this.MainPage = new MainPageCsharp();
+            this.MainPage = new MainPage();
+            //this.MainPage = new MainPageCsharp();
         }
     }
 }
