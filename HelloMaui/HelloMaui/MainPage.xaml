@@ -4,15 +4,10 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="HelloMaui.MainPage">
 
-    <VerticalStackLayout
-        Padding="30,0"
-        Spacing="25"
-        VerticalOptions="Center">
-
+    <VerticalStackLayout>
         <Button
             x:Name="MyButton"
             Clicked="Button_OnClicked"
             Text="Click here!" />
     </VerticalStackLayout>
-
 </ContentPage>
