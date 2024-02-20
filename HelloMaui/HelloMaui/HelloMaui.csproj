@@ -62,4 +62,14 @@
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="Controls\" />
+	  <Folder Include="Extensions\" />
+	  <Folder Include="Converters\" />
+	  <Folder Include="Utils\" />
+	  <Folder Include="Services\" />
+	  <Folder Include="ViewModels\" />
+	  <Folder Include="Views\" />
+	</ItemGroup>
+
 </Project>
