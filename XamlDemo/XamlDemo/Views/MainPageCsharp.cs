@@ -11,7 +11,7 @@ namespace XamlDemo.Views
                 Text = "Welcome to .NET MAUI!"
             };
 
-            var button1 = new Button
+            var button1 = new Microsoft.Maui.Controls.Button
             {
                 Text = "OK",
             };

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="XamlDemo.Views.XamlPropertiesDemoPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="XamlPropertiesDemoPage">
+
+    <VerticalStackLayout Spacing="20">
+        <Button
+            BackgroundColor="Yellow"
+            Text="Click here!"
+            TextColor="Black" />
+
+        <Entry Text="{Binding UserName}" />
+
+        <Button>
+            <Button.Text>Click here!</Button.Text>
+            <Button.TextColor>Black</Button.TextColor>
+            <Button.Background>
+                <!--
+                    StartPoint defaults to (0,0)
+                    Endpoint defaults to (1,1)
+                -->
+                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                    <GradientStop Offset="0" Color="Yellow" />
+                    <GradientStop Offset="1" Color="Green" />
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+    </VerticalStackLayout>
+</ContentPage>
