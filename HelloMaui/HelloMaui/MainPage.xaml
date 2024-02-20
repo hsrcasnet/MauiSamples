@@ -10,4 +10,5 @@
             Clicked="Button_OnClicked"
             Text="Click here!" />
     </VerticalStackLayout>
+
 </ContentPage>
