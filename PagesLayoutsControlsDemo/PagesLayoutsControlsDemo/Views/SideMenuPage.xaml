@@ -10,4 +10,10 @@
         HorizontalOptions="Center"
         Text="I'm the SideMenuPage"
         VerticalOptions="Center" />
+
+    <!--
+        TODO: Read this FlyoutPage sample and try to reproduce
+        the menu items and the navigation to new pages:
+        https://learn.microsoft.com/de-de/dotnet/maui/user-interface/pages/flyoutpage
+    -->
 </ContentPage>
