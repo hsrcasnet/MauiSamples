@@ -1,4 +1,4 @@
-﻿namespace PagesLayoutsControlsDemo
+﻿namespace PagesLayoutsControlsDemo.Views
 {
     public partial class MainPage : ContentPage
     {

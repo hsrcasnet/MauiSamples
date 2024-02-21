@@ -1,14 +1,13 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage
-    x:Class="PagesLayoutsControlsDemo.Views.MainPage"
+    x:Class="PagesLayoutsControlsDemo.Views.SideMenuPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    Title="MainPage"
-    BackgroundColor="LightGray">
+    Title="SideMenuPage"
+    BackgroundColor="LightBlue">
 
     <Label
         HorizontalOptions="Center"
-        Text="I'm the MainPage"
+        Text="I'm the SideMenuPage"
         VerticalOptions="Center" />
-
 </ContentPage>

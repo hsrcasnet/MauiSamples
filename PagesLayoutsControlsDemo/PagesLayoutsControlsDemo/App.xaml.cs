@@ -1,4 +1,6 @@
-﻿namespace PagesLayoutsControlsDemo
+﻿using PagesLayoutsControlsDemo.Views;
+
+namespace PagesLayoutsControlsDemo
 {
     public partial class App : Application
     {
@@ -6,7 +8,7 @@
         {
             this.InitializeComponent();
 
-            this.MainPage = new MainPage();
+            this.MainPage = new FlyoutDemoPage();
         }
 
         protected override void OnStart()
