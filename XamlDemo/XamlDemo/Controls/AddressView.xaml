@@ -4,8 +4,18 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
 
-    <HorizontalStackLayout BackgroundColor="LightGray">
-        <Label Text="Address:" />
-        <Entry Placeholder="Address" />
-    </HorizontalStackLayout>
+    <VerticalStackLayout BackgroundColor="LightGray">
+
+        <!--  DEMO: XML Attribute Syntax  -->
+        <Label Text="First Name:" />
+
+        <!--  DEMO: XML Property Element Syntax  -->
+        <Label>
+            <Label.Text>Last Name:</Label.Text>
+        </Label>
+
+        <!--  DEMO: XML Property Element Syntax (Property "Text" is marked as Content property)  -->
+        <Label>Last Name:</Label>
+
+    </VerticalStackLayout>
 </ContentView>
