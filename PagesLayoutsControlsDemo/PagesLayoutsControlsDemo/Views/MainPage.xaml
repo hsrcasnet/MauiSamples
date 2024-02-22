@@ -40,6 +40,11 @@
             <Button
                 Clicked="NavigateToAlignmentDemoPage"
                 Text="AlignmentDemoPage" />
+
+            <!--  DEMO: Margin, Padding, Spacing  -->
+            <Button
+                Clicked="NavigateToSpacingDemoPage"
+                Text="SpacingDemoPage" />
         </VerticalStackLayout>
     </Grid>
 </ContentPage>

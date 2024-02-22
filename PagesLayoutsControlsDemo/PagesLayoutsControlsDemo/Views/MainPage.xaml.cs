@@ -26,5 +26,10 @@
         {
             _ = this.Navigation.PushAsync(new AlignmentDemoPage());
         }
+
+        private void NavigateToSpacingDemoPage(object sender, EventArgs e)
+        {
+            _ = this.Navigation.PushAsync(new SpacingDemoPage());
+        }
     }
 }

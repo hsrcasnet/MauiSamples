@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="PagesLayoutsControlsDemo.Views.SpacingDemoPage"
+    Title="SpacingDemoPage"
+    BackgroundColor="#ECF0F1">
+
+    <ScrollView Padding="40">
+        <Grid RowDefinitions="*,*">
+
+            <VerticalStackLayout Spacing="40">
+                <Grid
+                    Padding="40"
+                    BackgroundColor="#F9D33C"
+                    HeightRequest="200">
+
+                    <Label
+                        BackgroundColor="#91E2F4"
+                        Text="Children"
+                        HorizontalOptions="Fill"
+                        HorizontalTextAlignment="Center"
+                        VerticalOptions="Fill"
+                        VerticalTextAlignment="Center" />
+                </Grid>
+
+                <Grid
+                    Padding="40"
+                    BackgroundColor="#F9D33C"
+                    HeightRequest="200">
+
+                    <Label
+                        BackgroundColor="#91E2F4"
+                        Text="Children"
+                        HorizontalOptions="Fill"
+                        HorizontalTextAlignment="Center"
+                        VerticalOptions="Fill"
+                        VerticalTextAlignment="Center" />
+                </Grid>
+            </VerticalStackLayout>
+        </Grid>
+    </ScrollView>
+</ContentPage>
