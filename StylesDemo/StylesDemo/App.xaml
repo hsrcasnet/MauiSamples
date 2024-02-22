@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Application
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:s="clr-namespace:System;assembly=System.Runtime"
+    x:Class="StylesDemo.App">
+
+    <Application.Resources>
+
+        <!--  Colors  -->
+        <Color x:Key="AppBackgroundColor">AliceBlue</Color>
+        <Color x:Key="PrimaryColor">#8C195F</Color>
+        <Color x:Key="SecondaryColor">#D0A9D0</Color>
+        <Color x:Key="TextColor">Black</Color>
+
+        <!--  Font sizes  -->
+        <s:Double x:Key="FontSizeSmall">10</s:Double>
+        <s:Double x:Key="FontSizeMedium">14</s:Double>
+        <s:Double x:Key="FontSizeLarge">22</s:Double>
+
+        <!--  Spacings  -->
+        <s:Double x:Key="SmallSpacing">4</s:Double>
+        <s:Double x:Key="MediumSpacing">8</s:Double>
+        <s:Double x:Key="LargeSpacing">16</s:Double>
+
+        <Thickness
+            x:Key="MediumPadding"
+            Bottom="{StaticResource MediumSpacing}"
+            Left="{StaticResource MediumSpacing}"
+            Right="{StaticResource MediumSpacing}"
+            Top="{StaticResource MediumSpacing}" />
+
+        <!--  Styles  -->
+        <Style TargetType="ContentPage">
+            <Setter Property="BackgroundColor" Value="{StaticResource AppBackgroundColor}" />
+        </Style>
+
+        <Style TargetType="NavigationPage">
+            <Setter Property="BarBackgroundColor" Value="{StaticResource PrimaryColor}" />
+            <Setter Property="BarTextColor" Value="{StaticResource SecondaryColor}" />
+            <Setter Property="BackgroundColor" Value="{StaticResource AppBackgroundColor}" />
+        </Style>
+
+        <Style TargetType="Label">
+            <Setter Property="TextColor" Value="{StaticResource TextColor}" />
+            <Setter Property="FontSize" Value="{StaticResource FontSizeMedium}" />
+        </Style>
+
+        <Style TargetType="Button">
+            <Setter Property="TextColor" Value="{StaticResource SecondaryColor}" />
+            <Setter Property="FontSize" Value="{StaticResource FontSizeMedium}" />
+            <Setter Property="BackgroundColor" Value="{StaticResource PrimaryColor}" />
+        </Style>
+
+    </Application.Resources>
+</Application>

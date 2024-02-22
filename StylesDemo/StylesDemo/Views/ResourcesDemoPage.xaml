@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="StylesDemo.Views.ResourcesDemoPage"
+    Title="ResourcesDemoPage"
+    Padding="{StaticResource MediumPadding}">
+
+    <VerticalStackLayout Spacing="{StaticResource MediumSpacing}">
+        <Label
+            FontSize="{StaticResource FontSizeSmall}"
+            Text="FontSizeSmall" />
+        <Label
+            FontSize="{StaticResource FontSizeMedium}"
+            Text="FontSizeMedium" />
+        <Label
+            FontSize="{StaticResource FontSizeLarge}"
+            Text="FontSizeLarge" />
+
+        <BoxView
+            HeightRequest="{StaticResource SmallSpacing}"
+            WidthRequest="100"
+            Color="{StaticResource SecondaryColor}"
+            HorizontalOptions="Start" />
+        <BoxView
+            HeightRequest="{StaticResource MediumSpacing}"
+            WidthRequest="100"
+            Color="{StaticResource PrimaryColor}"
+            HorizontalOptions="Start" />
+        <BoxView
+            HeightRequest="{StaticResource LargeSpacing}"
+            WidthRequest="100"
+            Color="{StaticResource TextColor}"
+            HorizontalOptions="Start" />
+
+
+    </VerticalStackLayout>
+</ContentPage>
