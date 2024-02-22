@@ -31,7 +31,9 @@
             Top="{StaticResource MediumSpacing}" />
 
         <!--  Styles  -->
-        <Style TargetType="ContentPage">
+        <Style
+            ApplyToDerivedTypes="True"
+            TargetType="ContentPage">
             <Setter Property="BackgroundColor" Value="{StaticResource AppBackgroundColor}" />
         </Style>
 
