@@ -21,5 +21,10 @@
         {
             _ = this.Navigation.PushAsync(new ControlsDemoPage());
         }
+
+        private void NavigateToAlignmentDemoPage(object sender, EventArgs e)
+        {
+            _ = this.Navigation.PushAsync(new AlignmentDemoPage());
+        }
     }
 }

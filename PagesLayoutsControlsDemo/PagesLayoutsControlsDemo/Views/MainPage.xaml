@@ -1,36 +1,45 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage
-    x:Class="PagesLayoutsControlsDemo.Views.MainPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="PagesLayoutsControlsDemo.Views.MainPage"
     Title="MainPage"
     Padding="10"
     BackgroundColor="LightGray">
 
-    <Grid RowDefinitions="*, Auto, Auto, Auto" RowSpacing="10">
+    <Grid
+        RowDefinitions="*, Auto"
+        RowSpacing="10">
 
         <Label
             Grid.Row="0"
-            HorizontalOptions="Center"
             Text="I'm the MainPage"
+            HorizontalOptions="Center"
             VerticalOptions="Center" />
 
-        <!--  DEMO: GridDemoPage  -->
-        <Button
+        <VerticalStackLayout
             Grid.Row="1"
-            Clicked="NavigateToGridDemoPage"
-            Text="GridDemoPage" />
+            Spacing="10">
 
-        <!--  DEMO: StackLayoutDemoPage  -->
-        <Button
-            Grid.Row="2"
-            Clicked="NavigateToStackLayoutDemoPage"
-            Text="StackLayoutDemoPage" />
+            <!--  DEMO: Grids  -->
+            <Button
+                Clicked="NavigateToGridDemoPage"
+                Text="GridDemoPage" />
 
-        <!--  DEMO: ControlsDemoPage  -->
-        <Button
-            Grid.Row="3"
-            Clicked="NavigateToControlsDemoPage"
-            Text="ControlsDemoPage" />
+            <!--  DEMO: StackLayouts  -->
+            <Button
+                Clicked="NavigateToStackLayoutDemoPage"
+                Text="StackLayoutDemoPage" />
+
+            <!--  DEMO: Controls  -->
+            <Button
+                Clicked="NavigateToControlsDemoPage"
+                Text="ControlsDemoPage" />
+
+            <!--  DEMO: Alignment  -->
+            <Button
+                Clicked="NavigateToAlignmentDemoPage"
+                Text="AlignmentDemoPage" />
+        </VerticalStackLayout>
     </Grid>
 </ContentPage>

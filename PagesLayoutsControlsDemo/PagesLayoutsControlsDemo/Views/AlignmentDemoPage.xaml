@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="PagesLayoutsControlsDemo.Views.AlignmentDemoPage"
+    Title="AlignmentDemoPage">
+
+    <ContentPage.Resources>
+        <Style TargetType="Label">
+            <Setter Property="BackgroundColor" Value="LightBlue" />
+            <Setter Property="VerticalTextAlignment" Value="Center" />
+            <Setter Property="HorizontalTextAlignment" Value="Center" />
+        </Style>
+    </ContentPage.Resources>
+
+    <ScrollView>
+        <Grid
+            BackgroundColor="Black"
+            ColumnDefinitions="*, *, *, *"
+            ColumnSpacing="1"
+            RowDefinitions="*, *, *, *"
+            RowSpacing="1">
+            <BoxView
+                Grid.Row="0"
+                Grid.Column="0"
+                BackgroundColor="White"
+                HorizontalOptions="Fill"
+                VerticalOptions="Fill" />
+            <Label
+                Grid.Row="0"
+                Grid.Column="0"
+                Text="Start"
+                HorizontalOptions="Start"
+                VerticalOptions="Start" />
+            <BoxView
+                Grid.Row="0"
+                Grid.Column="1"
+                BackgroundColor="White"
+                HorizontalOptions="Fill"
+                VerticalOptions="Fill" />
+            <Label
+                Grid.Row="0"
+                Grid.Column="1"
+                Text="Center"
+                HorizontalOptions="Center"
+                VerticalOptions="Start" />
+            <BoxView
+                Grid.Row="0"
+                Grid.Column="2"
+                BackgroundColor="White"
+                HorizontalOptions="Fill"
+                VerticalOptions="Fill" />
+            <Label
+                Grid.Row="0"
+                Grid.Column="2"
+                Text="End"
+                HorizontalOptions="End"
+                VerticalOptions="Start" />
+            <BoxView
+                Grid.Row="0"
+                Grid.Column="3"
+                BackgroundColor="White"
+                HorizontalOptions="Fill"
+                VerticalOptions="Fill" />
+            <Label
+                Grid.Row="0"
+                Grid.Column="3"
+                Text="Fill"
+                HorizontalOptions="Fill"
+                VerticalOptions="Start" />
+
+            <BoxView
+                Grid.Row="1"
+                Grid.Column="0"
+                BackgroundColor="White"
+                HorizontalOptions="Fill"
+                VerticalOptions="Fill" />
+            <Label
+                Grid.Row="1"
+                Grid.Column="0"
+                Text="Start"
+                HorizontalOptions="Start"
+                VerticalOptions="Center" />
+            <BoxView
+                Grid.Row="1"
+                Grid.Column="1"
+                BackgroundColor="White"
+                HorizontalOptions="Fill"
+                VerticalOptions="Fill" />
+            <Label
+                Grid.Row="1"
+                Grid.Column="1"
+                Text="Center"
+                HorizontalOptions="Center"
+                VerticalOptions="Center" />
+            <BoxView
+                Grid.Row="1"
+                Grid.Column="2"
+                BackgroundColor="White"
+                HorizontalOptions="Fill"
+                VerticalOptions="Fill" />
+            <Label
+                Grid.Row="1"
+                Grid.Column="2"
+                Text="End"
+                HorizontalOptions="End"
+                VerticalOptions="Center" />
+            <BoxView
+                Grid.Row="1"
+                Grid.Column="3"
+                BackgroundColor="White"
+                HorizontalOptions="Fill"
+                VerticalOptions="Fill" />
+            <Label
+                Grid.Row="1"
+                Grid.Column="3"
+                Text="Fill"
+                HorizontalOptions="Fill"
+                VerticalOptions="Center" />
+
+            <BoxView
+                Grid.Row="2"
+                Grid.Column="0"
+                BackgroundColor="White"
+                HorizontalOptions="Fill"
+                VerticalOptions="Fill" />
+            <Label
+                Grid.Row="2"
+                Grid.Column="0"
+                Text="Start"
+                HorizontalOptions="Start"
+                VerticalOptions="End" />
+            <BoxView
+                Grid.Row="2"
+                Grid.Column="1"
+                BackgroundColor="White"
+                HorizontalOptions="Fill"
+                VerticalOptions="Fill" />
+            <Label
+                Grid.Row="2"
+                Grid.Column="1"
+                Text="Center"
+                HorizontalOptions="Center"
+                VerticalOptions="End" />
+            <BoxView
+                Grid.Row="2"
+                Grid.Column="2"
+                BackgroundColor="White"
+                HorizontalOptions="Fill"
+                VerticalOptions="Fill" />
+            <Label
+                Grid.Row="2"
+                Grid.Column="2"
+                Text="End"
+                HorizontalOptions="End"
+                VerticalOptions="End" />
+            <BoxView
+                Grid.Row="2"
+                Grid.Column="3"
+                BackgroundColor="White"
+                HorizontalOptions="Fill"
+                VerticalOptions="Fill" />
+            <Label
+                Grid.Row="2"
+                Grid.Column="3"
+                Text="Fill"
+                HorizontalOptions="Fill"
+                VerticalOptions="End" />
+
+            <BoxView
+                Grid.Row="3"
+                Grid.Column="0"
+                BackgroundColor="White"
+                HorizontalOptions="Fill"
+                VerticalOptions="Fill" />
+            <Label
+                Grid.Row="3"
+                Grid.Column="0"
+                Text="Start"
+                HorizontalOptions="Start"
+                VerticalOptions="Fill" />
+            <BoxView
+                Grid.Row="3"
+                Grid.Column="1"
+                BackgroundColor="White"
+                HorizontalOptions="Fill"
+                VerticalOptions="Fill" />
+            <Label
+                Grid.Row="3"
+                Grid.Column="1"
+                Text="Center"
+                HorizontalOptions="Center"
+                VerticalOptions="Fill" />
+            <BoxView
+                Grid.Row="3"
+                Grid.Column="2"
+                BackgroundColor="White"
+                HorizontalOptions="Fill"
+                VerticalOptions="Fill" />
+            <Label
+                Grid.Row="3"
+                Grid.Column="2"
+                Text="End"
+                HorizontalOptions="End"
+                VerticalOptions="Fill" />
+            <BoxView
+                Grid.Row="3"
+                Grid.Column="3"
+                BackgroundColor="White"
+                HorizontalOptions="Fill"
+                VerticalOptions="Fill" />
+            <Label
+                Grid.Row="3"
+                Grid.Column="3"
+                Text="Fill"
+                HorizontalOptions="Fill"
+                VerticalOptions="Fill" />
+        </Grid>
+    </ScrollView>
+</ContentPage>
