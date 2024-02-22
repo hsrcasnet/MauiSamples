@@ -4,6 +4,6 @@ public partial class SpacingDemoPage : ContentPage
 {
 	public SpacingDemoPage()
 	{
-		InitializeComponent();
+        this.InitializeComponent();
 	}
 }

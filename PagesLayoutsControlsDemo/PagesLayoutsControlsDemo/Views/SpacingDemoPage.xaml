@@ -6,6 +6,10 @@
     Title="SpacingDemoPage"
     BackgroundColor="#ECF0F1">
 
+    <!--
+        DEMO: Margins/paddings (version 1):
+        Space is define 'from outside to inside' and 'between elements'. This is the proper and most common way to define space between elements.
+    -->
     <ScrollView Padding="40">
         <Grid RowDefinitions="*,*">
 
@@ -40,4 +44,43 @@
             </VerticalStackLayout>
         </Grid>
     </ScrollView>
+
+    <!--
+        DEMO: Margins/paddings (version 2):
+        Instead of Spacings we use Margins on the Grids to get a uniform space around the Grids.
+    -->
+    <!--<Grid RowDefinitions="*,*">
+
+        <VerticalStackLayout>
+            <Grid
+                Margin="40,40,40,20"
+                Padding="40"
+                BackgroundColor="#F9D33C"
+                HeightRequest="200">
+
+                <Label
+                    BackgroundColor="#91E2F4"
+                    Text="Children"
+                    HorizontalOptions="Fill"
+                    HorizontalTextAlignment="Center"
+                    VerticalOptions="Fill"
+                    VerticalTextAlignment="Center" />
+            </Grid>
+
+            <Grid
+                Margin="40,20,40,40"
+                Padding="40"
+                BackgroundColor="#F9D33C"
+                HeightRequest="200">
+
+                <Label
+                    BackgroundColor="#91E2F4"
+                    Text="Children"
+                    HorizontalOptions="Fill"
+                    HorizontalTextAlignment="Center"
+                    VerticalOptions="Fill"
+                    VerticalTextAlignment="Center" />
+            </Grid>
+        </VerticalStackLayout>
+    </Grid>-->
 </ContentPage>
