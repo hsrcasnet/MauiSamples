@@ -4,11 +4,33 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     Title="MainPage"
+    Padding="10"
     BackgroundColor="LightGray">
 
-    <Label
-        HorizontalOptions="Center"
-        Text="I'm the MainPage"
-        VerticalOptions="Center" />
+    <Grid RowDefinitions="*, Auto, Auto, Auto" RowSpacing="10">
 
+        <Label
+            Grid.Row="0"
+            HorizontalOptions="Center"
+            Text="I'm the MainPage"
+            VerticalOptions="Center" />
+
+        <!--  DEMO: GridDemoPage  -->
+        <Button
+            Grid.Row="1"
+            Clicked="NavigateToGridDemoPage"
+            Text="GridDemoPage" />
+
+        <!--  DEMO: StackLayoutDemoPage  -->
+        <Button
+            Grid.Row="2"
+            Clicked="NavigateToStackLayoutDemoPage"
+            Text="StackLayoutDemoPage" />
+
+        <!--  DEMO: ControlsDemoPage  -->
+        <Button
+            Grid.Row="3"
+            Clicked="NavigateToControlsDemoPage"
+            Text="ControlsDemoPage" />
+    </Grid>
 </ContentPage>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="PagesLayoutsControlsDemo.Views.ControlsDemoPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="ControlsDemoPage"
+    Padding="10">
+    <ScrollView>
+        <VerticalStackLayout Spacing="10">
+
+            <Label Text="Label" />
+
+            <Button Text="Button" />
+
+            <Entry Placeholder="Entry" Text="Entry" />
+
+            <Editor
+                AutoSize="TextChanges"
+                Placeholder="Editor"
+                Text="Editor" />
+
+            <Picker Title="Picker">
+                <Picker.Items>
+                    <x:String>Item 1</x:String>
+                    <x:String>Item 2</x:String>
+                    <x:String>Item 3</x:String>
+                </Picker.Items>
+            </Picker>
+
+            <DatePicker Format="D" />
+
+            <TimePicker Format="T" />
+
+            <Slider Maximum="100" Minimum="0" />
+
+            <CheckBox HorizontalOptions="Start" IsChecked="True" />
+
+            <Switch HorizontalOptions="Start" IsToggled="True" />
+
+            <BoxView
+                HeightRequest="50"
+                HorizontalOptions="Start"
+                WidthRequest="100"
+                Color="LightGray" />
+
+            <Frame
+                Padding="10"
+                BorderColor="LightGray"
+                HasShadow="True"
+                HorizontalOptions="Start">
+                <Label Text="Frame" />
+            </Frame>
+
+            <Border
+                Padding="16,8"
+                BackgroundColor="LightGray"
+                HorizontalOptions="Start"
+                Stroke="Black"
+                StrokeThickness="4">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="10,20,0,20" />
+                </Border.StrokeShape>
+                <Label Text="Border" />
+            </Border>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

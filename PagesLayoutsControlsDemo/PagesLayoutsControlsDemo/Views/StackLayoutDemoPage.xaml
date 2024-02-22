@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="PagesLayoutsControlsDemo.Views.StackLayoutDemoPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="StackLayoutDemoPage"
+    Padding="10">
+
+    <StackLayout Orientation="Vertical" Spacing="20">
+
+        <!--<Label Text="VerticalStackLayout:" />-->
+        <VerticalStackLayout Spacing="10">
+            <Label BackgroundColor="LightPink" Text="Label 1" />
+            <Label BackgroundColor="LightGreen" Text="Label 2" />
+            <Label BackgroundColor="LightBlue" Text="Label 3" />
+        </VerticalStackLayout>
+
+        <!--<Label Text="HorizontalStackLayout:" />-->
+        <HorizontalStackLayout Spacing="10">
+            <Label BackgroundColor="LightYellow" Text="Label 4" />
+            <Label BackgroundColor="LightGrey" Text="Label 5" />
+        </HorizontalStackLayout>
+    </StackLayout>
+</ContentPage>

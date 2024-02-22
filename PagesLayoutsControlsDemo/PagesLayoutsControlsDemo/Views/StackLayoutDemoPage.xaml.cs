@@ -1,8 +1,8 @@
 namespace PagesLayoutsControlsDemo.Views;
 
-public partial class SideMenuPage : ContentPage
+public partial class StackLayoutDemoPage : ContentPage
 {
-	public SideMenuPage()
+	public StackLayoutDemoPage()
 	{
         this.InitializeComponent();
 	}

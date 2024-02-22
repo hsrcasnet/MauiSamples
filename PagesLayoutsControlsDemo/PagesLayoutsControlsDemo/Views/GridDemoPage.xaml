@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="PagesLayoutsControlsDemo.Views.GridDemoPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="GridDemoPage"
+    Padding="10">
+
+    <ContentPage.Resources>
+        <Style TargetType="Label">
+            <Setter Property="BackgroundColor" Value="LightBlue" />
+            <Setter Property="VerticalTextAlignment" Value="Center" />
+            <Setter Property="HorizontalTextAlignment" Value="Center" />
+        </Style>
+    </ContentPage.Resources>
+
+    <!--
+        DEMO: Show Grid features:
+        - RowSpacing, ColumnSpacing
+        - Compact version of RowDefinitions, ColumnDefinitions
+        - Grid sizing capabilities
+    -->
+    <Grid ColumnSpacing="4" RowSpacing="8">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="3*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="2*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="15" />
+        </Grid.RowDefinitions>
+
+        <Label
+            Grid.Row="0"
+            Grid.Column="0"
+            Text="Label1" />
+        <Label
+            Grid.Row="0"
+            Grid.Column="1"
+            Text="Label2" />
+
+        <Label
+            Grid.Row="1"
+            Grid.Column="0"
+            Text="Label3" />
+        <Label
+            Grid.Row="1"
+            Grid.Column="1"
+            Text="Label4" />
+
+        <Label
+            Grid.Row="2"
+            Grid.Column="0"
+            Text="Label5" />
+        <Label
+            Grid.Row="2"
+            Grid.Column="1"
+            Text="Label6" />
+
+        <Label
+            Grid.Row="3"
+            Grid.Column="0"
+            Text="Label7" />
+        <Label
+            Grid.Row="3"
+            Grid.Column="1"
+            Text="Label8" />
+    </Grid>
+
+</ContentPage>
