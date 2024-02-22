@@ -7,8 +7,20 @@
     Padding="{StaticResource MediumPadding}"
     BackgroundColor="White">
 
-    <VerticalStackLayout Spacing="{StaticResource MediumSpacing}">
-        <Button Text="OK" />
-        <Button Text="OK" />
+    <ContentPage.Resources>
+        <Style TargetType="Button">
+            <Setter Property="BorderColor" Value="Black" />
+            <Setter Property="BorderWidth" Value="4" />
+            <Setter Property="FontAttributes" Value="Bold" />
+            <Setter Property="TextColor" Value="Black" />
+            <Setter Property="BackgroundColor" Value="White" />
+        </Style>
+    </ContentPage.Resources>
+
+    <VerticalStackLayout>
+        <HorizontalStackLayout Spacing="{StaticResource MediumSpacing}">
+            <Button Text="OK" />
+            <Button Text="Cancel" />
+        </HorizontalStackLayout>
     </VerticalStackLayout>
 </ContentPage>
