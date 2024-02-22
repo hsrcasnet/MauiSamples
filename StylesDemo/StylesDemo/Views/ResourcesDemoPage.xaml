@@ -37,5 +37,14 @@
             WidthRequest="100"
             Color="{StaticResource TextColor}"
             HorizontalOptions="Start" />
+
+
+        <Entry
+            x:Name="PrimaryColorEntry"
+            Placeholder="PrimaryColor" />
+        <Button
+            BackgroundColor="{DynamicResource PrimaryColor}"
+            Clicked="UpdatePrimaryColor"
+            Text="Update PrimaryColor" />
     </VerticalStackLayout>
 </ContentPage>

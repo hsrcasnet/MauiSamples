@@ -52,6 +52,21 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="Views\ExplicitStylesDemoPage.xaml.cs">
+	    <DependentUpon>ExplicitStylesDemoPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\ImplicitStylesDemoPage.xaml.cs">
+	    <DependentUpon>ImplicitStylesDemoPage.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="Views\ExplicitStylesDemoPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\ImplicitStylesDemoPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\ResourcesDemoPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

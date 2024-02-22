@@ -11,5 +11,15 @@
         {
             _ = this.Navigation.PushAsync(new ResourcesDemoPage());
         }
+
+        private void NavigateToImplicitStylesDemoPage(object sender, EventArgs e)
+        {
+            _ = this.Navigation.PushAsync(new ImplicitStylesDemoPage());
+        }
+
+        private void NavigateToExplicitStylesDemoPage(object sender, EventArgs e)
+        {
+            _ = this.Navigation.PushAsync(new ExplicitStylesDemoPage());
+        }
     }
 }

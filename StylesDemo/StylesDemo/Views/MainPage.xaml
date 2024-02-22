@@ -26,12 +26,13 @@
                     Clicked="NavigateToResourcesDemoPage"
                     Text="Resources" />
                 <Button
-                    Clicked="NavigateToResourcesDemoPage"
+                    Clicked="NavigateToImplicitStylesDemoPage"
                     Text="Implicit Styles" />
                 <Button
-                    Clicked="NavigateToResourcesDemoPage"
+                    Clicked="NavigateToExplicitStylesDemoPage"
                     Text="Explicit Styles" />
                 <Label
+                    Margin="{StaticResource MediumPadding}"
                     FontSize="{StaticResource FontSizeSmall}"
                     Text="Disclaimer: This course also requires some self-study."
                     TextColor="{StaticResource SecondaryColor}" />
