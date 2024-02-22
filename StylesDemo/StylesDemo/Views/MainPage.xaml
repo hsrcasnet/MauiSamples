@@ -31,6 +31,9 @@
                 <Button
                     Clicked="NavigateToImplicitStylesDemoPage"
                     Text="Implicit Styles" />
+                <Button
+                    Clicked="NavigateToStyleInheritanceDemoPage"
+                    Text="Style Inheritance" />
                 <Label
                     Margin="{StaticResource MediumPadding}"
                     FontSize="{StaticResource FontSizeSmall}"

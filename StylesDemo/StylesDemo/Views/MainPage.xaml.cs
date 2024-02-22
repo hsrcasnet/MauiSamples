@@ -21,5 +21,10 @@
         {
             _ = this.Navigation.PushAsync(new ImplicitStylesDemoPage());
         }
+
+        private void NavigateToStyleInheritanceDemoPage(object sender, EventArgs e)
+        {
+            _ = this.Navigation.PushAsync(new StyleInheritanceDemoPage());
+        }
     }
 }
