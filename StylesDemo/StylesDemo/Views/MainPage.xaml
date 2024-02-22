@@ -26,11 +26,11 @@
                     Clicked="NavigateToResourcesDemoPage"
                     Text="Resources" />
                 <Button
-                    Clicked="NavigateToImplicitStylesDemoPage"
-                    Text="Implicit Styles" />
-                <Button
                     Clicked="NavigateToExplicitStylesDemoPage"
                     Text="Explicit Styles" />
+                <Button
+                    Clicked="NavigateToImplicitStylesDemoPage"
+                    Text="Implicit Styles" />
                 <Label
                     Margin="{StaticResource MediumPadding}"
                     FontSize="{StaticResource FontSizeSmall}"

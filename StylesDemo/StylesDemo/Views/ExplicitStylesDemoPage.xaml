@@ -4,10 +4,43 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="StylesDemo.Views.ExplicitStylesDemoPage"
     Title="ExplicitStylesDemoPage"
-    Padding="{StaticResource MediumPadding}">
+    Padding="{StaticResource MediumPadding}"
+    BackgroundColor="White">
 
     <ContentPage.Resources>
-        <!--  DEMO:  -->
+        <Style
+            x:Key="MyButtonStyle"
+            TargetType="Button">
+            <Setter Property="BorderColor" Value="Black" />
+            <Setter Property="BorderWidth" Value="4" />
+            <Setter Property="FontAttributes" Value="Bold" />
+            <Setter Property="TextColor" Value="Black" />
+            <Setter Property="BackgroundColor" Value="White" />
+        </Style>
+        <Style
+            x:Key="MyGradientButtonStyle"
+            TargetType="Button">
+            <Setter Property="BorderColor" Value="Black" />
+            <Setter Property="BorderWidth" Value="4" />
+            <Setter Property="FontAttributes" Value="Bold" />
+            <Setter Property="TextColor" Value="Black" />
+            <Setter Property="Button.Background">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                        <GradientStop Offset="0.3" Color="White" />
+                        <GradientStop Offset="1.0" Color="Cyan" />
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </ContentPage.Resources>
 
+    <VerticalStackLayout Spacing="{StaticResource MediumSpacing}">
+        <Button
+            Style="{StaticResource MyButtonStyle}"
+            Text="OK" />
+        <Button
+            Style="{StaticResource MyGradientButtonStyle}"
+            Text="OK" />
+    </VerticalStackLayout>
 </ContentPage>

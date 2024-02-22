@@ -4,10 +4,11 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="StylesDemo.Views.ImplicitStylesDemoPage"
     Title="ImplicitStylesDemoPage"
-    Padding="{StaticResource MediumPadding}">
+    Padding="{StaticResource MediumPadding}"
+    BackgroundColor="White">
 
-    <ContentPage.Resources>
-        <!--  DEMO:  -->
-    </ContentPage.Resources>
-
+    <VerticalStackLayout Spacing="{StaticResource MediumSpacing}">
+        <Button Text="OK" />
+        <Button Text="OK" />
+    </VerticalStackLayout>
 </ContentPage>
