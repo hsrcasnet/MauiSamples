@@ -7,7 +7,7 @@
     Padding="{StaticResource MediumPadding}">
 
     <ContentPage.Resources>
-        <!--  DEMO: Override resources along the hierarchy of the logical tree  -->
+        <!--  DEMO: Override resources along the hierarchy of the visual tree  -->
         <!--<Color x:Key="PrimaryColor">Red</Color>-->
     </ContentPage.Resources>
 
