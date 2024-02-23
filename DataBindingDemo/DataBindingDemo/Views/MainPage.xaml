@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="DataBindingDemo.Views.MainPage"
+    Title="MainPage"
+    Padding="10">
+
+    <StackLayout
+        Spacing="10"
+        VerticalOptions="Center">
+
+        <!--  Demo 1: Relative Bindings  -->
+        <Button
+            Command="{Binding NavigateToPageCommand}"
+            CommandParameter="SliderPage"
+            Text="Demo 1: Relative Bindings" />
+
+        <!--  Demo 2: Data Binding with BindingContext  -->
+        <Button
+            Command="{Binding NavigateToPageCommand}"
+            CommandParameter="LoginPage"
+            Text="Demo 2: Data Binding with BindingContext" />
+
+        <!--  Demo 3: Collection Bindings  -->
+        <Button
+            Command="{Binding NavigateToPageCommand}"
+            CommandParameter="CarsListPage"
+            Text="Demo 3: Collection Bindings" />
+    </StackLayout>
+</ContentPage>
