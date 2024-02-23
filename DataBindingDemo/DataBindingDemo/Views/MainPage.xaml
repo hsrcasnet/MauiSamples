@@ -20,7 +20,7 @@
         <Button
             Command="{Binding NavigateToPageCommand}"
             CommandParameter="LoginPage"
-            Text="Demo 2: Data Binding with BindingContext" />
+            Text="Demo 2: Data Binding with MVVM" />
 
         <!--  Demo 3: Collection Bindings  -->
         <Button

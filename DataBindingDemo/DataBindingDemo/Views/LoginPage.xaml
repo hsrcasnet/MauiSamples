@@ -3,11 +3,39 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="DataBindingDemo.Views.LoginPage"
-    Title="LoginPage">
-    <VerticalStackLayout>
-        <Label
-            Text="Welcome to .NET MAUI!"
-            HorizontalOptions="Center"
-            VerticalOptions="Center" />
+    Title="LoginPage"
+    Padding="20">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Sign Up" />
+    </ContentPage.ToolbarItems>
+
+    <VerticalStackLayout VerticalOptions="Center">
+
+        <Label Text="Username" />
+        <Entry
+            Placeholder="Username"
+            Text="{Binding Username, Mode=TwoWay}" />
+
+        <Label Text="Password" />
+        <Entry
+            IsPassword="true"
+            Placeholder="Password"
+            Text="{Binding Password, Mode=TwoWay}" />
+
+        <HorizontalStackLayout>
+            <CheckBox
+                IsChecked="{Binding AcceptTermsAndConditions, Mode=TwoWay}"
+                VerticalOptions="Center" />
+            <Label
+                Text="Accept Terms and Conditions?"
+                VerticalOptions="Center" />
+        </HorizontalStackLayout>
+
+        <Button
+            Command="{Binding LoginCommand}"
+            CommandParameter="test"
+            IsEnabled="{Binding IsLoginButtonEnabled}"
+            Text="Login" />
     </VerticalStackLayout>
 </ContentPage>
