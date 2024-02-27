@@ -60,12 +60,12 @@ namespace DataBindingDemo.ViewModels
             await Task.Delay(2000);
 
             // Demo: Following code could be the command handler implementation
-            //       for LoginAsync. We safeguard the service call with a try-catch
-            //       statement and inform the user in case something goes wrong.
+            //       for LoginCommand/LoginAsync. We safe-guard the service call
+            //       with a try-catch statement and inform the user in case something goes wrong.
             //       The bool flag IsLoggingIn is used to avoid double-execution
             //       of the LoginCommand as well as to indicate the login activity
             //       in the user interface (e.g. with an ActivityIndicator).
-
+            //
             //       try
             //       {
             //           var isAuthenticated = await this.loginService.LoginAsync(this.Username, this.Password);
@@ -81,6 +81,7 @@ namespace DataBindingDemo.ViewModels
             //       }
             //       catch (Exception ex)
             //       {
+            //           this.logger.LogError(ex, "LoginAsync failed with exception")
             //           this.dialogService.ShowAlert("Something went wrong. Please try again.");
             //       }
 
