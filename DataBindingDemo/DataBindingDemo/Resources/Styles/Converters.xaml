@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<?xaml-comp compile="true" ?>
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:c="clr-namespace:DataBindingDemo.Converters">
+
+    <c:BoolToColorConverter
+        x:Key="BoolToPrimarySecondaryColorConverter"
+        FalseValue="{StaticResource Secondary}"
+        TrueValue="{StaticResource Primary}" />
+    <c:BoolToColorConverter
+        x:Key="BoolToSecondaryPrimaryColorConverter"
+        FalseValue="{StaticResource Primary}"
+        TrueValue="{StaticResource Secondary}" />
+</ResourceDictionary>

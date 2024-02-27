@@ -12,10 +12,13 @@
         <ToolbarItem Text="Sign Up" />
     </ContentPage.ToolbarItems>
 
-    <VerticalStackLayout VerticalOptions="Center">
+    <VerticalStackLayout
+        Spacing="10"
+        VerticalOptions="Center">
 
         <Label Text="Username" />
         <Entry
+            x:Name="UsernameEntry"
             Placeholder="Username"
             Text="{Binding Username, Mode=TwoWay}" />
 
@@ -25,18 +28,20 @@
             Placeholder="Password"
             Text="{Binding Password, Mode=TwoWay}" />
 
-        <HorizontalStackLayout>
+        <HorizontalStackLayout Spacing="10">
             <CheckBox
                 IsChecked="{Binding AcceptTermsAndConditions, Mode=TwoWay}"
                 VerticalOptions="Center" />
             <Label
+                BackgroundColor="{Binding AcceptTermsAndConditions, Converter={StaticResource BoolToPrimarySecondaryColorConverter}}"
                 Text="Accept Terms and Conditions?"
+                TextColor="{Binding AcceptTermsAndConditions, Converter={StaticResource BoolToSecondaryPrimaryColorConverter}}"
                 VerticalOptions="Center" />
         </HorizontalStackLayout>
 
         <Button
             Command="{Binding LoginCommand}"
-            CommandParameter="test"
+            CommandParameter="{Binding Source={x:Reference UsernameEntry}, Path=Text}"
             IsEnabled="{Binding IsLoginButtonEnabled}"
             Text="Login" />
     </VerticalStackLayout>

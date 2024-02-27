@@ -14,8 +14,8 @@ namespace DataBindingDemo.ViewModels
         public LoginViewModel()
         {
             this.LoginCommand = new Command<string>(
-                execute: async (o) => await this.LoginAsync(),
-                canExecute: (o) => !this.IsLoggingIn);
+                execute: async (p) => await this.LoginAsync(),
+                canExecute: (p) => !this.IsLoggingIn);
         }
 
         public string Username
@@ -58,6 +58,9 @@ namespace DataBindingDemo.ViewModels
         {
             this.IsLoggingIn = true;
             await Task.Delay(2000);
+
+            // Demo: Reset terms and conditions checkbox
+            this.AcceptTermsAndConditions = false;
 
             // Demo: Following code could be the command handler implementation
             //       for LoginCommand/LoginAsync. We safe-guard the service call
