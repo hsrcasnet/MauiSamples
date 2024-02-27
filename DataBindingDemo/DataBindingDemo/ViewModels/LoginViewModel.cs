@@ -60,6 +60,7 @@ namespace DataBindingDemo.ViewModels
             await Task.Delay(2000);
 
             // Demo: Reset terms and conditions checkbox
+            //       to demonstrate a two-way binding update (binding source -> binding target).
             this.AcceptTermsAndConditions = false;
 
             // Demo: Following code could be the command handler implementation
