@@ -64,13 +64,14 @@
             <Button
                 Command="{Binding LoginCommand}"
                 CommandParameter="{Binding Source={x:Reference UsernameEntry}, Path=Text}"
+                IsEnabled="{Binding IsLoginButtonEnabled}"
                 Text="Login">
 
                 <!--
                     Demo: Instead of using a composite CLR property from LoginViewModel IsEnabled="{Binding IsLoginButtonEnabled}"
                     we could instead use MultiBinding
                 -->
-                <Button.IsEnabled>
+                <!--<Button.IsEnabled>
                     <MultiBinding Converter="{StaticResource AllTrueMultiConverter}">
                         <Binding
                             Path="Username"
@@ -83,7 +84,7 @@
                             Path="IsLoggingIn"
                             Converter="{StaticResource BoolInverter}" />
                     </MultiBinding>
-                </Button.IsEnabled>
+                </Button.IsEnabled>-->
             </Button>
 
         </VerticalStackLayout>
