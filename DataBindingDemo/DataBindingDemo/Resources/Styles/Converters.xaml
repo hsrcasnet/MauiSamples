@@ -34,12 +34,12 @@
     <c:BoolInverter x:Key="BoolInverter" />
 
     <c:DateTimeToStringConverter
-        x:Key="DateTimeToGeneralShortStringConverter"
-        Format="g" />
+        x:Key="DateTimeToGeneralStringConverter"
+        Format="G" />
 
     <c:DateTimeToStringConverter
-        x:Key="DateTimeToGeneralLongStringConverter"
-        Format="D" />
+        x:Key="DateTimeToFullStringConverter"
+        Format="F" />
 
     <c:AllTrueMultiConverter x:Key="AllTrueMultiConverter" />
 

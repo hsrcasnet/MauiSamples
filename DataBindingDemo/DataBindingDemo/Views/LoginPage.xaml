@@ -70,6 +70,7 @@
 
         </VerticalStackLayout>
 
+        <!--  Demo: DateTime to string converter  -->
         <VerticalStackLayout
             Grid.Row="1"
             BackgroundColor="{StaticResource Secondary}"
@@ -80,7 +81,7 @@
                         <Span Text="Last login: " />
                         <Span
                             FontAttributes="Bold"
-                            Text="{Binding LastLoginDate, Converter={StaticResource DateTimeToGeneralLongStringConverter}}" />
+                            Text="{Binding LastLoginDate, Converter={StaticResource DateTimeToGeneralStringConverter}}" />
                     </FormattedString>
                 </Label.FormattedText>
             </Label>
