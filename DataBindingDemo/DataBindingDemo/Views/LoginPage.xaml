@@ -3,9 +3,9 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:vm="clr-namespace:DataBindingDemo.ViewModels"
+    x:DataType="vm:LoginViewModel"
     x:Class="DataBindingDemo.Views.LoginPage"
-    Title="LoginPage"
-    x:DataType="vm:LoginViewModel">
+    Title="LoginPage">
 
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Sign Up" />
