@@ -3,11 +3,60 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="DataBindingDemo.Views.CarsListPage"
-    Title="CarsListPage">
-    <VerticalStackLayout>
-        <Label
-            Text="Welcome to .NET MAUI!"
-            HorizontalOptions="Center"
-            VerticalOptions="Center" />
+    Title="{Binding Title}">
+
+    <VerticalStackLayout Spacing="10">
+        <ListView
+            CachingStrategy="RetainElement"
+            HasUnevenRows="True"
+            ItemTapped="Handle_ItemTapped"
+            ItemsSource="{Binding Cars}">
+
+            <!--  Demo: Use built-in cells, e.g. TextCell  -->
+            <!--<ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell
+                        Detail="{Binding Model}"
+                        Text="{Binding Brand}" />
+                </DataTemplate>
+            </ListView.ItemTemplate>-->
+
+            <!--  Demo: Use custom DataTemplate  -->
+            <!--<ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Padding="5">
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="18"
+                                Text="{Binding Brand}" />
+                            <Label Text="{Binding Model}" />
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>-->
+        </ListView>
+
+        <!--  Demo: BindableLayout  -->
+        <!--<HorizontalStackLayout BindableLayout.ItemsSource="{Binding Cars}">
+            <BindableLayout.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout Padding="5">
+                        <Label
+                            FontAttributes="Bold"
+                            Text="{Binding Brand}" />
+                        <Label Text="{Binding Model}" />
+                    </StackLayout>
+                </DataTemplate>
+            </BindableLayout.ItemTemplate>
+        </HorizontalStackLayout>-->
+
+        <!--<Button
+            Command="{Binding UpdateCarCommand}"
+            Text="Update Car" />
+
+        <Button
+            Command="{Binding AddCarCommand}"
+            Text="Add Car" />-->
     </VerticalStackLayout>
 </ContentPage>
