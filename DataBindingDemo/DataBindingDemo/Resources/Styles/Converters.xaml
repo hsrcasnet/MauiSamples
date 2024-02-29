@@ -21,7 +21,7 @@
 
     <c:StringIsNullOrEmptyToBoolConverter
         x:Key="StringIsNotNullOrEmptyToBoolConverter"
-        IsInverted="False" />
+        IsInverted="True" />
 
     <c:IsNullToBoolConverter
         x:Key="IsNullToBoolConverter"

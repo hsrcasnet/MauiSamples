@@ -12,14 +12,32 @@
     </ContentPage.ToolbarItems>
 
     <Grid
-        RowDefinitions="*, Auto"
+        RowDefinitions="Auto, *"
         RowSpacing="10">
+
+        <!--  Demo: DateTime to string converter  -->
         <VerticalStackLayout
             Grid.Row="0"
-            Padding="20"
-            Spacing="10"
-            VerticalOptions="Center">
+            BackgroundColor="{StaticResource Secondary}"
+            IsVisible="{Binding LastLoginDate, Converter={StaticResource IsNotNullToBoolConverter}}">
+            <Label HorizontalTextAlignment="Center">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Last login: " />
+                        <Span
+                            FontAttributes="Bold"
+                            Text="{Binding LastLoginDate, Converter={StaticResource DateTimeToGeneralStringConverter}}" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+        </VerticalStackLayout>
 
+        <VerticalStackLayout
+            Grid.Row="1"
+            Padding="20"
+            Spacing="10">
+
+            <!--  Demo: Simple bindings  -->
             <Label Text="Username" />
             <Entry
                 x:Name="UsernameEntry"
@@ -68,23 +86,6 @@
                 </Button.IsEnabled>
             </Button>
 
-        </VerticalStackLayout>
-
-        <!--  Demo: DateTime to string converter  -->
-        <VerticalStackLayout
-            Grid.Row="1"
-            BackgroundColor="{StaticResource Secondary}"
-            IsVisible="{Binding LastLoginDate, Converter={StaticResource IsNotNullToBoolConverter}}">
-            <Label HorizontalTextAlignment="Center">
-                <Label.FormattedText>
-                    <FormattedString>
-                        <Span Text="Last login: " />
-                        <Span
-                            FontAttributes="Bold"
-                            Text="{Binding LastLoginDate, Converter={StaticResource DateTimeToGeneralStringConverter}}" />
-                    </FormattedString>
-                </Label.FormattedText>
-            </Label>
         </VerticalStackLayout>
     </Grid>
 </ContentPage>

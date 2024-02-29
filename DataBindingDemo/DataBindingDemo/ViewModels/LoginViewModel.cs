@@ -62,6 +62,8 @@ namespace DataBindingDemo.ViewModels
             this.IsLoggingIn = true;
             await Task.Delay(2000);
 
+            this.Username = null;
+            this.Password = null;
             this.LastLoginDate = DateTime.Now;
 
             // Demo: Reset terms and conditions checkbox
@@ -84,7 +86,7 @@ namespace DataBindingDemo.ViewModels
             //           }
             //           else
             //           {
-            //               this.Password = string.Empty;
+            //               this.Password = null;
             //               this.dialogService.ShowAlert("Username or password is not valid.");
             //           }
             //       }
