@@ -10,6 +10,7 @@ namespace DataBindingDemo.ViewModels
         private string password;
         private bool acceptTermsAndConditions;
         private bool isLoggingIn;
+        private DateTime? lastLoginDate;
 
         public LoginViewModel()
         {
@@ -25,6 +26,7 @@ namespace DataBindingDemo.ViewModels
             {
                 this.username = value;
                 this.OnPropertyChanged(nameof(this.Username));
+                this.OnPropertyChanged(nameof(this.IsLoginButtonEnabled));
             }
         }
 
@@ -35,6 +37,7 @@ namespace DataBindingDemo.ViewModels
             {
                 this.password = value;
                 this.OnPropertyChanged(nameof(this.Password));
+                this.OnPropertyChanged(nameof(this.IsLoginButtonEnabled));
             }
         }
 
@@ -58,6 +61,8 @@ namespace DataBindingDemo.ViewModels
         {
             this.IsLoggingIn = true;
             await Task.Delay(2000);
+
+            this.LastLoginDate = DateTime.Now;
 
             // Demo: Reset terms and conditions checkbox
             //       to demonstrate a two-way binding update (binding source -> binding target).
@@ -106,7 +111,30 @@ namespace DataBindingDemo.ViewModels
             }
         }
 
-        public bool IsLoginButtonEnabled => !this.IsLoggingIn && this.AcceptTermsAndConditions;
+        public bool IsLoginButtonEnabled
+        {
+            get
+            {
+                return
+                    !string.IsNullOrEmpty(this.Username) &&
+                    !string.IsNullOrEmpty(this.Password) &&
+                    !this.IsLoggingIn &&
+                    this.AcceptTermsAndConditions;
+            }
+        }
+
+        public DateTime? LastLoginDate
+        {
+            get => this.lastLoginDate;
+            set
+            {
+                if (this.lastLoginDate != value)
+                {
+                    this.lastLoginDate = value;
+                    this.OnPropertyChanged(nameof(this.LastLoginDate));
+                }
+            }
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
 

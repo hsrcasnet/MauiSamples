@@ -9,8 +9,40 @@
         x:Key="BoolToPrimarySecondaryColorConverter"
         FalseValue="{StaticResource Secondary}"
         TrueValue="{StaticResource Primary}" />
+
     <c:BoolToColorConverter
         x:Key="BoolToSecondaryPrimaryColorConverter"
         FalseValue="{StaticResource Primary}"
         TrueValue="{StaticResource Secondary}" />
+
+    <c:StringIsNullOrEmptyToBoolConverter
+        x:Key="StringIsNullOrEmptyToBoolConverter"
+        IsInverted="False" />
+
+    <c:StringIsNullOrEmptyToBoolConverter
+        x:Key="StringIsNotNullOrEmptyToBoolConverter"
+        IsInverted="False" />
+
+    <c:IsNullToBoolConverter
+        x:Key="IsNullToBoolConverter"
+        IsInverted="False" />
+
+    <c:IsNullToBoolConverter
+        x:Key="IsNotNullToBoolConverter"
+        IsInverted="True" />
+
+    <c:BoolInverter x:Key="BoolInverter" />
+
+    <c:DateTimeToStringConverter
+        x:Key="DateTimeToGeneralShortStringConverter"
+        Format="g" />
+
+    <c:DateTimeToStringConverter
+        x:Key="DateTimeToGeneralLongStringConverter"
+        Format="D" />
+
+    <c:AllTrueMultiConverter x:Key="AllTrueMultiConverter" />
+
+    <c:AnyTrueMultiConverter x:Key="AnyTrueMultiConverter" />
+
 </ResourceDictionary>

@@ -5,44 +5,85 @@
     xmlns:vm="clr-namespace:DataBindingDemo.ViewModels"
     x:Class="DataBindingDemo.Views.LoginPage"
     Title="LoginPage"
-    Padding="20"
     x:DataType="vm:LoginViewModel">
 
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Sign Up" />
     </ContentPage.ToolbarItems>
 
-    <VerticalStackLayout
-        Spacing="10"
-        VerticalOptions="Center">
+    <Grid
+        RowDefinitions="*, Auto"
+        RowSpacing="10">
+        <VerticalStackLayout
+            Grid.Row="0"
+            Padding="20"
+            Spacing="10"
+            VerticalOptions="Center">
 
-        <Label Text="Username" />
-        <Entry
-            x:Name="UsernameEntry"
-            Placeholder="Username"
-            Text="{Binding Username, Mode=TwoWay}" />
+            <Label Text="Username" />
+            <Entry
+                x:Name="UsernameEntry"
+                Placeholder="Username"
+                Text="{Binding Username, Mode=TwoWay}" />
 
-        <Label Text="Password" />
-        <Entry
-            IsPassword="true"
-            Placeholder="Password"
-            Text="{Binding Password, Mode=TwoWay}" />
+            <Label Text="Password" />
+            <Entry
+                IsPassword="true"
+                Placeholder="Password"
+                Text="{Binding Password, Mode=TwoWay}" />
 
-        <HorizontalStackLayout Spacing="10">
-            <CheckBox
-                IsChecked="{Binding AcceptTermsAndConditions, Mode=TwoWay}"
-                VerticalOptions="Center" />
-            <Label
-                BackgroundColor="{Binding AcceptTermsAndConditions, Converter={StaticResource BoolToPrimarySecondaryColorConverter}}"
-                Text="Accept Terms and Conditions?"
-                TextColor="{Binding AcceptTermsAndConditions, Converter={StaticResource BoolToSecondaryPrimaryColorConverter}}"
-                VerticalOptions="Center" />
-        </HorizontalStackLayout>
+            <HorizontalStackLayout Spacing="10">
+                <CheckBox
+                    IsChecked="{Binding AcceptTermsAndConditions, Mode=TwoWay}"
+                    VerticalOptions="Center" />
+                <Label
+                    BackgroundColor="{Binding AcceptTermsAndConditions, Converter={StaticResource BoolToPrimarySecondaryColorConverter}}"
+                    Text="Accept Terms and Conditions?"
+                    TextColor="{Binding AcceptTermsAndConditions, Converter={StaticResource BoolToSecondaryPrimaryColorConverter}}"
+                    VerticalOptions="Center" />
+            </HorizontalStackLayout>
 
-        <Button
-            Command="{Binding LoginCommand}"
-            CommandParameter="{Binding Source={x:Reference UsernameEntry}, Path=Text}"
-            IsEnabled="{Binding IsLoginButtonEnabled}"
-            Text="Login" />
-    </VerticalStackLayout>
+            <Button
+                Command="{Binding LoginCommand}"
+                CommandParameter="{Binding Source={x:Reference UsernameEntry}, Path=Text}"
+                Text="Login">
+
+                <!--
+                    Demo: Instead of using a composite CLR property from LoginViewModel IsEnabled="{Binding IsLoginButtonEnabled}"
+                    we could instead use MultiBinding
+                -->
+                <Button.IsEnabled>
+                    <MultiBinding Converter="{StaticResource AllTrueMultiConverter}">
+                        <Binding
+                            Path="Username"
+                            Converter="{StaticResource StringIsNotNullOrEmptyToBoolConverter}" />
+                        <Binding
+                            Path="Password"
+                            Converter="{StaticResource StringIsNotNullOrEmptyToBoolConverter}" />
+                        <Binding Path="AcceptTermsAndConditions" />
+                        <Binding
+                            Path="IsLoggingIn"
+                            Converter="{StaticResource BoolInverter}" />
+                    </MultiBinding>
+                </Button.IsEnabled>
+            </Button>
+
+        </VerticalStackLayout>
+
+        <VerticalStackLayout
+            Grid.Row="1"
+            BackgroundColor="{StaticResource Secondary}"
+            IsVisible="{Binding LastLoginDate, Converter={StaticResource IsNotNullToBoolConverter}}">
+            <Label HorizontalTextAlignment="Center">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Last login: " />
+                        <Span
+                            FontAttributes="Bold"
+                            Text="{Binding LastLoginDate, Converter={StaticResource DateTimeToGeneralLongStringConverter}}" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+        </VerticalStackLayout>
+    </Grid>
 </ContentPage>
