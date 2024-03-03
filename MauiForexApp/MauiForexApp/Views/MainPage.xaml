@@ -2,87 +2,70 @@
 <ContentPage
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:cells="clr-namespace:ForexApp.Views.Cells"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+    xmlns:itemTemplates="clr-namespace:ForexApp.Views.ItemTemplates"
+    xmlns:vm="clr-namespace:ForexApp.ViewModels"
+    x:DataType="vm:MainViewModel"
     x:Class="ForexApp.Views.MainPage"
-    Title="{Binding Title}"
-    ios:Page.UseSafeArea="True">
+    ios:Page.UseSafeArea="True"
+    Title="{Binding Title}">
 
     <ContentPage.Resources>
         <ResourceDictionary>
-            <DataTemplate x:Key="QuoteItemViewCell">
-                <cells:QuoteItemViewCell />
+            <DataTemplate x:Key="QuoteItemTemplate">
+                <itemTemplates:QuoteItemTemplate />
             </DataTemplate>
         </ResourceDictionary>
     </ContentPage.Resources>
 
     <Grid>
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*" />
-                <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
+        <Grid
+            Grid.Row="0"
+            RowDefinitions="*,Auto">
 
             <ListView
                 Grid.Row="0"
                 IsPullToRefreshEnabled="True"
                 IsRefreshing="{Binding IsRefreshing}"
-                ItemTemplate="{StaticResource QuoteItemViewCell}"
+                ItemTemplate="{StaticResource QuoteItemTemplate}"
                 ItemsSource="{Binding Quotes}"
                 RefreshCommand="{Binding RefreshListCommand}" />
 
-            <Grid Grid.Row="1">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="Auto" />
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                </Grid.RowDefinitions>
-
+            <Grid
+                Grid.Row="1"
+                Padding="8"
+                ColumnDefinitions="*, *, Auto"
+                ColumnSpacing="8"
+                RowDefinitions="Auto, Auto"
+                RowSpacing="8">
                 <Button
                     Grid.Row="0"
-                    Grid.ColumnSpan="2"
+                    Grid.ColumnSpan="3"
                     Command="{Binding RefreshButtonCommand}"
                     Text="Refresh" />
 
                 <Entry
                     Grid.Row="1"
                     Grid.Column="0"
-                    Text="{Binding NewQuoteSymbol, Mode=TwoWay}" />
-                <Button
-                    x:Name="AddButton"
+                    Placeholder="Base currency"
+                    Text="{Binding BaseCurrency, Mode=TwoWay}" />
+                <Entry
                     Grid.Row="1"
                     Grid.Column="1"
-                    Command="{Binding AddSymbolCommand}"
-                    IsEnabled="{Binding IsNewQuoteSymbolEnabled}"
-                    Text="Add Symbol" />
+                    Placeholder="Target currencies"
+                    Text="{Binding TargetCurrencies, Mode=TwoWay}" />
+                <Button
+                    Grid.Row="1"
+                    Grid.Column="2"
+                    Command="{Binding AddQuoteCommand}"
+                    IsEnabled="{Binding CanAddQuote}"
+                    Text="Add Quote" />
             </Grid>
         </Grid>
 
         <ActivityIndicator
+            Grid.Row="0"
             IsRunning="{Binding IsBusy}"
-            IsVisible="{Binding IsBusy}"
-            Color="Black"
-            HorizontalOptions="CenterAndExpand"
-            VerticalOptions="CenterAndExpand">
-            <ActivityIndicator.WidthRequest>
-                <OnPlatform x:TypeArguments="x:Double">
-                    <On
-                        Platform="iOS"
-                        Value="24" />
-                    <On
-                        Platform="Android"
-                        Value="100" />
-                    <On
-                        Platform="Windows"
-                        Value="400" />
-                </OnPlatform>
-            </ActivityIndicator.WidthRequest>
-        </ActivityIndicator>
+            IsVisible="{Binding IsBusy}" />
     </Grid>
 </ContentPage>

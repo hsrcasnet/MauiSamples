@@ -5,20 +5,32 @@ namespace ForexApp.ViewModels
     public class QuoteViewModel : ViewModelBase
     {
         private decimal price;
-        private string symbol;
+        private string baseCurrency;
+        private string targetCurrency;
 
         public QuoteViewModel(QuoteDto quoteDto)
         {
             this.Update(quoteDto);
         }
 
-        public string Symbol
+        public string BaseCurrency
         {
-            get => this.symbol;
+            get => this.baseCurrency;
             set
             {
-                this.symbol = value;
-                this.OnPropertyChanged(nameof(this.Symbol));
+                this.baseCurrency = value;
+                this.OnPropertyChanged(nameof(this.BaseCurrency));
+            }
+        }
+        
+
+        public string TargetCurrency
+        {
+            get => this.targetCurrency;
+            set
+            {
+                this.targetCurrency = value;
+                this.OnPropertyChanged(nameof(this.TargetCurrency));
             }
         }
 
@@ -34,7 +46,8 @@ namespace ForexApp.ViewModels
 
         public void Update(QuoteDto quoteDto)
         {
-            this.Symbol = quoteDto.Symbol;
+            this.BaseCurrency = quoteDto.BaseCurrency;
+            this.TargetCurrency = quoteDto.TargetCurrency;
             this.Price = quoteDto.Price;
         }
     }

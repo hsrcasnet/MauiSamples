@@ -5,16 +5,16 @@ using Newtonsoft.Json;
 namespace ForexApp.Model
 {
     [DebuggerDisplay("Data.Count = {Data.Count}")]
-    public class LatestQuotesDto
+public class LatestQuotesDto
+{
+    public LatestQuotesDto()
     {
-        public LatestQuotesDto()
-        {
-            this.Data = new Dictionary<string, decimal>();
-        }
-
-        [JsonProperty("data")]
-        public IDictionary<string, decimal> Data { get; set; }
+        this.Data = new Dictionary<string, decimal>();
     }
+
+    [JsonProperty("data")]
+    public IDictionary<string, decimal> Data { get; set; }
+}
 
     //public class Currency
     //{

@@ -2,10 +2,19 @@ using System.Diagnostics;
 
 namespace ForexApp.Model
 {
-    [DebuggerDisplay("Symbol = {Symbol}, Price = {Price}")]
+    [DebuggerDisplay("BaseCurrency = {BaseCurrency}, TargetCurrency = {TargetCurrency}, Price = {Price}")]
     public class QuoteDto
     {
-        public string Symbol { get; set; }
+        public QuoteDto(string baseCurrency, string targetCurrency, decimal price)
+        {
+            this.BaseCurrency = baseCurrency;
+            this.TargetCurrency = targetCurrency;
+            this.Price = price;
+        }
+
+        public string BaseCurrency { get; set; }
+
+        public string TargetCurrency { get; set; }
 
         public decimal Price { get; set; }
     }

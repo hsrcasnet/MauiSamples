@@ -6,19 +6,18 @@ namespace ForexApp.Services
     {
         private static readonly Random Rng = new Random();
 
-        public async Task<IEnumerable<QuoteDto>> GetQuotes(string baseCurrency, string[] currencies)
+        public async Task<IEnumerable<QuoteDto>> GetLatestQuotes(string baseCurrency, string[] targetCurrencies)
         {
             var quoteDtos = new List<QuoteDto>();
-            foreach (var symbol in currencies)
+
+            foreach (var targetCurrency in targetCurrencies)
             {
-                var dto = new QuoteDto
-                {
-                    Symbol = symbol,
-                    Price = (decimal)Rng.NextDouble() * Rng.Next(1, 100),
-                };
+                var randomPrice = (decimal)Rng.NextDouble() * Rng.Next(1, 100);
+                var dto = new QuoteDto(baseCurrency, targetCurrency, randomPrice);
                 quoteDtos.Add(dto);
             }
 
+            // Wait 
             await Task.Delay(3000);
 
             return quoteDtos;

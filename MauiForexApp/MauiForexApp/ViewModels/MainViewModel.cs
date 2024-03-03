@@ -8,7 +8,8 @@ namespace ForexApp.ViewModels
     public class MainViewModel : ViewModelBase
     {
         private readonly IForexService forexService;
-        private string newQuoteSymbol;
+        private string baseCurrency;
+        private string targetCurrencies;
         private bool isBusy;
         private bool isRefreshing;
 
@@ -18,6 +19,8 @@ namespace ForexApp.ViewModels
 
             this.Title = "Welcome to ForexApp";
             this.Quotes = new ObservableCollection<QuoteViewModel>();
+
+            this.RefreshButtonCommand.Execute(null);
         }
 
         public ICommand RefreshButtonCommand => new Command(
@@ -38,18 +41,18 @@ namespace ForexApp.ViewModels
 
         private async Task LoadData()
         {
-            string[] pairs;
-
             if (!this.Quotes.Any())
             {
-                pairs = new[] { "EUR_CHF", "CHF_EUR", };
+                await this.AddQuoteAsync("CHF", "EUR");
+                await this.AddQuoteAsync("EUR", "CHF");
             }
             else
             {
-                pairs = this.Quotes.Select(q => q.Symbol).ToArray();
+                foreach (var vm in this.Quotes)
+                {
+                    await this.LoadAndUpdateQuotesAsync(vm.BaseCurrency, vm.TargetCurrency);
+                }
             }
-
-            await this.LoadAndUpdateQuotes(pairs);
         }
 
         public bool IsBusy
@@ -72,62 +75,13 @@ namespace ForexApp.ViewModels
             }
         }
 
-        private async Task LoadAndUpdateQuotes(string[] pairs)
+        private async Task LoadAndUpdateQuotesAsync(string baseCurrency, params string[] targetCurrencies)
         {
             try
             {
-                ICollection<QuoteDto> quotes = (await this.forexService.GetQuotes("CHF", pairs)).ToList();
+                var quoteDtos = (await this.forexService.GetLatestQuotes(baseCurrency, targetCurrencies)).ToArray();
 
-                this.UpdateQuotes(quotes);
-            }
-            catch (Exception ex)
-            {
-                // TODO: Log exception here
-                // TODO: Inform user about the error using a dialog
-            }
-        }
-
-        private void UpdateQuotes(ICollection<QuoteDto> quotes)
-        {
-            foreach (var quoteDto in quotes)
-            {
-                this.AddOrUpdateQuote(quoteDto);
-            }
-
-            var returnedSymbols = quotes.Select(dto => dto.Symbol);
-            var unusedViewModels = this.Quotes.Where(vm => !returnedSymbols.Contains(vm.Symbol)).ToList();
-            foreach (var quoteViewModel in unusedViewModels)
-            {
-                this.Quotes.Remove(quoteViewModel);
-            }
-        }
-
-        private void AddOrUpdateQuote(QuoteDto quoteDto)
-        {
-            var vm = this.Quotes.SingleOrDefault(q => q.Symbol == quoteDto.Symbol);
-            if (vm == null)
-            {
-                this.Quotes.Add(new QuoteViewModel(quoteDto));
-            }
-            else
-            {
-                vm.Update(quoteDto);
-            }
-        }
-
-        public ICommand AddSymbolCommand => new Command(
-            execute: async () => await this.AddSymbolAsync(),
-            canExecute: () => this.IsNewQuoteSymbolEnabled);
-
-        private async Task AddSymbolAsync()
-        {
-            try
-            {
-                var symbol = this.NewQuoteSymbol;
-                var pairs = new[] { symbol };
-                var quoteDtos = (await this.forexService.GetQuotes("CHF", pairs)).ToList();
-
-                if (quoteDtos.Count == 0)
+                if (quoteDtos.Length == 0)
                 {
                     // TODO: Inform user that the result was empty
                 }
@@ -142,28 +96,90 @@ namespace ForexApp.ViewModels
             catch (Exception ex)
             {
                 // TODO: Log exception here
+                // TODO: Inform user about the error using a dialog
+            }
+        }
+
+        private void AddOrUpdateQuote(QuoteDto quoteDto)
+        {
+            var existingQuoteViewModel = this.Quotes.SingleOrDefault(q =>
+                q.BaseCurrency == quoteDto.BaseCurrency &&
+                q.TargetCurrency == quoteDto.TargetCurrency);
+
+            if (existingQuoteViewModel == null)
+            {
+                this.Quotes.Add(new QuoteViewModel(quoteDto));
+            }
+            else
+            {
+                existingQuoteViewModel.Update(quoteDto);
+            }
+        }
+
+        public ICommand AddQuoteCommand => new Command(
+            execute: async () => await this.AddQuoteAsync(),
+            canExecute: () => this.CanAddQuote);
+
+        private async Task AddQuoteAsync()
+        {
+            await this.AddQuoteAsync(this.BaseCurrency, this.TargetCurrencies);
+
+            this.BaseCurrency = null;
+            this.TargetCurrencies = null;
+        }
+
+        private async Task AddQuoteAsync(string baseCurrency, string targetCurrencies)
+        {
+            try
+            {
+                this.IsBusy = true;
+
+                // TODO: Validate input parameters BaseCurrency and TargetCurrencies
+
+                var targetCurrenciesArray = targetCurrencies?.Split(',', StringSplitOptions.RemoveEmptyEntries)
+                    .Select(s => s.Trim())
+                    .ToArray();
+
+                await this.LoadAndUpdateQuotesAsync(baseCurrency, targetCurrenciesArray);
+            }
+            catch (Exception ex)
+            {
+                // TODO: Log exception here
                 // TODO: Inform user about the error
             }
-
-            this.NewQuoteSymbol = null;
-        }
-
-        public string NewQuoteSymbol
-        {
-            get => this.newQuoteSymbol;
-            set
+            finally
             {
-                this.newQuoteSymbol = value;
-                this.OnPropertyChanged(nameof(this.NewQuoteSymbol));
-                this.OnPropertyChanged(nameof(this.IsNewQuoteSymbolEnabled));
+                this.IsBusy = false;
             }
         }
 
-        public bool IsNewQuoteSymbolEnabled
+        public string BaseCurrency
+        {
+            get => this.baseCurrency;
+            set
+            {
+                this.baseCurrency = value;
+                this.OnPropertyChanged(nameof(this.BaseCurrency));
+                this.OnPropertyChanged(nameof(this.CanAddQuote));
+            }
+        }
+
+        public string TargetCurrencies
+        {
+            get => this.targetCurrencies;
+            set
+            {
+                this.targetCurrencies = value;
+                this.OnPropertyChanged(nameof(this.TargetCurrencies));
+                this.OnPropertyChanged(nameof(this.CanAddQuote));
+            }
+        }
+
+        public bool CanAddQuote
         {
             get
             {
-                return !string.IsNullOrWhiteSpace(this.NewQuoteSymbol);
+                return !string.IsNullOrWhiteSpace(this.BaseCurrency) && !string.IsNullOrWhiteSpace(this.TargetCurrencies);
             }
         }
 

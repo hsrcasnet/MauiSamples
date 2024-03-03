@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ViewCell
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:vm="clr-namespace:ForexApp.ViewModels"
+    x:DataType="vm:QuoteViewModel"
+    x:Class="ForexApp.Views.ItemTemplates.QuoteItemTemplate">
+    <Grid
+        Padding="8,0"
+        ColumnDefinitions="*,Auto"
+        ColumnSpacing="8">
+        <Label
+            Grid.Column="0"
+            FontAttributes="Bold"
+            Text="{Binding BaseCurrency}"
+            VerticalOptions="Center" />
+
+        <Label
+            Grid.Column="1"
+            VerticalOptions="Center">
+            <Label.FormattedText>
+                <FormattedString>
+                    <Span Text="{Binding Price, StringFormat='{0:0.00}'}" />
+                    <Span Text=" " />
+                    <Span Text="{Binding TargetCurrency}" />
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+    </Grid>
+</ViewCell>

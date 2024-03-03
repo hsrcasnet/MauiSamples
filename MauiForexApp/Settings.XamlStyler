@@ -14,6 +14,7 @@
     "xmlns:*",
     "x:*",
     "x:Class",
+    "*:*",
     "x:Key, Key, x:Name, Name, x:Uid, Uid, Title",
     "Grid.Row, Grid.RowSpan, Grid.Column, Grid.ColumnSpan, Canvas.Left, Canvas.Top, Canvas.Right, Canvas.Bottom",
     "Content",
