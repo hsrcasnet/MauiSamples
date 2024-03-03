@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ViewCell
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="ForexApp.Views.Cells.QuoteItemViewCell">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+
+        <Label
+            Grid.Column="0"
+            Text="{Binding Symbol}"
+            VerticalOptions="Center" />
+
+        <Label
+            Grid.Column="1"
+            Text="{Binding Price, StringFormat='{0:0.00}'}"
+            VerticalOptions="Center" />
+    </Grid>
+</ViewCell>

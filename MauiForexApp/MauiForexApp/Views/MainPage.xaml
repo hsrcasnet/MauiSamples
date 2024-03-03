@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:cells="clr-namespace:ForexApp.Views.Cells"
+    xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+    x:Class="ForexApp.Views.MainPage"
+    Title="{Binding Title}"
+    ios:Page.UseSafeArea="True">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Key="QuoteItemViewCell">
+                <cells:QuoteItemViewCell />
+            </DataTemplate>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <Grid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <ListView
+                Grid.Row="0"
+                IsPullToRefreshEnabled="True"
+                IsRefreshing="{Binding IsRefreshing}"
+                ItemTemplate="{StaticResource QuoteItemViewCell}"
+                ItemsSource="{Binding Quotes}"
+                RefreshCommand="{Binding RefreshListCommand}" />
+
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <Button
+                    Grid.Row="0"
+                    Grid.ColumnSpan="2"
+                    Command="{Binding RefreshButtonCommand}"
+                    Text="Refresh" />
+
+                <Entry
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    Text="{Binding NewQuoteSymbol, Mode=TwoWay}" />
+                <Button
+                    x:Name="AddButton"
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    Command="{Binding AddSymbolCommand}"
+                    IsEnabled="{Binding IsNewQuoteSymbolEnabled}"
+                    Text="Add Symbol" />
+            </Grid>
+        </Grid>
+
+        <ActivityIndicator
+            IsRunning="{Binding IsBusy}"
+            IsVisible="{Binding IsBusy}"
+            Color="Black"
+            HorizontalOptions="CenterAndExpand"
+            VerticalOptions="CenterAndExpand">
+            <ActivityIndicator.WidthRequest>
+                <OnPlatform x:TypeArguments="x:Double">
+                    <On
+                        Platform="iOS"
+                        Value="24" />
+                    <On
+                        Platform="Android"
+                        Value="100" />
+                    <On
+                        Platform="Windows"
+                        Value="400" />
+                </OnPlatform>
+            </ActivityIndicator.WidthRequest>
+        </ActivityIndicator>
+    </Grid>
+</ContentPage>
