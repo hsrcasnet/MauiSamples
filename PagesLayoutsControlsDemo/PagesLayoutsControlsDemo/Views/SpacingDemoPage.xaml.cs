@@ -2,8 +2,8 @@ namespace PagesLayoutsControlsDemo.Views;
 
 public partial class SpacingDemoPage : ContentPage
 {
-	public SpacingDemoPage()
-	{
+    public SpacingDemoPage()
+    {
         this.InitializeComponent();
-	}
+    }
 }

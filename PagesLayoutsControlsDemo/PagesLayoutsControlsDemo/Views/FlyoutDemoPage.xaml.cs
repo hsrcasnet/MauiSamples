@@ -2,9 +2,9 @@ namespace PagesLayoutsControlsDemo.Views
 {
     public partial class FlyoutDemoPage : FlyoutPage
     {
-    	public FlyoutDemoPage()
-    	{
-    		InitializeComponent();
-    	}
+        public FlyoutDemoPage()
+        {
+            this.InitializeComponent();
+        }
     }
 }

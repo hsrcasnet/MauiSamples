@@ -2,8 +2,8 @@ namespace PagesLayoutsControlsDemo.Views;
 
 public partial class StackLayoutDemoPage : ContentPage
 {
-	public StackLayoutDemoPage()
-	{
+    public StackLayoutDemoPage()
+    {
         this.InitializeComponent();
-	}
+    }
 }
