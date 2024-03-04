@@ -40,9 +40,9 @@ namespace PlatformDivergenceApp.Services.DeviceInfo
             get
             {
 #if ANDROID
-                using (var info = Application.Context.PackageManager.GetPackageInfo(Application.Context.PackageName, PackageInfoFlags.MetaData))
+                using (var packageInfo = Application.Context.PackageManager.GetPackageInfo(Application.Context.PackageName, PackageInfoFlags.MetaData))
                 {
-                    return $"{info.VersionName}";
+                    return $"{packageInfo.VersionName}";
                 }
 #elif IOS
                 return NSBundle.MainBundle.ObjectForInfoDictionary("CFBundleShortVersionString").ToString();
