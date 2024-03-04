@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:vm="clr-namespace:PlatformDivergenceApp.ViewModels"
+    x:DataType="vm:DeviceOrientationViewModel"
+    x:Class="PlatformDivergenceApp.Views.DeviceOrientationPage"
+    Title="DeviceOrientationPage">
+    <VerticalStackLayout
+        Spacing="8"
+        HorizontalOptions="Center"
+        VerticalOptions="Center">
+        <Label
+            BackgroundColor="{StaticResource Secondary}"
+            FontSize="Large"
+            Text="{Binding DeviceOrientation, StringFormat='DeviceOrientation={0}'}">
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding RefreshDeviceOrientationCommand}" />
+            </Label.GestureRecognizers>
+        </Label>
+
+        <Button
+            Command="{Binding RefreshDeviceOrientationCommand}"
+            Text="Refresh" />
+    </VerticalStackLayout>
+</ContentPage>

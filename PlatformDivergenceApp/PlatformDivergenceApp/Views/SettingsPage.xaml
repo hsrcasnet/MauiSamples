@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:vm="clr-namespace:PlatformDivergenceApp.ViewModels"
+    x:DataType="vm:SettingsViewModel"
+    x:Class="PlatformDivergenceApp.Views.SettingsPage"
+    Title="SettingsPage">
+    <Grid
+        Padding="8"
+        ColumnDefinitions="*,*,*"
+        ColumnSpacing="8"
+        RowDefinitions="Auto, Auto, *"
+        RowSpacing="8">
+
+        <Entry
+            Grid.Row="0"
+            Grid.Column="0"
+            Grid.ColumnSpan="3"
+            FontSize="Large"
+            Placeholder="Enter value here"
+            Text="{Binding SettingsValue}" />
+        <Button
+            Grid.Row="1"
+            Grid.Column="0"
+            Command="{Binding GetValueCommand}"
+            Text="GetValue" />
+        <Button
+            Grid.Row="1"
+            Grid.Column="1"
+            Command="{Binding SetValueCommand}"
+            Text="SetValue" />
+        <Button
+            Grid.Row="1"
+            Grid.Column="2"
+            Command="{Binding ResetValueCommand}"
+            Text="Reset" />
+    </Grid>
+</ContentPage>
