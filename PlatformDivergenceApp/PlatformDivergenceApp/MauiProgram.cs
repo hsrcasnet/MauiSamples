@@ -1,7 +1,7 @@
-﻿using InvokePlatformCodeDemos.Services.PartialMethods;
-using Microsoft.Extensions.Logging;
-using PlatformDivergenceApp.Platforms.Services;
+﻿using Microsoft.Extensions.Logging;
 using PlatformDivergenceApp.Services;
+using PlatformDivergenceApp.Services.DeviceInfo;
+using PlatformDivergenceApp.Services.Orientation;
 using PlatformDivergenceApp.Services.Settings;
 using PlatformDivergenceApp.ViewModels;
 using PlatformDivergenceApp.Views;
@@ -24,6 +24,7 @@ namespace PlatformDivergenceApp
 #if DEBUG
             builder.Logging.AddDebug();
 #endif
+
             // Register views and viewmodels
             builder.Services.AddTransient<MainPage>();
             builder.Services.AddTransient<MainViewModel>();
@@ -34,14 +35,19 @@ namespace PlatformDivergenceApp
             builder.Services.AddTransient<DeviceOrientationPage>();
             builder.Services.AddTransient<DeviceOrientationViewModel>();
 
+            builder.Services.AddTransient<DeviceInfoPage>();
+            builder.Services.AddTransient<DeviceInfoViewModel>();
+
             // Register services
+            builder.Services.AddSingleton<INavigationService, MauiNavigationService>();
             builder.Services.AddSingleton<IDeviceOrientationService, DeviceOrientationService>();
+            builder.Services.AddSingleton<IDeviceInfoService, DeviceInfoService>();
+
 #if ANDROID
             builder.Services.AddSingleton<ISettingsService, AndroidSettingsService>();
 #elif IOS
             builder.Services.AddSingleton<ISettingsService, IosSettingsService>();
 #endif
-            builder.Services.AddSingleton<INavigationService, MauiNavigationService>();
 
             return builder.Build();
         }

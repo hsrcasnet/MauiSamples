@@ -1,7 +1,11 @@
 ﻿namespace PlatformDivergenceApp.Services.DeviceInfo
 {
-    //public interface IDeviceInfoService
-    //{
-    //    string GetDeviceModel();
-    //}
+    public interface IDeviceInfoService
+    {
+        public string Model { get; }
+
+        public string OSVersion { get; }
+
+        public string AppVersion { get; }
+    }
 }

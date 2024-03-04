@@ -15,6 +15,9 @@
             <Button
                 Command="{Binding NavigateToDeviceOrientationPageCommand}"
                 Text="DeviceOrientationPage" />
+            <Button
+                Command="{Binding NavigateToDeviceInfoPageCommand}"
+                Text="DeviceInfoPage" />
         </VerticalStackLayout>
     </ScrollView>
 
