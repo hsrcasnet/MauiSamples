@@ -1,6 +1,4 @@
-﻿using PlatformDivergenceApp.Services;
-
-namespace InvokePlatformCodeDemos.Services.PartialMethods
+﻿namespace PlatformDivergenceApp.Services.Orientation
 {
     public partial class DeviceOrientationService : IDeviceOrientationService
     {

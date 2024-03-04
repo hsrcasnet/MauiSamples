@@ -1,7 +1,6 @@
 ﻿using Foundation;
-using PlatformDivergenceApp.Services.Settings;
 
-namespace PlatformDivergenceApp.Platforms.Services
+namespace PlatformDivergenceApp.Services.Settings
 {
     public class IosSettingsService : SettingsServiceBase, ISettingsService
     {

@@ -1,6 +1,5 @@
 ﻿using System.Windows.Input;
-using InvokePlatformCodeDemos.Services;
-using PlatformDivergenceApp.Services;
+using PlatformDivergenceApp.Services.Orientation;
 
 namespace PlatformDivergenceApp.ViewModels
 {

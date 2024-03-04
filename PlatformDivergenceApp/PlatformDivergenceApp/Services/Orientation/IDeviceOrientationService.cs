@@ -1,6 +1,4 @@
-﻿using InvokePlatformCodeDemos.Services;
-
-namespace PlatformDivergenceApp.Services
+﻿namespace PlatformDivergenceApp.Services.Orientation
 {
     public interface IDeviceOrientationService
     {

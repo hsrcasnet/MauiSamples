@@ -14,6 +14,7 @@ namespace PlatformDivergenceApp.ViewModels
 
             this.NavigateToSettingsPageCommand = new Command(execute: this.NavigateToSettingsPageAsync);
             this.NavigateToDeviceOrientationPageCommand = new Command(execute: this.NavigateToDeviceOrientationPageAsync);
+            this.NavigateToDeviceInfoPageCommand = new Command(execute: this.NavigateToDeviceInfoPageAsync);
         }
 
         public ICommand NavigateToSettingsPageCommand { get; set; }
@@ -29,6 +30,11 @@ namespace PlatformDivergenceApp.ViewModels
         {
             await this.navigationService.PushAsync<DeviceOrientationPage>();
         }
+        public ICommand NavigateToDeviceInfoPageCommand { get; set; }
 
+        private async void NavigateToDeviceInfoPageAsync()
+        {
+            await this.navigationService.PushAsync<DeviceInfoPage>();
+        }
     }
 }

@@ -1,8 +1,7 @@
-﻿namespace InvokePlatformCodeDemos.Services
+﻿namespace PlatformDivergenceApp.Services.Orientation
 {
     public enum DeviceOrientation
     {
-        Undefined,
         Landscape,
         Portrait
     }

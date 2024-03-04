@@ -1,10 +1,9 @@
 ﻿using Android.Preferences;
-using PlatformDivergenceApp.Services.Settings;
 using Application = Android.App.Application;
 
 #pragma warning disable CA1422
 
-namespace PlatformDivergenceApp.Platforms.Services
+namespace PlatformDivergenceApp.Services.Settings
 {
     public class AndroidSettingsService : SettingsServiceBase, ISettingsService
     {
