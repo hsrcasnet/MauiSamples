@@ -12,9 +12,14 @@ namespace PlatformDivergenceApp.ViewModels
         {
             this.navigationService = navigationService;
 
-            this.NavigateToSettingsPageCommand = new Command(execute: this.NavigateToSettingsPageAsync);
-            this.NavigateToDeviceOrientationPageCommand = new Command(execute: this.NavigateToDeviceOrientationPageAsync);
-            this.NavigateToDeviceInfoPageCommand = new Command(execute: this.NavigateToDeviceInfoPageAsync);
+            this.NavigateToSettingsPageCommand = new Command(
+                execute: this.NavigateToSettingsPageAsync);
+
+            this.NavigateToDeviceOrientationPageCommand = new Command(
+                execute: this.NavigateToDeviceOrientationPageAsync);
+
+            this.NavigateToDeviceInfoPageCommand = new Command(
+                execute: this.NavigateToDeviceInfoPageAsync);
         }
 
         public ICommand NavigateToSettingsPageCommand { get; set; }
