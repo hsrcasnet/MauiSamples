@@ -5,7 +5,7 @@
     xmlns:vm="clr-namespace:PlatformDivergenceApp.ViewModels"
     x:DataType="vm:DeviceInfoViewModel"
     x:Class="PlatformDivergenceApp.Views.DeviceInfoPage"
-    Title="DeviceInfoPage">
+    Title="{Binding Title}">
     <VerticalStackLayout
         Spacing="8"
         HorizontalOptions="Center"

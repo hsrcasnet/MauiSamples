@@ -7,47 +7,46 @@ using Foundation;
 using UIKit;
 #endif
 
-namespace PlatformDivergenceApp.Services.DeviceInfo
+namespace PlatformDivergenceApp.Services.DeviceInfo;
+
+public class DeviceInfoService : IDeviceInfoService
 {
-    public class DeviceInfoService : IDeviceInfoService
+    public string Model
     {
-        public string Model
+        get
         {
-            get
-            {
 #if ANDROID
-                return Build.Model;
+            return Build.Model;
 #elif IOS
-                return UIDevice.CurrentDevice.Model;
+            return UIDevice.CurrentDevice.Model;
 #endif
-            }
         }
+    }
 
-        public string OSVersion
+    public string OSVersion
+    {
+        get
         {
-            get
-            {
 #if ANDROID
-                return Build.VERSION.Release;
+            return Build.VERSION.Release;
 #elif IOS
-                return UIDevice.CurrentDevice.SystemVersion;
+            return UIDevice.CurrentDevice.SystemVersion;
 #endif
-            }
         }
+    }
 
-        public string AppVersion
+    public string AppVersion
+    {
+        get
         {
-            get
-            {
 #if ANDROID
-                using (var packageInfo = Application.Context.PackageManager.GetPackageInfo(Application.Context.PackageName, PackageInfoFlags.MetaData))
-                {
-                    return $"{packageInfo.VersionName}";
-                }
-#elif IOS
-                return NSBundle.MainBundle.ObjectForInfoDictionary("CFBundleShortVersionString").ToString();
-#endif
+            using (var packageInfo = Application.Context.PackageManager.GetPackageInfo(Application.Context.PackageName, PackageInfoFlags.MetaData))
+            {
+                return $"{packageInfo.VersionName}";
             }
+#elif IOS
+            return NSBundle.MainBundle.ObjectForInfoDictionary("CFBundleShortVersionString").ToString();
+#endif
         }
     }
 }
