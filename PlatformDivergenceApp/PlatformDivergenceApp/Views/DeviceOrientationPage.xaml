@@ -11,7 +11,6 @@
         HorizontalOptions="Center"
         VerticalOptions="Center">
         <Label
-            BackgroundColor="{StaticResource Secondary}"
             FontSize="Large"
             Text="{Binding DeviceOrientation, StringFormat='DeviceOrientation={0}'}">
             <Label.GestureRecognizers>

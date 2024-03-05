@@ -6,21 +6,40 @@
     x:DataType="vm:DeviceInfoViewModel"
     x:Class="PlatformDivergenceApp.Views.DeviceInfoPage"
     Title="{Binding Title}">
-    <VerticalStackLayout
-        Spacing="8"
-        HorizontalOptions="Center"
-        VerticalOptions="Center">
+
+    <ContentPage.Resources>
+        <Style TargetType="Label">
+            <Setter Property="FontSize" Value="Large" />
+            <Setter Property="FontAttributes" Value="Bold" />
+            <Setter Property="TextColor" Value="White" />
+            <Setter Property="Padding" Value="8" />
+            <Setter Property="BackgroundColor" Value="{StaticResource OsColor}" />
+        </Style>
+
+    </ContentPage.Resources>
+    <Grid RowDefinitions="*, Auto">
+
+        <VerticalStackLayout
+            Grid.Row="0"
+            Spacing="8"
+            HorizontalOptions="Center"
+            VerticalOptions="Center">
+            <Label Text="{Binding Model, StringFormat='Model={0}'}" />
+            <Label Text="{Binding OSVersion, StringFormat='OSVersion={0}'}" />
+            <Label Text="{Binding AppVersion, StringFormat='AppVersion={0}'}" />
+        </VerticalStackLayout>
+
+
         <Label
-            BackgroundColor="{StaticResource Secondary}"
-            FontSize="Large"
-            Text="{Binding Model, StringFormat='Model={0}'}" />
-        <Label
-            BackgroundColor="{StaticResource Secondary}"
-            FontSize="Large"
-            Text="{Binding OSVersion, StringFormat='OSVersion={0}'}" />
-        <Label
-            BackgroundColor="{StaticResource Secondary}"
-            FontSize="Large"
-            Text="{Binding AppVersion, StringFormat='AppVersion={0}'}" />
-    </VerticalStackLayout>
+            Grid.Row="1"
+            Text="Label.BackgroundColor wird von Platform bestimmt">
+            <Label.BackgroundColor>
+                <OnPlatform x:TypeArguments="Color" Default="Magenta">
+                    <On Platform="iOS" Value="Purple" />
+                    <On Platform="Android" Value="Green" />
+                    <On Platform="Windows" Value="Blue" />
+                </OnPlatform>
+            </Label.BackgroundColor>
+        </Label>
+    </Grid>
 </ContentPage>
