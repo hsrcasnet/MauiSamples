@@ -10,22 +10,26 @@ namespace PrismMauiApp.ViewModels
         private readonly ILogger<TodoDetailViewModel> logger;
         private readonly INavigationService navigationService;
         private readonly ITodoRepository todoRepository;
-
+        private readonly ILauncher launcher;
         private bool isNewItem;
         private string id;
         private string name;
         private DateTime dueDate;
         private string description;
+        private string link;
+        private Command launchUrlCommand;
         private Command saveCommand;
 
         public TodoDetailViewModel(
             ILogger<TodoDetailViewModel> logger,
             INavigationService navigationService,
-            ITodoRepository todoRepository)
+            ITodoRepository todoRepository,
+            ILauncher launcher)
         {
             this.logger = logger;
             this.navigationService = navigationService;
             this.todoRepository = todoRepository;
+            this.launcher = launcher;
         }
 
         public void OnNavigatedTo(INavigationParameters parameters)
@@ -40,6 +44,7 @@ namespace PrismMauiApp.ViewModels
                 this.Id = existingItem.Id;
                 this.Name = existingItem.Name;
                 this.DueDate = existingItem.DueDate;
+                this.Link = existingItem.Link;
                 this.Description = existingItem.Description;
 
                 this.isNewItem = false;
@@ -75,11 +80,24 @@ namespace PrismMauiApp.ViewModels
             set => this.SetProperty(ref this.description, value, nameof(this.Description));
         }
 
+        public ICommand LaunchUrlCommand => this.launchUrlCommand ??= new Command(() => _ = this.LaunchUrlAsync());
+
+        public string Link
+        {
+            get => this.link;
+            set => this.SetProperty(ref this.link, value, nameof(this.Link));
+        }
+
+        private async Task LaunchUrlAsync()
+        {
+            await this.launcher.OpenAsync(this.Link);
+        }
+
         public ICommand SaveCommand => this.saveCommand ??= new Command(() => _ = this.SaveTodoAsync());
 
         private async Task SaveTodoAsync()
         {
-            IsBusy = true;
+            this.IsBusy = true;
 
             try
             {
@@ -88,6 +106,7 @@ namespace PrismMauiApp.ViewModels
                     Id = this.Id,
                     Name = this.Name,
                     DueDate = this.DueDate,
+                    Link = this.Link,
                     Description = this.Description,
                 };
 

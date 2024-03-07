@@ -21,21 +21,23 @@ namespace PrismMauiApp.Services
                 {
                     Id = Guid.NewGuid().ToString(),
                     Name = "eBook zu .NET MAUI Entwicklung herunterladen",
-                    Description = "Download Link: https://dotnet.microsoft.com/en-us/download/e-book/maui/pdf",
+                    Link = "https://dotnet.microsoft.com/en-us/download/e-book/maui/pdf",
                     DueDate = new DateTime(2001, 2, 7, 9, 10, 50, DateTimeKind.Local),
                 },
                 new Todo
                 {
                     Id = Guid.NewGuid().ToString(),
                     Name = "Online-Tutorial zu .NET MAUI auf Youtube schauen",
-                    Description = "Download Link: https://www.youtube.com/watch?v=Hh279ES_FNQ&list=PLdo4fOcmZ0oUBAdL2NwBpDs32zwGqb9DY",
+                    Description = "Willkommen bei der Reihe „.NET MAUI für Anfänger“, in der Sie die Grundlagen zum Erstellen plattformübergreifender Apps mit .NET MAUI für iOS, Android, macOS und Windows anhand einer gemeinsamen C#-Codebasis erlernen. In diesem Video erklärt James, was genau .NET MAUI ist, wie es funktioniert und welche Funktionen Sie kennen müssen, wenn Sie Apps mit dem Framework erstellen.",
+                    Link = "https://www.youtube.com/watch?v=Hh279ES_FNQ&list=PLdo4fOcmZ0oUBAdL2NwBpDs32zwGqb9DY",
                     DueDate = new DateTime(2003, 4, 11, 9, 10, 50, DateTimeKind.Local),
                 },
                 new Todo
                 {
                     Id = Guid.NewGuid().ToString(),
                     Name = "PrismMauiApp mit SQLite erweitern",
-                    Description = "Hier gibt's weitere Informationen zum Thema SQLite in .NET MAUI Apps: https://github.com/dotnet/maui-samples/tree/main/8.0/Data/TodoSQLite/TodoSQLite",
+                    Description = "Hier gibt's weitere Informationen zum Thema SQLite in .NET MAUI Apps.",
+                    Link = "https://github.com/dotnet/maui-samples/tree/main/8.0/Data/TodoSQLite/TodoSQLite",
                     DueDate = DateTime.Now.Date.AddDays(-7),
                 },
                 new Todo

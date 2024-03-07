@@ -8,6 +8,8 @@
 
         public string Description { get; set; }
 
+        public string Link { get; set; }
+
         public DateTime DueDate { get; set; }
 
         public bool Done { get; set; }

@@ -35,6 +35,20 @@
                     FontSize="Medium"
                     Text="{Binding Description}" />
             </VerticalStackLayout>
+
+            <VerticalStackLayout IsVisible="{Binding Link, Converter={StaticResource StringIsNotNullOrEmptyToBoolConverter}}">
+                <Label
+                    Text="Link"
+                    TextColor="{StaticResource Gray500}" />
+                <Label
+                    FontSize="Medium"
+                    Style="{StaticResource HyperlinkLabelStyle}"
+                    Text="{Binding Link}">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding LaunchUrlCommand}" />
+                    </Label.GestureRecognizers>
+                </Label>
+            </VerticalStackLayout>
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>
