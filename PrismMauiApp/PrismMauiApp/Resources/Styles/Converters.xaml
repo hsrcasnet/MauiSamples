@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<?xaml-comp compile="true" ?>
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:c="clr-namespace:PrismMauiApp.Converters">
+
+    <c:StringIsNullOrEmptyToBoolConverter
+        x:Key="StringIsNullOrEmptyToBoolConverter"
+        IsInverted="False" />
+
+    <c:StringIsNullOrEmptyToBoolConverter
+        x:Key="StringIsNotNullOrEmptyToBoolConverter"
+        IsInverted="True" />
+
+    <c:IsNullToBoolConverter
+        x:Key="IsNullToBoolConverter"
+        IsInverted="False" />
+
+    <c:IsNullToBoolConverter
+        x:Key="IsNotNullToBoolConverter"
+        IsInverted="True" />
+
+    <c:BoolToTextDecorationStrikethroughConverter x:Key="BoolToTextDecorationStrikethroughConverter" />
+
+    <c:DateTimeToStringConverter
+        x:Key="DateTimeToShortDateStringConverter"
+        Format="d" />
+</ResourceDictionary>

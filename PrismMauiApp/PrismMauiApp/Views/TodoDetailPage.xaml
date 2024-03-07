@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:vm="clr-namespace:PrismMauiApp.ViewModels"
+    x:DataType="vm:TodoDetailViewModel"
+    x:Class="PrismMauiApp.Views.TodoDetailPage"
+    Title="{Binding Name}">
+
+    <ScrollView Padding="8">
+        <VerticalStackLayout Spacing="16">
+            <VerticalStackLayout>
+                <Label
+                    Text="Name"
+                    TextColor="{StaticResource Gray500}" />
+                <Label
+                    FontSize="Medium"
+                    Text="{Binding Name}" />
+            </VerticalStackLayout>
+
+            <VerticalStackLayout>
+                <Label
+                    Text="Due date"
+                    TextColor="{StaticResource Gray500}" />
+                <Label
+                    FontSize="Medium"
+                    Text="{Binding DueDate, Converter={StaticResource DateTimeToShortDateStringConverter}}" />
+            </VerticalStackLayout>
+
+            <VerticalStackLayout IsVisible="{Binding Description, Converter={StaticResource StringIsNotNullOrEmptyToBoolConverter}}">
+                <Label
+                    Text="Description"
+                    TextColor="{StaticResource Gray500}" />
+                <Label
+                    FontSize="Medium"
+                    Text="{Binding Description}" />
+            </VerticalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:views="clr-namespace:PrismMauiApp.Views"
+    xmlns:vm="clr-namespace:PrismMauiApp.ViewModels"
+    x:DataType="vm:TodoListViewModel"
+    x:Class="PrismMauiApp.Views.TodoListPage"
+    Title="{Binding Title}">
+
+    <ContentPage.Resources>
+        <DataTemplate x:Key="TodoItemTemplate">
+            <views:TodoItemTemplate />
+        </DataTemplate>
+    </ContentPage.Resources>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem
+            Command="{Binding AddItemCommand}"
+            Text="Add" />
+    </ContentPage.ToolbarItems>
+
+    <StackLayout>
+        <ListView
+            CachingStrategy="RecycleElement"
+            HasUnevenRows="true"
+            IsPullToRefreshEnabled="true"
+            IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+            ItemTemplate="{StaticResource TodoItemTemplate}"
+            ItemsSource="{Binding Items}"
+            RefreshCommand="{Binding LoadTodosCommand}"
+            VerticalOptions="FillAndExpand" />
+    </StackLayout>
+</ContentPage>

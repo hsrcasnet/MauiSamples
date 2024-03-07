@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 using PrismMauiApp.Platforms;
+using PrismMauiApp.Services;
 using PrismMauiApp.ViewModels;
 using PrismMauiApp.Views;
 
@@ -21,7 +22,7 @@ namespace PrismMauiApp
 #endif
                         .CreateWindow(async (c, navigationService) =>
                         {
-                            await navigationService.NavigateAsync($"/{App.Pages.MainPage}");
+                            await navigationService.NavigateAsync($"/{App.Pages.NavigationPage}/{App.Pages.TodoListPage}");
                         });
                 })
                 .ConfigureFonts(fonts =>
@@ -40,9 +41,13 @@ namespace PrismMauiApp
         private static void RegisterTypes(IContainerRegistry containerRegistry)
         {
             // Register platform-independent services
+            containerRegistry.RegisterSingleton<ITodoRepository, TodoRepositoryMock>();
 
             // Register pages and viewmodels
             containerRegistry.RegisterForNavigation<MainPage, MainViewModel>(App.Pages.MainPage);
+            containerRegistry.RegisterForNavigation<TodoListPage, TodoListViewModel>(App.Pages.TodoListPage);
+            containerRegistry.RegisterForNavigation<TodoDetailPage, TodoDetailViewModel>(App.Pages.TodoDetailPage);
+            containerRegistry.RegisterForNavigation<NewTodoPage, TodoDetailViewModel>(App.Pages.NewTodoPage);
         }
     }
 }

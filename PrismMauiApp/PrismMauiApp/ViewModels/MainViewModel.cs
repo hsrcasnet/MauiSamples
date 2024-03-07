@@ -2,7 +2,7 @@
 
 namespace PrismMauiApp.ViewModels
 {
-    public class MainViewModel : BindableBase
+    public class MainViewModel : ViewModelBase
     {
         private readonly ILogger<MainViewModel> logger;
 

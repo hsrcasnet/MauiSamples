@@ -1,6 +1,4 @@
-﻿using PrismMauiApp.Views;
-
-namespace PrismMauiApp
+﻿namespace PrismMauiApp
 {
     public partial class App : Application
     {

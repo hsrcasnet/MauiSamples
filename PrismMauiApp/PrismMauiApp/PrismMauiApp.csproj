@@ -28,10 +28,10 @@
 
 	<ItemGroup>
 		<!-- App Icon -->
-		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
+		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#CEA07E" />
 
 		<!-- Splash Screen -->
-		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
+		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#CEA07E" BaseSize="128,128" />
 
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
@@ -54,5 +54,31 @@
 	<ItemGroup>
 	  <Folder Include="Platforms\Android\NewFolder\" />
 	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Update="Views\NewTodoPage.xaml.cs">
+	    <DependentUpon>NewTodoPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\TodoListPage.xaml.cs">
+	    <DependentUpon>TodoListPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\TodoDetailPage.xaml.cs">
+	    <DependentUpon>TodoDetailPage.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="Resources\Styles\Converters.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\TodoItemTemplate.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\TodoListPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	</ItemGroup>
+
+	<ProjectExtensions><VisualStudio><UserProperties XamarinHotReloadDebuggerTimeoutExceptionPrismMauiAppHideInfoBar="True" /></VisualStudio></ProjectExtensions>
 
 </Project>
