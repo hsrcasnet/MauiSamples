@@ -53,10 +53,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Platforms\Android\NewFolder\" />
-	</ItemGroup>
-
-	<ItemGroup>
 	  <Compile Update="Views\NewTodoPage.xaml.cs">
 	    <DependentUpon>NewTodoPage.xaml</DependentUpon>
 	  </Compile>
