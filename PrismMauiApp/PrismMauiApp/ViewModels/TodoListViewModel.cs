@@ -102,6 +102,7 @@ namespace PrismMauiApp.ViewModels
             catch (Exception ex)
             {
                 this.logger.LogError(ex, "LoadTodosAsync failed with exception");
+                // TODO: Inform user about the error
             }
             finally
             {
