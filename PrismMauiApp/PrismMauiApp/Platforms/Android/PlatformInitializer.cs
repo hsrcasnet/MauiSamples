@@ -5,9 +5,7 @@
         public static void RegisterTypes(IContainerRegistry containerRegistry)
         {
             // Register Android-specific services.
-
-            //containerRegistry.RegisterSingleton<HttpMessageHandler, AndroidMessageHandler>();
-            //containerRegistry.RegisterSingleton<IWifiConnector, WifiConnector>();
+            //containerRegistry.RegisterSingleton<ISettingsService, AndroidSettingsService>();
         }
     }
 }
