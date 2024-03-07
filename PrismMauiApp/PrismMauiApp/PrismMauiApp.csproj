@@ -49,6 +49,7 @@
 		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="8.0.7" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
 		<PackageReference Include="Prism.DryIoc.Maui" Version="9.0.401-pre" />
+		<PackageReference Include="ValueConverters.MAUI" Version="3.0.26" />
 	</ItemGroup>
 
 	<ItemGroup>
