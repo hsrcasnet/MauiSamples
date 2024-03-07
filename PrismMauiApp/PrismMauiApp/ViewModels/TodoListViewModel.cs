@@ -42,7 +42,7 @@ namespace PrismMauiApp.ViewModels
                 var isNewItem = parameters["isNewItem"] as bool?;
                 if (isNewItem.HasValue && isNewItem.Value)
                 {
-                    this.LoadTodosCommand.Execute(null);
+                    await this.LoadTodosAsync();
                 }
             }
         }
