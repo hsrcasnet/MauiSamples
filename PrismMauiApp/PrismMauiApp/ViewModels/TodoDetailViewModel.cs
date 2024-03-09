@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Logging;
 using PrismMauiApp.Model;
 using PrismMauiApp.Services;
+using NavigationMode = Prism.Navigation.NavigationMode;
 
 namespace PrismMauiApp.ViewModels
 {
@@ -36,22 +37,25 @@ namespace PrismMauiApp.ViewModels
             this.launcher = launcher;
         }
 
-        public void OnNavigatedTo(INavigationParameters parameters)
-        {
-            if (parameters["model"] is not Todo existingItem)
+public void OnNavigatedTo(INavigationParameters parameters)
+{
+            if (parameters.GetNavigationMode() == NavigationMode.New)
             {
-                this.isNewItem = true;
-                this.DueDate = DateTime.Now.Date.AddDays(1).AddHours(12);
-            }
-            else
-            {
-                this.Id = existingItem.Id;
-                this.Name = existingItem.Name;
-                this.DueDate = existingItem.DueDate;
-                this.Link = existingItem.Link;
-                this.Description = existingItem.Description;
+                if (parameters["model"] is not Todo existingItem)
+                {
+                    this.isNewItem = true;
+                    this.DueDate = DateTime.Now.Date.AddDays(1).AddHours(12);
+                }
+                else
+                {
+                    this.Id = existingItem.Id;
+                    this.Name = existingItem.Name;
+                    this.DueDate = existingItem.DueDate;
+                    this.Link = existingItem.Link;
+                    this.Description = existingItem.Description;
 
-                this.isNewItem = false;
+                    this.isNewItem = false;
+                }
             }
         }
 
