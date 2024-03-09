@@ -1,5 +1,4 @@
 ﻿using Microsoft.Extensions.Logging;
-using PrismMauiApp.Platforms;
 using PrismMauiApp.Services;
 using PrismMauiApp.ViewModels;
 using PrismMauiApp.Views;
@@ -45,7 +44,6 @@ namespace PrismMauiApp
             containerRegistry.RegisterSingleton<ILauncher>(() => Launcher.Default);
 
             // Register pages and viewmodels
-            containerRegistry.RegisterForNavigation<MainPage, MainViewModel>(App.Pages.MainPage);
             containerRegistry.RegisterForNavigation<TodoListPage, TodoListViewModel>(App.Pages.TodoListPage);
             containerRegistry.RegisterForNavigation<TodoDetailPage, TodoDetailViewModel>(App.Pages.TodoDetailPage);
             containerRegistry.RegisterForNavigation<NewTodoPage, TodoDetailViewModel>(App.Pages.NewTodoPage);
