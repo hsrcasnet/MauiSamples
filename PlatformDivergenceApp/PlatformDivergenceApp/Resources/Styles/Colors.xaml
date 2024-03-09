@@ -20,7 +20,7 @@
     <OnPlatform x:TypeArguments="Color" x:Key="OsColor" Default="Magenta">
         <On Platform="iOS" Value="{StaticResource iOSColor}" />
         <On Platform="Android" Value="{StaticResource AndroidColor}" />
-        <On Platform="Windows" Value="{StaticResource WindowsColor}" />
+        <On Platform="WinUI" Value="{StaticResource WindowsColor}" />
     </OnPlatform>
 
     <Color x:Key="White">White</Color>

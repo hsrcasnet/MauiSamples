@@ -25,6 +25,10 @@ namespace PlatformDivergenceApp.ViewModels
             {
                 return "Android Device Info";
             }
+            else if (currentPlatform == DevicePlatform.WinUI)
+            {
+                return "Windows Device Info";
+            }
 
             throw new PlatformNotSupportedException($"GetPlatformSpecificTitle does currently not support platform {currentPlatform}");
         }

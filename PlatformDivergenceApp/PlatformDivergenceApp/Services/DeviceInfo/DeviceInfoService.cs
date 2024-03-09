@@ -5,12 +5,18 @@ using Application = Android.App.Application;
 #elif IOS
 using Foundation;
 using UIKit;
+#elif WINDOWS
+using Windows.Security.ExchangeActiveSyncProvisioning;
 #endif
 
 namespace PlatformDivergenceApp.Services.DeviceInfo;
 
 public class DeviceInfoService : IDeviceInfoService
 {
+#if WINDOWS
+    private readonly EasClientDeviceInformation deviceInfo = new EasClientDeviceInformation();
+#endif
+
     public string Model
     {
         get
@@ -19,6 +25,8 @@ public class DeviceInfoService : IDeviceInfoService
             return Build.Model;
 #elif IOS
             return UIDevice.CurrentDevice.Model;
+#elif WINDOWS
+            return this.deviceInfo.SystemProductName;
 #endif
         }
     }
@@ -31,6 +39,8 @@ public class DeviceInfoService : IDeviceInfoService
             return Build.VERSION.Release;
 #elif IOS
             return UIDevice.CurrentDevice.SystemVersion;
+#elif WINDOWS
+            return "N/A";
 #endif
         }
     }
@@ -46,6 +56,8 @@ public class DeviceInfoService : IDeviceInfoService
             }
 #elif IOS
             return NSBundle.MainBundle.ObjectForInfoDictionary("CFBundleShortVersionString").ToString();
+#elif WINDOWS
+            return "N/A";
 #endif
         }
     }

@@ -32,12 +32,12 @@
 
         <Label
             Grid.Row="1"
-            Text="Label.BackgroundColor wird von Platform bestimmt">
+            Text="{Binding Source={RelativeSource Self}, Path=BackgroundColor, StringFormat='Label.BackgroundColor={0} wird von Platform bestimmt'}">
             <Label.BackgroundColor>
                 <OnPlatform x:TypeArguments="Color" Default="Magenta">
-                    <On Platform="iOS" Value="Purple" />
-                    <On Platform="Android" Value="Green" />
-                    <On Platform="Windows" Value="Blue" />
+                    <On Platform="iOS" Value="#FFFF0000" />
+                    <On Platform="Android" Value="#FF00FF00" />
+                    <On Platform="WinUI" Value="#FF0000FF" />
                 </OnPlatform>
             </Label.BackgroundColor>
         </Label>

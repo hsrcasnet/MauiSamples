@@ -47,6 +47,8 @@ namespace PlatformDivergenceApp
             builder.Services.AddSingleton<ISettingsService, AndroidSettingsService>();
 #elif IOS
             builder.Services.AddSingleton<ISettingsService, IosSettingsService>();
+#elif WINDOWS
+            builder.Services.AddSingleton<ISettingsService, WindowsSettingsService>();
 #endif
 
             return builder.Build();

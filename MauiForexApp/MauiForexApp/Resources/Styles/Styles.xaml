@@ -18,7 +18,7 @@
                         Platform="Android"
                         Value="100" />
                     <On
-                        Platform="Windows"
+                        Platform="WinUI"
                         Value="400" />
                 </OnPlatform>
             </Setter.Value>
@@ -33,7 +33,7 @@
                         Platform="Android"
                         Value="100" />
                     <On
-                        Platform="Windows"
+                        Platform="WinUI"
                         Value="400" />
                 </OnPlatform>
             </Setter.Value>
