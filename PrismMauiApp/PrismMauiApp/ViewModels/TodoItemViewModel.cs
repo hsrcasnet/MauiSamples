@@ -35,8 +35,11 @@ namespace PrismMauiApp.ViewModels
 
         public ICommand NavigateToTodoDetailPageCommand => this.navigateToTodoDetailPageCommand ??= new Command(async () =>
         {
-            var navigationParams = new NavigationParameters { { "model", this.todo } };
-            await this.navigationService.NavigateAsync(Pages.TodoDetailPage, navigationParams);
+            var navigationParameters = new NavigationParameters
+            {
+                { "model", this.todo }
+            };
+            await this.navigationService.NavigateAsync(Pages.TodoDetailPage, navigationParameters);
         });
 
     }
