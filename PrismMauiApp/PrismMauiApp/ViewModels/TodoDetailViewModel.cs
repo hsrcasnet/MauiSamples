@@ -9,8 +9,10 @@ namespace PrismMauiApp.ViewModels
     {
         private readonly ILogger<TodoDetailViewModel> logger;
         private readonly INavigationService navigationService;
+        private readonly IPageDialogService dialogService;
         private readonly ITodoRepository todoRepository;
         private readonly ILauncher launcher;
+
         private bool isNewItem;
         private string id;
         private string name;
@@ -23,11 +25,13 @@ namespace PrismMauiApp.ViewModels
         public TodoDetailViewModel(
             ILogger<TodoDetailViewModel> logger,
             INavigationService navigationService,
+            IPageDialogService dialogService,
             ITodoRepository todoRepository,
             ILauncher launcher)
         {
             this.logger = logger;
             this.navigationService = navigationService;
+            this.dialogService = dialogService;
             this.todoRepository = todoRepository;
             this.launcher = launcher;
         }
@@ -113,23 +117,24 @@ namespace PrismMauiApp.ViewModels
                 if (this.isNewItem)
                 {
                     await this.todoRepository.AddAsync(todo);
+                    _ = this.dialogService.DisplayAlertAsync("Success", "Successfully added your TODO", "OK");
                 }
                 else
                 {
                     await this.todoRepository.UpdateAsync(todo);
+                    _ = this.dialogService.DisplayAlertAsync("Success", "Successfully updated your TODO", "OK");
                 }
 
                 var navigationParameters = new NavigationParameters
-            {
-                { "isNewItem", this.isNewItem },
-            };
+                {
+                    { "isNewItem", this.isNewItem },
+                };
                 await this.navigationService.GoBackAsync(navigationParameters);
-
             }
             catch (Exception ex)
             {
                 this.logger.LogError(ex, "SaveTodoAsync failed with exception");
-                // TODO: Inform user about the error
+                await this.dialogService.DisplayAlertAsync("Error", "Something went wrong. Please try again later.", "OK");
             }
             finally
             {

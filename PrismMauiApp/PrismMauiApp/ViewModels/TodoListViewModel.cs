@@ -11,6 +11,7 @@ namespace PrismMauiApp.ViewModels
     {
         private readonly ILogger<TodoListViewModel> logger;
         private readonly INavigationService navigationService;
+        private readonly IPageDialogService dialogService;
         private readonly ITodoRepository todoRepository;
 
         private Command loadTodosCommand;
@@ -20,10 +21,12 @@ namespace PrismMauiApp.ViewModels
         public TodoListViewModel(
             ILogger<TodoListViewModel> logger,
             INavigationService navigationService,
+            IPageDialogService dialogService,
             ITodoRepository todoRepository)
         {
             this.logger = logger;
             this.navigationService = navigationService;
+            this.dialogService = dialogService;
             this.todoRepository = todoRepository;
 
             this.Title = "TODO Items";
@@ -102,7 +105,7 @@ namespace PrismMauiApp.ViewModels
             catch (Exception ex)
             {
                 this.logger.LogError(ex, "LoadTodosAsync failed with exception");
-                // TODO: Inform user about the error
+                await this.dialogService.DisplayAlertAsync("Error", "Something went wrong. Please try again later.", "OK");
             }
             finally
             {
