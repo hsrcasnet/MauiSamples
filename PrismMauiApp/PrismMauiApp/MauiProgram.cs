@@ -20,7 +20,7 @@ namespace PrismMauiApp
 #if ANDROID || IOS || WINDOWS
                         .RegisterTypes(PlatformInitializer.RegisterTypes)
 #endif
-                        .CreateWindow(async (c, navigationService) =>
+                        .CreateWindow(async (containerProvider, navigationService) =>
                         {
                             await navigationService.NavigateAsync($"/{App.Pages.NavigationPage}/{App.Pages.TodoListPage}");
                         });
