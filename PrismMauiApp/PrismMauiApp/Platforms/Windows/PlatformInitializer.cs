@@ -5,7 +5,7 @@
         public static void RegisterTypes(IContainerRegistry containerRegistry)
         {
             // Register Windows-specific services.
-            //containerRegistry.RegisterSingleton<ISettingsService, WindowsSettingsService>();
+            containerRegistry.RegisterSingleton<ISettingsService, WindowsSettingsService>();
         }
     }
 }

@@ -5,7 +5,7 @@
         public static void RegisterTypes(IContainerRegistry containerRegistry)
         {
             // Register Android-specific services.
-            //containerRegistry.RegisterSingleton<ISettingsService, AndroidSettingsService>();
+            containerRegistry.RegisterSingleton<ISettingsService, AndroidSettingsService>();
         }
     }
 }
