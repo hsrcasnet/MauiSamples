@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using PrismMauiApp.Platforms;
 using PrismMauiApp.Services;
 using PrismMauiApp.ViewModels;
 using PrismMauiApp.Views;
@@ -16,7 +17,7 @@ namespace PrismMauiApp
                 {
                     prism
                         .RegisterTypes(RegisterTypes)
-#if ANDROID || IOS
+#if ANDROID || IOS || WINDOWS
                         .RegisterTypes(PlatformInitializer.RegisterTypes)
 #endif
                         .CreateWindow(async (c, navigationService) =>
@@ -39,11 +40,11 @@ namespace PrismMauiApp
 
         private static void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            // Register platform-independent services
+            // Register platform-independent services.
             containerRegistry.RegisterSingleton<ITodoRepository, TodoRepositoryMock>();
             containerRegistry.RegisterSingleton<ILauncher>(() => Launcher.Default);
 
-            // Register pages and view models
+            // Register pages and view models.
             containerRegistry.RegisterForNavigation<TodoListPage, TodoListViewModel>(App.Pages.TodoListPage);
             containerRegistry.RegisterForNavigation<TodoDetailPage, TodoDetailViewModel>(App.Pages.TodoDetailPage);
             containerRegistry.RegisterForNavigation<NewTodoPage, TodoDetailViewModel>(App.Pages.NewTodoPage);
