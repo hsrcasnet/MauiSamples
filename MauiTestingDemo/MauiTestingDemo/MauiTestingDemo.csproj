@@ -26,6 +26,7 @@
 		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
 	</PropertyGroup>
 
+	<!--Demo: Very important! If we want to add unit tests to this .NET MAUI project, we have to swap the OutputType from Exe to Library-->
 	<PropertyGroup Condition=" $(TargetFramework.StartsWith('net')) == true AND $(TargetFramework.EndsWith('.0')) == true AND $(TargetFramework.Contains('-')) != true ">
 		<!-- In order to use this project as a test target, we mark it as OutputType=Library -->
 		<OutputType>Library</OutputType>
@@ -55,9 +56,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="Views\CalculatorPage.xaml.cs">
-	    <DependentUpon>CalculatorPage.xaml</DependentUpon>
-	  </Compile>
+		<Compile Update="Views\CalculatorPage.xaml.cs">
+			<DependentUpon>CalculatorPage.xaml</DependentUpon>
+		</Compile>
 	</ItemGroup>
 
 </Project>
