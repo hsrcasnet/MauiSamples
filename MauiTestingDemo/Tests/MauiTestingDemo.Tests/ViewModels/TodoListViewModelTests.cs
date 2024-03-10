@@ -1,8 +1,8 @@
-using System;
 using FluentAssertions;
+using MauiTestingDemo.Services;
 using MauiTestingDemo.ViewModels;
+using Moq;
 using Moq.AutoMock;
-using Xunit;
 
 namespace MauiTestingDemo.Tests.ViewModels
 {
@@ -19,6 +19,10 @@ namespace MauiTestingDemo.Tests.ViewModels
         public async Task ShouldIncrementCounter()
         {
             // Arrange
+            var calculatorServiceMock = this.autoMocker.GetMock<ICalculatorService>();
+            calculatorServiceMock.Setup(c => c.Increment(It.IsAny<int>()))
+                .Returns(1);
+
             var viewModel = this.autoMocker.CreateInstance<CalculatorViewModel>();
 
             // Act
@@ -26,21 +30,30 @@ namespace MauiTestingDemo.Tests.ViewModels
 
             // Assert
             viewModel.Count.Should().Be(1);
+
+            calculatorServiceMock.Verify(c => c.Increment(It.IsAny<int>()), Times.Once);
         }
 
         [Fact]
-        public async Task ShouldSumTwoValues()
+        public void ShouldSumTwoValues()
         {
             // Arrange
+            var calculatorServiceMock = this.autoMocker.GetMock<ICalculatorService>();
+            calculatorServiceMock.Setup(c => c.Sum(It.IsAny<decimal>(), It.IsAny<decimal>()))
+                .Returns(99.99m);
+
             var viewModel = this.autoMocker.CreateInstance<CalculatorViewModel>();
 
+            viewModel.Summand1 = 1m;
+            viewModel.Summand2 = 2m;
+
             // Act
-            await viewModel.IncrementCounterCommand.ExecuteAsync(null);
-            await viewModel.IncrementCounterCommand.ExecuteAsync(null);
-            await viewModel.IncrementCounterCommand.ExecuteAsync(null);
+            viewModel.CalculateSumCommand.Execute(null);
 
             // Assert
-            viewModel.Count.Should().Be(3);
+            viewModel.SumResult.Should().Be("99.99");
+
+            calculatorServiceMock.Verify(c => c.Sum(1m, 2m), Times.Once);
         }
     }
 }
