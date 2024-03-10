@@ -39,7 +39,15 @@ namespace MauiTestingDemo.ViewModels
 
         public string CountButtonText
         {
-            get => this.Count == 0 ? "Click me" : $"Clicked {this.Count} times";
+            get
+            {
+                if (this.Count == 0)
+                {
+                    return "Click me";
+                }
+
+                return $"Clicked {this.Count} time{(this.Count == 1 ? "" : "s")}";
+            }
         }
 
         public IAsyncRelayCommand IncrementCounterCommand
@@ -62,13 +70,13 @@ namespace MauiTestingDemo.ViewModels
             get => this.summand1;
             set => this.SetProperty(ref this.summand1, value);
         }
-        
+
         public decimal Summand2
         {
             get => this.summand2;
             set => this.SetProperty(ref this.summand2, value);
         }
-        
+
         public string SumResult
         {
             get => this.sumResult;

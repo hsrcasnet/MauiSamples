@@ -6,17 +6,17 @@ using Moq.AutoMock;
 
 namespace MauiTestingDemo.Tests.ViewModels
 {
-    public class TodoListViewModelTests
+    public class CalculatorViewModelTests
     {
         private readonly AutoMocker autoMocker;
 
-        public TodoListViewModelTests()
+        public CalculatorViewModelTests()
         {
             this.autoMocker = new AutoMocker();
         }
 
         [Fact]
-        public async Task ShouldIncrementCounter()
+        public async Task ShouldIncrementCounter_SingleIncrement()
         {
             // Arrange
             var calculatorServiceMock = this.autoMocker.GetMock<ICalculatorService>();
@@ -30,8 +30,30 @@ namespace MauiTestingDemo.Tests.ViewModels
 
             // Assert
             viewModel.Count.Should().Be(1);
+            viewModel.CountButtonText.Should().Be("Clicked 1 time");
 
             calculatorServiceMock.Verify(c => c.Increment(It.IsAny<int>()), Times.Once);
+        }
+        
+        [Fact]
+        public async Task ShouldIncrementCounter_MultipleIncrements()
+        {
+            // Arrange
+            var calculatorServiceMock = this.autoMocker.GetMock<ICalculatorService>();
+            calculatorServiceMock.Setup(c => c.Increment(It.IsAny<int>()))
+                .Returns(2);
+
+            var viewModel = this.autoMocker.CreateInstance<CalculatorViewModel>();
+
+            // Act
+            await viewModel.IncrementCounterCommand.ExecuteAsync(null);
+            await viewModel.IncrementCounterCommand.ExecuteAsync(null);
+
+            // Assert
+            viewModel.Count.Should().Be(2);
+            viewModel.CountButtonText.Should().Be("Clicked 2 times");
+
+            calculatorServiceMock.Verify(c => c.Increment(It.IsAny<int>()), Times.Exactly(2));
         }
 
         [Fact]
