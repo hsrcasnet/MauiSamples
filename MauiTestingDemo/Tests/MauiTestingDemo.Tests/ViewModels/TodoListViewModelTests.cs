@@ -16,10 +16,10 @@ namespace MauiTestingDemo.Tests.ViewModels
         }
 
         [Fact]
-        public async Task ShouldIncrementCounter_SingleCall()
+        public async Task ShouldIncrementCounter()
         {
             // Arrange
-            var viewModel = this.autoMocker.CreateInstance<TodoListViewModel>();
+            var viewModel = this.autoMocker.CreateInstance<CalculatorViewModel>();
 
             // Act
             await viewModel.IncrementCounterCommand.ExecuteAsync(null);
@@ -29,10 +29,10 @@ namespace MauiTestingDemo.Tests.ViewModels
         }
 
         [Fact]
-        public async Task ShouldIncrementCounter_MultipleCalls()
+        public async Task ShouldSumTwoValues()
         {
             // Arrange
-            var viewModel = this.autoMocker.CreateInstance<TodoListViewModel>();
+            var viewModel = this.autoMocker.CreateInstance<CalculatorViewModel>();
 
             // Act
             await viewModel.IncrementCounterCommand.ExecuteAsync(null);

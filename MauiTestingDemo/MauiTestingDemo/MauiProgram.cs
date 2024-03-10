@@ -20,11 +20,11 @@ namespace MauiTestingDemo
 #if DEBUG
             builder.Logging.AddDebug();
 #endif
-
+            builder.Services.AddSingleton<ICalculatorService, CalculatorService>();
             builder.Services.AddSingleton<IMauiInitializeService, ServiceLocator>();
 
-            builder.Services.AddTransient<TodoListPage>();
-            builder.Services.AddTransient<TodoListViewModel>();
+            builder.Services.AddTransient<CalculatorPage>();
+            builder.Services.AddTransient<CalculatorViewModel>();
 
             return builder.Build();
         }

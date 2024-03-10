@@ -3,8 +3,9 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:vm="clr-namespace:MauiTestingDemo.ViewModels"
-    x:DataType="vm:TodoListViewModel"
-    x:Class="MauiTestingDemo.TodoListPage">
+    x:DataType="vm:CalculatorViewModel"
+    x:Class="MauiTestingDemo.CalculatorPage"
+    Title="MauiTestingDemo">
 
     <ScrollView>
         <VerticalStackLayout
@@ -32,6 +33,28 @@
                 SemanticProperties.Hint="Counts the number of times you click"
                 Text="{Binding CountButtonText}"
                 HorizontalOptions="Fill" />
+
+            <HorizontalStackLayout Spacing="8">
+                <Entry
+                    Placeholder="Summand1"
+                    Text="{Binding Summand1}" />
+                <Label
+                    Text="+"
+                    VerticalOptions="Center" />
+                <Entry
+                    Placeholder="Summand2"
+                    Text="{Binding Summand2}" />
+                <Label
+                    Text="="
+                    VerticalOptions="Center" />
+                <Entry
+                    IsReadOnly="True"
+                    Placeholder="Result"
+                    Text="{Binding SumResult}" />
+                <Button
+                    Command="{Binding CalculateSumCommand}"
+                    Text="Calculate Sum" />
+            </HorizontalStackLayout>
         </VerticalStackLayout>
     </ScrollView>
 
