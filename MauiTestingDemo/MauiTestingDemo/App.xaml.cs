@@ -1,4 +1,6 @@
-﻿namespace MauiTestingDemo
+﻿using MauiTestingDemo.Services;
+
+namespace MauiTestingDemo
 {
     public partial class App : Application
     {
@@ -6,7 +8,8 @@
         {
             this.InitializeComponent();
 
-            this.MainPage = new NavigationPage(new MainPage());
+            var page = ServiceLocator.Services.GetRequiredService<TodoListPage>();
+            this.MainPage = new NavigationPage(page);
         }
     }
 }

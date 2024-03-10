@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using MauiTestingDemo.Services;
+using MauiTestingDemo.ViewModels;
+using Microsoft.Extensions.Logging;
 
 namespace MauiTestingDemo
 {
@@ -18,6 +20,11 @@ namespace MauiTestingDemo
 #if DEBUG
             builder.Logging.AddDebug();
 #endif
+
+            builder.Services.AddSingleton<IMauiInitializeService, ServiceLocator>();
+
+            builder.Services.AddTransient<TodoListPage>();
+            builder.Services.AddTransient<TodoListViewModel>();
 
             return builder.Build();
         }
