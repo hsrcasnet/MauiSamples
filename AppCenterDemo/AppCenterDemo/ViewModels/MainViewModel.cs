@@ -1,7 +1,6 @@
 ﻿using System.Windows.Input;
 using AppCenterDemo.Services;
 using CommunityToolkit.Mvvm.ComponentModel;
-using Microsoft.AppCenter;
 using Microsoft.Extensions.Logging;
 
 namespace AppCenterDemo.ViewModels
