@@ -4,51 +4,69 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:vm="clr-namespace:AppCenterDemo.ViewModels"
     x:DataType="vm:MainViewModel"
-    x:Class="AppCenterDemo.MainPage">
+    x:Class="AppCenterDemo.MainPage"
+    Title="AppCenterDemo"
+    IconImageSource="appcenter_logo.png">
 
     <ScrollView>
         <VerticalStackLayout
             Padding="16"
-            Spacing="16">
-            <Image
-                Source="appcenter_logo.png"
-                Aspect="AspectFit"
-                HeightRequest="185" />
-
-            <Label
-                Style="{StaticResource SubHeadline}"
-                Text="Welcome to &#10;.NET MAUI AppCenter Demo" />
-
-            <Grid
-                ColumnDefinitions="*, Auto, *, Auto, *, Auto"
-                ColumnSpacing="8">
-                <Entry
-                    Grid.Column="0"
-                    Placeholder="Dividend"
-                    Text="{Binding Dividend}" />
+            Spacing="32">
+            <VerticalStackLayout>
                 <Label
-                    Grid.Column="1"
-                    Text=":"
-                    VerticalOptions="Center" />
-                <Entry
-                    Grid.Column="2"
-                    Placeholder="Divisor"
-                    Text="{Binding Divisor}" />
+                    FontSize="32"
+                    Style="{StaticResource Headline}"
+                    Text="Welcome to .NET MAUI" />
+                <Image
+                    Source="appcenter_logo.png"
+                    Aspect="AspectFit" />
+            </VerticalStackLayout>
+
+            <VerticalStackLayout Spacing="8">
                 <Label
-                    Grid.Column="3"
-                    Text="="
-                    VerticalOptions="Center" />
-                <Entry
-                    Grid.Column="4"
-                    IsReadOnly="True"
-                    Placeholder="Quotient"
-                    Text="{Binding Quotient}" />
+                    Style="{StaticResource SubHeadline}"
+                    Text="Demo for Analytics.TrackEvent" />
+                <Grid
+                    ColumnDefinitions="*, Auto, *, Auto, *, Auto"
+                    ColumnSpacing="8">
+                    <Entry
+                        Grid.Column="0"
+                        Placeholder="Dividend"
+                        Text="{Binding Dividend}" />
+                    <Label
+                        Grid.Column="1"
+                        Text=":"
+                        VerticalOptions="Center" />
+                    <Entry
+                        Grid.Column="2"
+                        Placeholder="Divisor"
+                        Text="{Binding Divisor}" />
+                    <Label
+                        Grid.Column="3"
+                        Text="="
+                        VerticalOptions="Center" />
+                    <Entry
+                        Grid.Column="4"
+                        IsReadOnly="True"
+                        Placeholder="Quotient"
+                        Text="{Binding Quotient}" />
+                    <Button
+                        Grid.Column="5"
+                        Command="{Binding DivideCommand}"
+                        Text="Divide"
+                        HorizontalOptions="End" />
+                </Grid>
+            </VerticalStackLayout>
+
+            <VerticalStackLayout Spacing="8">
+                <Label
+                    Style="{StaticResource SubHeadline}"
+                    Text="Demo for Analytics.TrackError" />
                 <Button
-                    Grid.Column="5"
-                    Command="{Binding DivideCommand}"
-                    Text="Divide"
-                    HorizontalOptions="End" />
-            </Grid>
+                    Command="{Binding ThrowUnhandledExceptionCommand}"
+                    Text="Throw Unhandled Exception"
+                    HorizontalOptions="Fill" />
+            </VerticalStackLayout>
         </VerticalStackLayout>
     </ScrollView>
 

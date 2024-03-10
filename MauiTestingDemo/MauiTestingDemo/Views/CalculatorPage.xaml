@@ -10,15 +10,22 @@
     <ScrollView>
         <VerticalStackLayout
             Padding="16"
-            Spacing="16">
-            <Image
-                Source="calculator_app.png"
-                Aspect="AspectFit"
-                HeightRequest="185" />
+            Spacing="32">
+            <Grid
+                ColumnDefinitions="1*, 2*"
+                ColumnSpacing="16">
+                <Image
+                    Grid.Column="0"
+                    Source="calculator_app.png"
+                    Aspect="AspectFit" />
 
-            <Label
-                Style="{StaticResource SubHeadline}"
-                Text="Welcome to &#10;.NET MAUI App Testing" />
+                <Label
+                    Grid.Column="1"
+                    Style="{StaticResource Headline}"
+                    Text="Welcome to .NET MAUI App Testing Demo"
+                    HorizontalOptions="Start"
+                    HorizontalTextAlignment="Start" />
+            </Grid>
 
             <Button
                 AutomationId="IncrementButton"
@@ -26,40 +33,42 @@
                 Text="{Binding CountButtonText}"
                 HorizontalOptions="Fill" />
 
-            <Grid
-                ColumnDefinitions="*, Auto, *, Auto, *, Auto"
-                ColumnSpacing="8">
-                <Entry
-                    Grid.Column="0"
-                    AutomationId="Summand1Entry"
-                    Placeholder="Summand1"
-                    Text="{Binding Summand1}" />
-                <Label
-                    Grid.Column="1"
-                    Text="+"
-                    VerticalOptions="Center" />
-                <Entry
-                    Grid.Column="2"
-                    AutomationId="Summand2Entry"
-                    Placeholder="Summand2"
-                    Text="{Binding Summand2}" />
-                <Label
-                    Grid.Column="3"
-                    Text="="
-                    VerticalOptions="Center" />
-                <Entry
-                    Grid.Column="4"
-                    AutomationId="SumResult"
-                    IsReadOnly="True"
-                    Placeholder="Result"
-                    Text="{Binding SumResult}" />
-                <Button
-                    Grid.Column="5"
-                    AutomationId="SumButton"
-                    Command="{Binding CalculateSumCommand}"
-                    Text="Sum"
-                    HorizontalOptions="End" />
-            </Grid>
+            <VerticalStackLayout>
+                <Grid
+                    ColumnDefinitions="*, Auto, *, Auto, *, Auto"
+                    ColumnSpacing="8">
+                    <Entry
+                        Grid.Column="0"
+                        AutomationId="Summand1Entry"
+                        Placeholder="Summand1"
+                        Text="{Binding Summand1}" />
+                    <Label
+                        Grid.Column="1"
+                        Text="+"
+                        VerticalOptions="Center" />
+                    <Entry
+                        Grid.Column="2"
+                        AutomationId="Summand2Entry"
+                        Placeholder="Summand2"
+                        Text="{Binding Summand2}" />
+                    <Label
+                        Grid.Column="3"
+                        Text="="
+                        VerticalOptions="Center" />
+                    <Entry
+                        Grid.Column="4"
+                        AutomationId="SumResult"
+                        IsReadOnly="True"
+                        Placeholder="Result"
+                        Text="{Binding SumResult}" />
+                    <Button
+                        Grid.Column="5"
+                        AutomationId="SumButton"
+                        Command="{Binding CalculateSumCommand}"
+                        Text="Sum"
+                        HorizontalOptions="End" />
+                </Grid>
+            </VerticalStackLayout>
         </VerticalStackLayout>
     </ScrollView>
 
