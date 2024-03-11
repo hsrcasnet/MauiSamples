@@ -68,6 +68,7 @@ namespace AppCenterDemo.ViewModels
                 this.Quotient = null;
             }
         }
+
         public ICommand ThrowUnhandledExceptionCommand
         {
             get => this.throwUnhandledExceptionCommand ??= new Command(this.ThrowUnhandledException);
