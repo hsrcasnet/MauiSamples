@@ -34,7 +34,7 @@ namespace MauiTestingDemo.Tests.ViewModels
 
             calculatorServiceMock.Verify(c => c.Increment(It.IsAny<int>()), Times.Once);
         }
-        
+
         [Fact]
         public async Task ShouldIncrementCounter_MultipleIncrements()
         {

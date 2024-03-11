@@ -14,7 +14,7 @@ namespace MauiTestingDemo
             // Yet another approach of resolving the root page:
             //var calculatorPage = IPlatformApplication.Current?.Services.GetRequiredService<CalculatorPage>();
 
-            
+
             this.MainPage = new NavigationPage(calculatorPage);
         }
     }

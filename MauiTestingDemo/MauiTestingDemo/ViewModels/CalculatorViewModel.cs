@@ -1,7 +1,7 @@
-﻿using Microsoft.Extensions.Logging;
-using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using MauiTestingDemo.Services;
+using Microsoft.Extensions.Logging;
 
 namespace MauiTestingDemo.ViewModels
 {

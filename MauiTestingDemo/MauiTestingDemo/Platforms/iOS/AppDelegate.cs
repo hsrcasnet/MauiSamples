@@ -8,7 +8,7 @@ namespace MauiTestingDemo
         protected override MauiApp CreateMauiApp()
         {
 #if ENABLE_TEST_CLOUD
-		    Xamarin.Calabash.Start();
+            Xamarin.Calabash.Start();
 #endif
 
             return MauiProgram.CreateMauiApp();
