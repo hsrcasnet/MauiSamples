@@ -5,8 +5,7 @@
     xmlns:vm="clr-namespace:AppCenterDemo.ViewModels"
     x:DataType="vm:MainViewModel"
     x:Class="AppCenterDemo.MainPage"
-    Title="AppCenterDemo"
-    IconImageSource="appcenter_logo.png">
+    Title="AppCenterDemo">
 
     <ScrollView>
         <VerticalStackLayout
