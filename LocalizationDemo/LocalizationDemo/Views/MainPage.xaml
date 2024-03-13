@@ -83,16 +83,16 @@
             <VerticalStackLayout Spacing="8">
                 <Label
                     Style="{StaticResource SubHeadline}"
-                    Text="Sprachübersetzungen" />
+                    Text="Translations" />
                 <Grid
-                    ColumnDefinitions="2*, 1*"
+                    ColumnDefinitions="1*, 1*"
                     ColumnSpacing="8"
                     RowDefinitions="Auto,Auto,Auto,Auto"
                     RowSpacing="8">
                     <Label
                         Grid.Row="0"
                         Grid.Column="0"
-                        Text="x:Static HelloWorldLabelText" />
+                        Text="{}{x:Static&#160;HelloWorldLabelText}" />
                     <Label
                         Grid.Row="0"
                         Grid.Column="1"
@@ -100,7 +100,7 @@
                     <Label
                         Grid.Row="1"
                         Grid.Column="0"
-                        Text="Binding HelloWorldLabelText" />
+                        Text="{}{Binding&#160;HelloWorldLabelText}" />
                     <Label
                         Grid.Row="1"
                         Grid.Column="1"
@@ -108,7 +108,7 @@
                     <Label
                         Grid.Row="2"
                         Grid.Column="0"
-                        Text="Translate HelloWorldLabelText" />
+                        Text="{}{Translate&#160;HelloWorldLabelText}" />
                     <Label
                         Grid.Row="2"
                         Grid.Column="1"
@@ -116,7 +116,7 @@
                     <Label
                         Grid.Row="3"
                         Grid.Column="0"
-                        Text="Translate InvalidKey" />
+                        Text="{}{Translate&#160;InvalidKey}" />
                     <Label
                         Grid.Row="3"
                         Grid.Column="1"

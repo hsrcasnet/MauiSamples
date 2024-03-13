@@ -8,7 +8,7 @@ namespace LocalizationDemo.Converters
         {
             if (value is IEnumerable<CultureInfo> cultureInfos)
             {
-                return string.Join(", ", cultureInfos.Select(c => c.Name));
+                return string.Join(",", cultureInfos.Select(c => c.Name));
             }
 
             return null;

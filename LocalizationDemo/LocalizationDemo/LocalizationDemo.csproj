@@ -54,14 +54,4 @@
 	<ItemGroup>
 	  <ProjectReference Include="..\LocalizationDemo.Translations\LocalizationDemo.Translations.csproj" />
 	</ItemGroup>
-
-	<ItemGroup>
-	  <MauiXaml Update="Resources\Styles\Converters.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Views\MainPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	</ItemGroup>
-
 </Project>
