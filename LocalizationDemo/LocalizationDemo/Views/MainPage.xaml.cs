@@ -1,6 +1,6 @@
 ﻿using LocalizationDemo.ViewModels;
 
-namespace LocalizationDemo
+namespace LocalizationDemo.Views
 {
     public partial class MainPage : ContentPage
     {

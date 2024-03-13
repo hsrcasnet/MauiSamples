@@ -2,61 +2,127 @@
 <ContentPage
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:l="clr-namespace:LocalizationDemo.Services.Localization"
+    xmlns:t="clr-namespace:LocalizationDemo.Translations;assembly=LocalizationDemo.Translations"
     xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     xmlns:vm="clr-namespace:LocalizationDemo.ViewModels"
     x:DataType="vm:MainViewModel"
-    x:Class="LocalizationDemo.MainPage"
-    Title="LocalizationDemo">
+    x:Class="LocalizationDemo.Views.MainPage"
+    Title="{l:Translate MainPage_PageTitle}">
 
     <ScrollView>
         <VerticalStackLayout
             Padding="16"
             Spacing="32">
-            <!--<VerticalStackLayout Spacing="8">
+
+            <VerticalStackLayout Spacing="8">
                 <Label
                     Style="{StaticResource SubHeadline}"
-                    Text="Demo for Analytics.TrackEvent" />
+                    Text="Language and Regional Settings" />
                 <Grid
-                    ColumnDefinitions="*, Auto, *, Auto, *, Auto"
-                    ColumnSpacing="8">
-                    <Entry
+                    ColumnDefinitions="*, *"
+                    ColumnSpacing="8"
+                    RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto"
+                    RowSpacing="8">
+                    <Label
+                        Grid.Row="0"
                         Grid.Column="0"
-                        Placeholder="Dividend"
-                        Text="{Binding Dividend}" />
+                        Text="Languages"
+                        VerticalOptions="Center" />
                     <Label
+                        Grid.Row="0"
                         Grid.Column="1"
-                        Text=":"
+                        Text="{Binding Languages, Converter={StaticResource CultureInfosToStringConverter}}"
                         VerticalOptions="Center" />
-                    <Entry
-                        Grid.Column="2"
-                        Placeholder="Divisor"
-                        Text="{Binding Divisor}" />
                     <Label
-                        Grid.Column="3"
-                        Text="="
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Text="SelectedLanguage"
                         VerticalOptions="Center" />
-                    <Entry
-                        Grid.Column="4"
-                        IsReadOnly="True"
-                        Placeholder="Quotient"
-                        Text="{Binding Quotient}" />
-                    <Button
-                        Grid.Column="5"
-                        Command="{Binding DivideCommand}"
-                        Text="Divide"
-                        HorizontalOptions="End" />
+                    <Picker
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        ItemDisplayBinding="{Binding NativeName}"
+                        ItemsSource="{Binding Languages}"
+                        SelectedItem="{Binding SelectedLanguage, Mode=TwoWay}" />
+                    <Label
+                        Grid.Row="2"
+                        Grid.Column="0"
+                        Text="CurrentCulture" />
+                    <Label
+                        Grid.Row="2"
+                        Grid.Column="1"
+                        Text="{Binding CurrentCulture.NativeName}" />
+                    <Label
+                        Grid.Row="3"
+                        Grid.Column="0"
+                        Text="CurrentUICulture" />
+                    <Label
+                        Grid.Row="3"
+                        Grid.Column="1"
+                        Text="{Binding CurrentUICulture.NativeName}" />
+                    <Label
+                        Grid.Row="4"
+                        Grid.Column="0"
+                        Text="DateTime" />
+                    <Label
+                        Grid.Row="4"
+                        Grid.Column="1"
+                        Text="{Binding DateTime, Converter={StaticResource DateTimeToStringConverter}}" />
+                    <Label
+                        Grid.Row="5"
+                        Grid.Column="0"
+                        Text="Number" />
+                    <Label
+                        Grid.Row="5"
+                        Grid.Column="1"
+                        Text="{Binding Number, Converter={StaticResource DecimalToStringConverter}}}" />
                 </Grid>
             </VerticalStackLayout>
 
             <VerticalStackLayout Spacing="8">
                 <Label
                     Style="{StaticResource SubHeadline}"
-                    Text="Demo for Analytics.TrackError" />
-                <Button
-                    Command="{Binding ThrowUnhandledExceptionCommand}"
-                    Text="Throw Unhandled Exception"
-                    HorizontalOptions="Fill" />
-            </VerticalStackLayout>-->
+                    Text="Sprachübersetzungen" />
+                <Grid
+                    ColumnDefinitions="2*, 1*"
+                    ColumnSpacing="8"
+                    RowDefinitions="Auto,Auto,Auto,Auto"
+                    RowSpacing="8">
+                    <Label
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Text="x:Static HelloWorldLabelText" />
+                    <Label
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Text="{x:Static t:Strings.HelloWorldLabelText}" />
+                    <Label
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Text="Binding HelloWorldLabelText" />
+                    <Label
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Text="{Binding HelloWorldLabelText}" />
+                    <Label
+                        Grid.Row="2"
+                        Grid.Column="0"
+                        Text="Translate HelloWorldLabelText" />
+                    <Label
+                        Grid.Row="2"
+                        Grid.Column="1"
+                        Text="{l:Translate HelloWorldLabelText}" />
+                    <Label
+                        Grid.Row="3"
+                        Grid.Column="0"
+                        Text="Translate InvalidKey" />
+                    <Label
+                        Grid.Row="3"
+                        Grid.Column="1"
+                        Text="{l:Translate InvalidKey}" />
+                </Grid>
+            </VerticalStackLayout>
         </VerticalStackLayout>
     </ScrollView>
 

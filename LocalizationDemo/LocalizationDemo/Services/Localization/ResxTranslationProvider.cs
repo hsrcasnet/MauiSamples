@@ -14,7 +14,7 @@ namespace LocalizationDemo.Services.Localization
         /// <summary>
         ///     Initializes a new instance of the <see cref="ResxTranslationProvider" /> class.
         /// </summary>
-        public static ResxTranslationProvider Current
+        public static ITranslationProvider Current
         {
             get
             {

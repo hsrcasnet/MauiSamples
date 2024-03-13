@@ -22,10 +22,19 @@ namespace LocalizationDemo.Services.Localization
 
         public void SetCultureInfo(CultureInfo cultureInfo)
         {
+            var hasChanged = cultureInfo != Thread.CurrentThread.CurrentUICulture;
+
             Thread.CurrentThread.CurrentCulture = cultureInfo;
             Thread.CurrentThread.CurrentUICulture = cultureInfo;
 
-            this.OnLocaleChanged(cultureInfo);
+            CultureInfo.DefaultThreadCurrentCulture = cultureInfo;
+            CultureInfo.DefaultThreadCurrentUICulture = cultureInfo;
+
+
+            if (hasChanged)
+            {
+                this.OnLocaleChanged(cultureInfo);
+            }
         }
 
         public event EventHandler<CultureInfoChangedEventArgs> CultureInfoChangedEvent;

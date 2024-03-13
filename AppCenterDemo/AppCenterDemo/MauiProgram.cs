@@ -1,5 +1,6 @@
 ﻿using AppCenterDemo.Services;
 using AppCenterDemo.ViewModels;
+using AppCenterDemo.Views;
 using Microsoft.Extensions.Logging;
 
 namespace AppCenterDemo

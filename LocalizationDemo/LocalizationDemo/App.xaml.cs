@@ -1,4 +1,6 @@
-﻿namespace LocalizationDemo
+﻿using LocalizationDemo.Views;
+
+namespace LocalizationDemo
 {
     public partial class App : Application
     {

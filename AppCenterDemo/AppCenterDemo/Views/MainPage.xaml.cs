@@ -1,6 +1,6 @@
 ﻿using AppCenterDemo.ViewModels;
 
-namespace AppCenterDemo
+namespace AppCenterDemo.Views
 {
     public partial class MainPage : ContentPage
     {

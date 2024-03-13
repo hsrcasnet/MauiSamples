@@ -1,6 +1,8 @@
 ﻿using CommunityToolkit.Maui;
 using LocalizationDemo.Services.Localization;
+using LocalizationDemo.Translations;
 using LocalizationDemo.ViewModels;
+using LocalizationDemo.Views;
 using Microsoft.Extensions.Logging;
 
 namespace LocalizationDemo
@@ -23,21 +25,20 @@ namespace LocalizationDemo
             builder.Logging.AddDebug();
 #endif
             builder.Services.AddSingleton<ILocalizer>(c => Localizer.Current);
+            builder.Services.AddSingleton<ITranslationProvider>(c => ResxTranslationProvider.Current);
 
             builder.Services.AddTransient<MainPage>();
             builder.Services.AddTransient<MainViewModel>();
 
+            ResxTranslationProvider.Init(
+                Strings.ResourceManager,
+                () => Localizer.Current);
 
-            //ResxTranslationProvider.Init(
-            //    Strings.ResourceManager,
-            //    () => Localizer.Current);
-
-            //TranslateExtension.Init(
-            //    () => Localizer.Current,
-            //    () => ResxTranslationProvider.Current);
+            TranslateExtension.Init(
+                () => Localizer.Current,
+                () => ResxTranslationProvider.Current);
 
             return builder.Build();
-
         }
     }
 }
