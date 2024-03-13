@@ -76,7 +76,7 @@
                     <Label
                         Grid.Row="5"
                         Grid.Column="1"
-                        Text="{Binding Number, Converter={StaticResource DecimalToStringConverter}}}" />
+                        Text="{Binding Number, Converter={StaticResource DecimalToStringConverter}}" />
                 </Grid>
             </VerticalStackLayout>
 
