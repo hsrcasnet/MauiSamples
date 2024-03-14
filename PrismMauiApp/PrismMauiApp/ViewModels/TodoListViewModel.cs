@@ -9,7 +9,7 @@ namespace PrismMauiApp.ViewModels
 {
     public class TodoListViewModel : ViewModelBase, INavigatedAware
     {
-        private readonly ILogger<TodoListViewModel> logger;
+        private readonly ILogger logger;
         private readonly INavigationService navigationService;
         private readonly IPageDialogService dialogService;
         private readonly ITodoRepository todoRepository;
