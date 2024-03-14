@@ -1,13 +1,17 @@
-﻿using PrismMauiApp.Model;
+﻿using Microsoft.Extensions.Logging;
+using PrismMauiApp.Model;
 
 namespace PrismMauiApp.Services
 {
     public class TodoRepositoryMock : ITodoRepository
     {
+        private readonly ILogger<TodoRepositoryMock> logger;
         private readonly ICollection<Todo> todos;
 
-        public TodoRepositoryMock()
+        public TodoRepositoryMock(ILogger<TodoRepositoryMock> logger)
         {
+            this.logger = logger;
+
             this.todos =
             [
                 new Todo
@@ -64,6 +68,8 @@ namespace PrismMauiApp.Services
 
         public async Task<bool> AddAsync(Todo item)
         {
+            this.logger.LogDebug($"AddAsync: Name={item.Name}");
+
             this.todos.Add(item);
 
             return await Task.FromResult(true);
@@ -71,6 +77,8 @@ namespace PrismMauiApp.Services
 
         public async Task<bool> UpdateAsync(Todo item)
         {
+            this.logger.LogDebug($"UpdateAsync: Id={item.Id}");
+
             var oldItem = this.todos.FirstOrDefault(arg => arg.Id == item.Id);
             this.todos.Remove(oldItem);
             this.todos.Add(item);
@@ -80,6 +88,8 @@ namespace PrismMauiApp.Services
 
         public async Task<bool> DeleteAsync(string id)
         {
+            this.logger.LogDebug($"DeleteAsync: id={id}");
+
             var oldItem = this.todos.FirstOrDefault(arg => arg.Id == id);
             this.todos.Remove(oldItem);
 
@@ -88,11 +98,15 @@ namespace PrismMauiApp.Services
 
         public async Task<Todo> GetById(string id)
         {
+            this.logger.LogDebug($"GetById: id={id}");
+
             return await Task.FromResult(this.todos.FirstOrDefault(s => s.Id == id));
         }
 
         public async Task<IEnumerable<Todo>> GetAsync(bool forceRefresh = false)
         {
+            this.logger.LogDebug($"GetAsync: forceRefresh={forceRefresh}");
+
             return await Task.FromResult(this.todos);
         }
     }
