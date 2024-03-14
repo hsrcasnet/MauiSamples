@@ -62,6 +62,10 @@
                     Style="{StaticResource SubHeadline}"
                     Text="Demo for Analytics.TrackError" />
                 <Button
+                    Command="{Binding GenerateTestCrashCommand}"
+                    Text="Generate Test Crash"
+                    HorizontalOptions="Fill" />
+                <Button
                     Command="{Binding ThrowUnhandledExceptionCommand}"
                     Text="Throw Unhandled Exception"
                     HorizontalOptions="Fill" />

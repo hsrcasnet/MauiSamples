@@ -1,6 +1,7 @@
 ﻿using System.Windows.Input;
 using AppCenterDemo.Services;
 using CommunityToolkit.Mvvm.ComponentModel;
+using Microsoft.AppCenter.Crashes;
 using Microsoft.Extensions.Logging;
 
 namespace AppCenterDemo.ViewModels
@@ -14,7 +15,8 @@ namespace AppCenterDemo.ViewModels
         private decimal? dividend;
         private decimal? divisor;
         private decimal? quotient;
-        private Command throwUnhandledExceptionCommand;
+        private ICommand throwUnhandledExceptionCommand;
+        private ICommand generateTestCrashCommand;
 
         public MainViewModel(
             ILogger<MainViewModel> logger,
@@ -69,6 +71,18 @@ namespace AppCenterDemo.ViewModels
             }
         }
 
+        public ICommand GenerateTestCrashCommand
+        {
+            get => this.generateTestCrashCommand ??= new Command(this.GenerateTestCrash);
+        }
+
+        private void GenerateTestCrash()
+        {
+            this.logger.LogDebug("GenerateTestCrash");
+
+            Crashes.GenerateTestCrash();
+        }
+
         public ICommand ThrowUnhandledExceptionCommand
         {
             get => this.throwUnhandledExceptionCommand ??= new Command(this.ThrowUnhandledException);
@@ -77,6 +91,10 @@ namespace AppCenterDemo.ViewModels
         private void ThrowUnhandledException()
         {
             this.logger.LogDebug("ThrowUnhandledException");
+
+            this.analytics.TrackEvent("Event 1");
+            this.analytics.TrackEvent("Event 2");
+            this.analytics.TrackEvent("Event 3");
 
             throw new InvalidOperationException("This is just a test exception", new NullReferenceException("Something cannot be null"));
         }
