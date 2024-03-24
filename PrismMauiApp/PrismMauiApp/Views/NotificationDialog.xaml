@@ -2,10 +2,13 @@
 <ContentView
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:prism="http://prismlibrary.com"
     xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     xmlns:vm="clr-namespace:PrismMauiApp.ViewModels"
     x:DataType="vm:NotificationDialogViewModel"
-    x:Class="PrismMauiApp.Views.NotificationDialog">
+    x:Class="PrismMauiApp.Views.NotificationDialog"
+    prism:DialogLayout.CloseOnBackgroundTapped="True"
+    prism:DialogLayout.UseMask="True">
 
     <Frame Padding="20">
         <VerticalStackLayout Spacing="10">
