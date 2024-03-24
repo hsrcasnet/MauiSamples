@@ -9,5 +9,10 @@
             public const string NewTodoPage = nameof(PrismMauiApp.Views.NewTodoPage);
             public const string NavigationPage = nameof(Microsoft.Maui.Controls.NavigationPage);
         }
+
+        public static class Dialogs
+        {
+            public const string NotificationDialog = nameof(PrismMauiApp.Views.NotificationDialog);
+        }
     }
 }

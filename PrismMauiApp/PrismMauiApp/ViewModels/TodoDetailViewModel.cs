@@ -10,7 +10,8 @@ namespace PrismMauiApp.ViewModels
     {
         private readonly ILogger logger;
         private readonly INavigationService navigationService;
-        private readonly IPageDialogService dialogService;
+        private readonly IDialogService dialogService;
+        private readonly IPageDialogService pageDialogService;
         private readonly ITodoRepository todoRepository;
         private readonly ILauncher launcher;
 
@@ -26,19 +27,21 @@ namespace PrismMauiApp.ViewModels
         public TodoDetailViewModel(
             ILogger<TodoDetailViewModel> logger,
             INavigationService navigationService,
-            IPageDialogService dialogService,
+            IDialogService dialogService,
+            IPageDialogService pageDialogService,
             ITodoRepository todoRepository,
             ILauncher launcher)
         {
             this.logger = logger;
             this.navigationService = navigationService;
             this.dialogService = dialogService;
+            this.pageDialogService = pageDialogService;
             this.todoRepository = todoRepository;
             this.launcher = launcher;
         }
 
-public void OnNavigatedTo(INavigationParameters parameters)
-{
+        public void OnNavigatedTo(INavigationParameters parameters)
+        {
             if (parameters.GetNavigationMode() == NavigationMode.New)
             {
                 if (parameters["model"] is not Todo existingItem)
@@ -106,39 +109,49 @@ public void OnNavigatedTo(INavigationParameters parameters)
         private async Task SaveTodoAsync()
         {
             this.IsBusy = true;
-
             try
             {
-                var todo = new Todo
-                {
-                    Id = this.Id,
-                    Name = this.Name,
-                    DueDate = this.DueDate,
-                    Link = this.Link,
-                    Description = this.Description,
-                };
+                // TODO: Run input validation here!
 
-                if (this.isNewItem)
+                var dialogParameters = new DialogParameters
                 {
-                    await this.todoRepository.AddAsync(todo);
-                    _ = this.dialogService.DisplayAlertAsync("Success", "Successfully added your TODO", "OK");
-                }
-                else
+                    { "message", "Do you really want to save?" }
+                };
+                var result = await this.dialogService.ShowDialogAsync(App.Dialogs.NotificationDialog, dialogParameters);
+                if (result.Result == ButtonResult.OK)
                 {
-                    await this.todoRepository.UpdateAsync(todo);
-                    _ = this.dialogService.DisplayAlertAsync("Success", "Successfully updated your TODO", "OK");
+                    var todo = new Todo
+                    {
+                        Id = this.Id,
+                        Name = this.Name,
+                        DueDate = this.DueDate,
+                        Link = this.Link,
+                        Description = this.Description,
+                    };
+
+                    if (this.isNewItem)
+                    {
+                        await this.todoRepository.AddAsync(todo);
+                        _ = this.pageDialogService.DisplayAlertAsync("Success", "Successfully added your TODO", "OK");
+                    }
+                    else
+                    {
+                        await this.todoRepository.UpdateAsync(todo);
+                        _ = this.pageDialogService.DisplayAlertAsync("Success", "Successfully updated your TODO", "OK");
+                    }
+
+                    var navigationParameters = new NavigationParameters
+                    {
+                        { "isNewItem", this.isNewItem },
+                    };
+                    await this.navigationService.GoBackAsync(navigationParameters);
                 }
 
-                var navigationParameters = new NavigationParameters
-                {
-                    { "isNewItem", this.isNewItem },
-                };
-                await this.navigationService.GoBackAsync(navigationParameters);
             }
             catch (Exception ex)
             {
                 this.logger.LogError(ex, "SaveTodoAsync failed with exception");
-                await this.dialogService.DisplayAlertAsync("Error", "Something went wrong. Please try again later.", "OK");
+                await this.pageDialogService.DisplayAlertAsync("Error", "Something went wrong. Please try again later.", "OK");
             }
             finally
             {

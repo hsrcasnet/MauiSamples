@@ -48,6 +48,8 @@ namespace PrismMauiApp
             containerRegistry.RegisterForNavigation<TodoListPage, TodoListViewModel>(App.Pages.TodoListPage);
             containerRegistry.RegisterForNavigation<TodoDetailPage, TodoDetailViewModel>(App.Pages.TodoDetailPage);
             containerRegistry.RegisterForNavigation<NewTodoPage, TodoDetailViewModel>(App.Pages.NewTodoPage);
+
+            containerRegistry.RegisterDialog<NotificationDialog, NotificationDialogViewModel>();
         }
     }
 }
