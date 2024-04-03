@@ -15,8 +15,8 @@
             <Setter Property="Padding" Value="8" />
             <Setter Property="BackgroundColor" Value="{StaticResource OsColor}" />
         </Style>
-
     </ContentPage.Resources>
+
     <Grid RowDefinitions="*, Auto">
 
         <VerticalStackLayout

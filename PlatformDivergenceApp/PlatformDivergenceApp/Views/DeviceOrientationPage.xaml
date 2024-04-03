@@ -6,6 +6,7 @@
     x:DataType="vm:DeviceOrientationViewModel"
     x:Class="PlatformDivergenceApp.Views.DeviceOrientationPage"
     Title="DeviceOrientationPage">
+
     <VerticalStackLayout
         Spacing="8"
         HorizontalOptions="Center"

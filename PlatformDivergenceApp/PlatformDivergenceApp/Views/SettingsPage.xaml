@@ -6,6 +6,7 @@
     x:DataType="vm:SettingsViewModel"
     x:Class="PlatformDivergenceApp.Views.SettingsPage"
     Title="SettingsPage">
+
     <Grid
         Padding="8"
         ColumnDefinitions="*,*,*"
