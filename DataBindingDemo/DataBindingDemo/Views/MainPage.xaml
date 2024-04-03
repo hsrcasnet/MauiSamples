@@ -29,5 +29,11 @@
             Command="{Binding NavigateToPageCommand}"
             CommandParameter="CarsListPage"
             Text="Demo 3: Collection Bindings" />
+
+        <!--  Demo 4: Command Bindings  -->
+        <Button
+            Command="{Binding NavigateToPageCommand}"
+            CommandParameter="SuperCarsListPage"
+            Text="Demo 4: Command Bindings" />
     </StackLayout>
 </ContentPage>

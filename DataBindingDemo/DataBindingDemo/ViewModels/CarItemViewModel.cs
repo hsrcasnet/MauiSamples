@@ -8,10 +8,14 @@ namespace DataBindingDemo.ViewModels
     {
         private string brand;
 
+        public CarItemViewModel()
+        {
+        }
+
         public CarItemViewModel(Car car)
         {
             this.Brand = car.Brand;
-            this.Model = $"Model: {car.Model}";
+            this.Model = car.Model;
         }
 
         // Demo: Property Brand supports property changes

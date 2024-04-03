@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:c="clr-namespace:DataBindingDemo.Converters"
+    xmlns:itemTemplates="clr-namespace:DataBindingDemo.Views.ItemTemplates"
+    xmlns:vm="clr-namespace:DataBindingDemo.ViewModels"
+    x:DataType="vm:SuperCarsViewModel"
+    x:Class="DataBindingDemo.Views.SuperCarsListPage"
+    Title="{Binding Title}">
+
+    <ContentPage.Resources>
+        <c:BrandToImageConverter x:Key="BrandToImageConverter" />
+
+        <ResourceDictionary>
+            <DataTemplate x:Key="CarItemTemplate">
+                <itemTemplates:CarItemTemplate />
+            </DataTemplate>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <Grid>
+        <Grid
+            RowDefinitions="*, Auto"
+            RowSpacing="10">
+            <ListView
+                Grid.Row="0"
+                CachingStrategy="RetainElement"
+                HasUnevenRows="True"
+                ItemTemplate="{StaticResource CarItemTemplate}"
+                ItemsSource="{Binding Cars}"
+                SelectedItem="{Binding SelectedCar}" />
+
+            <Grid
+                Grid.Row="1"
+                Padding="10"
+                RowDefinitions="Auto, Auto"
+                RowSpacing="10">
+
+                <Frame Grid.Row="0">
+                    <VerticalStackLayout Spacing="10">
+                        <Label
+                            FontAttributes="Bold"
+                            Text="Selected car:" />
+                        <Entry
+                            Placeholder="Brand"
+                            Text="{Binding SelectedBrand}" />
+                        <Entry
+                            Placeholder="Model"
+                            Text="{Binding SelectedModel}" />
+
+                    </VerticalStackLayout>
+                </Frame>
+
+                <Grid
+                    Grid.Row="1"
+                    ColumnDefinitions="*,*"
+                    ColumnSpacing="10">
+                    <Button
+                        Grid.Column="0"
+                        Command="{Binding AddCarCommand}"
+                        Text="Add" />
+                    <Button
+                        Grid.Column="1"
+                        Command="{Binding UpdateCarCommand}"
+                        Text="Update" />
+                </Grid>
+            </Grid>
+        </Grid>
+
+        <!--  Demo: Alternative way to lock UI while IsBusy=true  -->
+        <!--<Grid
+            BackgroundColor="White"
+            IsVisible="{Binding IsBusy}">
+            <ActivityIndicator IsRunning="{Binding IsBusy}" />
+        </Grid>-->
+    </Grid>
+</ContentPage>

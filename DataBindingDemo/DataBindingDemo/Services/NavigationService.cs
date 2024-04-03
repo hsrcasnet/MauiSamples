@@ -33,10 +33,14 @@ namespace DataBindingDemo.Services
                 case nameof(CarsListPage):
                     page = new CarsListPage
                     {
-                        BindingContext = new SimpleCarsViewModel()
-
-                        // DEMO: Switch BindingContext to SuperCarsViewModel:
-                        //BindingContext = new SuperCarsViewModel()
+                        BindingContext = new CarsViewModel()
+                    };
+                    break;
+                    
+                case nameof(SuperCarsListPage):
+                    page = new SuperCarsListPage
+                    {
+                        BindingContext = new SuperCarsViewModel()
                     };
                     break;
 

@@ -3,9 +3,9 @@ using DataBindingDemo.Model;
 
 namespace DataBindingDemo.ViewModels
 {
-    public class SimpleCarsViewModel
+    public class CarsViewModel
     {
-        public SimpleCarsViewModel()
+        public CarsViewModel()
         {
             this.Cars = new ObservableCollection<Car>
             {

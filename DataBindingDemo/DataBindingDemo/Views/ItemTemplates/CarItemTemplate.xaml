@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ViewCell
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:vm="clr-namespace:DataBindingDemo.ViewModels"
+    x:DataType="vm:CarItemViewModel"
+    x:Class="DataBindingDemo.Views.ItemTemplates.CarItemTemplate">
+
+    <Grid
+        Padding="10"
+        ColumnDefinitions="Auto, *,*"
+        ColumnSpacing="10">
+        <Image
+            Grid.Column="0"
+            Source="{Binding Brand, Converter={StaticResource BrandToImageConverter}}"
+            Aspect="AspectFit"
+            WidthRequest="24"
+            HorizontalOptions="Start" />
+        <Label
+            Grid.Column="1"
+            Text="{Binding Brand}"
+            HorizontalOptions="Start"
+            VerticalOptions="Center" />
+        <Label
+            Grid.Column="2"
+            Text="{Binding Model}"
+            HorizontalOptions="Start"
+            VerticalOptions="Center" />
+    </Grid>
+</ViewCell>
