@@ -11,6 +11,6 @@ public partial class SettingsPage : ContentPage
 
         // Demo: Here we use a service locator to resolve the SettingsViewModel and its dependencies.
         //       Instead, we could inject SettingsViewModel via SettingsPage constructor.
-        this.BindingContext = ServiceLocator.Current.GetRequiredService<SettingsViewModel>();
+        this.BindingContext = IPlatformApplication.Current.Services.GetRequiredService<SettingsViewModel>();
     }
 }
