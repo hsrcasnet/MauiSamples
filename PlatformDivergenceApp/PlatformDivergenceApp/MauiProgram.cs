@@ -38,6 +38,9 @@ namespace PlatformDivergenceApp
             builder.Services.AddTransient<DeviceInfoPage>();
             builder.Services.AddTransient<DeviceInfoViewModel>();
 
+            builder.Services.AddTransient<PlatformSpecificPage>();
+            builder.Services.AddTransient<PlatformSpecificViewModel>();
+
             // Register services
             builder.Services.AddSingleton<INavigationService, MauiNavigationService>();
             builder.Services.AddSingleton<IDeviceOrientationService, DeviceOrientationService>();

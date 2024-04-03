@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+    xmlns:vm="clr-namespace:PlatformDivergenceApp.ViewModels"
+    x:DataType="vm:PlatformSpecificViewModel"
+    x:Class="PlatformDivergenceApp.Views.PlatformSpecificPage"
+    ios:Page.UseSafeArea="True"
+    Title="{OnPlatform Android='PlatformSpecificPage on Android',
+                       iOS='PlatformSpecificPage on iOS',
+                       Default='PlatformSpecificPage'}">
+
+    <Grid
+        Padding="10"
+        RowDefinitions="*, Auto, Auto, Auto"
+        RowSpacing="10">
+
+        <Entry
+            Grid.Row="1"
+            FontSize="Large"
+            Placeholder="Enter value here" />
+        <Button
+            Grid.Row="2"
+            Grid.Column="0"
+            Command="{Binding SetPanCommand}"
+            Text="Set 'Pan' mode" />
+        <Button
+            Grid.Row="3"
+            Grid.Column="0"
+            Command="{Binding SetResizeCommand}"
+            Text="Set 'Resize' mode" />
+    </Grid>
+</ContentPage>

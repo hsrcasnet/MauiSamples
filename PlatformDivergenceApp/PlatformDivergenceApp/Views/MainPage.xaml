@@ -18,6 +18,9 @@
             <Button
                 Command="{Binding NavigateToDeviceInfoPageCommand}"
                 Text="DeviceInfoPage" />
+            <Button
+                Command="{Binding NavigateToPlatformSpecificPageCommand}"
+                Text="PlatformSpecificPage" />
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>
