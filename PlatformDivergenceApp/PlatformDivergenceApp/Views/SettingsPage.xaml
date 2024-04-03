@@ -8,11 +8,11 @@
     Title="SettingsPage">
 
     <Grid
-        Padding="8"
+        Padding="10"
         ColumnDefinitions="*,*,*"
-        ColumnSpacing="8"
+        ColumnSpacing="10"
         RowDefinitions="Auto, Auto, *"
-        RowSpacing="8">
+        RowSpacing="10">
 
         <Entry
             Grid.Row="0"
