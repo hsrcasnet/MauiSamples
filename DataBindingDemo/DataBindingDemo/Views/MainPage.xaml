@@ -17,7 +17,8 @@
             <Image.GestureRecognizers>
                 <TapGestureRecognizer
                     Command="{Binding NavigateToPageCommand}"
-                    CommandParameter="SuperCarsListPage" />
+                    CommandParameter="SuperCarsListPage"
+                    NumberOfTapsRequired="2" />
             </Image.GestureRecognizers>
         </Image>
 
