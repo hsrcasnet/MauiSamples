@@ -23,7 +23,7 @@ namespace PlatformDivergenceApp.ViewModels
             set => this.SetProperty(ref this.settingsValue, value);
         }
 
-        public ICommand GetValueCommand { get; set; }
+        public ICommand GetValueCommand { get; }
 
         private void GetValue()
         {
@@ -31,7 +31,7 @@ namespace PlatformDivergenceApp.ViewModels
             this.SettingsValue = value;
         }
 
-        public ICommand SetValueCommand { get; set; }
+        public ICommand SetValueCommand { get; }
 
         private void SetValue()
         {
@@ -39,7 +39,7 @@ namespace PlatformDivergenceApp.ViewModels
             this.settingsService.SetValue("SettingsKey", value);
         }
 
-        public ICommand ResetValueCommand { get; set; }
+        public ICommand ResetValueCommand { get; }
 
         private void ResetValue()
         {

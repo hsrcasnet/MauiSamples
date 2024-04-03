@@ -20,26 +20,37 @@ namespace PlatformDivergenceApp.ViewModels
 
             this.NavigateToDeviceInfoPageCommand = new Command(
                 execute: this.NavigateToDeviceInfoPageAsync);
+
+            this.NavigateToPlatformSpecificPageCommand = new Command(
+                execute: this.NavigateToPlatformSpecificPageAsync);
         }
 
-        public ICommand NavigateToSettingsPageCommand { get; set; }
+        public ICommand NavigateToSettingsPageCommand { get; }
 
         private async void NavigateToSettingsPageAsync()
         {
             await this.navigationService.PushAsync<SettingsPage>();
         }
 
-        public ICommand NavigateToDeviceOrientationPageCommand { get; set; }
+        public ICommand NavigateToDeviceOrientationPageCommand { get; }
 
         private async void NavigateToDeviceOrientationPageAsync()
         {
             await this.navigationService.PushAsync<DeviceOrientationPage>();
         }
-        public ICommand NavigateToDeviceInfoPageCommand { get; set; }
+
+        public ICommand NavigateToDeviceInfoPageCommand { get; }
 
         private async void NavigateToDeviceInfoPageAsync()
         {
             await this.navigationService.PushAsync<DeviceInfoPage>();
+        }
+
+        public ICommand NavigateToPlatformSpecificPageCommand { get; }
+
+        private async void NavigateToPlatformSpecificPageAsync()
+        {
+            await this.navigationService.PushAsync<PlatformSpecificPage>();
         }
     }
 }

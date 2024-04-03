@@ -23,7 +23,7 @@ namespace PlatformDivergenceApp.ViewModels
             private set => this.SetProperty(ref this.deviceOrientation, value);
         }
 
-        public ICommand RefreshDeviceOrientationCommand { get; set; }
+        public ICommand RefreshDeviceOrientationCommand { get; }
 
         private void RefreshDeviceOrientation()
         {
