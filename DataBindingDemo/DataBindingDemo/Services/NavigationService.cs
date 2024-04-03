@@ -47,6 +47,7 @@ namespace DataBindingDemo.Services
                 default:
                     throw new NotSupportedException($"Page is not known");
             }
+
             return this.currentPage.Navigation.PushAsync(page);
         }
     }
