@@ -7,8 +7,8 @@
     x:Class="PlatformDivergenceApp.Views.MainPage"
     Title="MainPage">
 
-    <ScrollView Padding="8">
-        <VerticalStackLayout Spacing="8">
+    <ScrollView Padding="10">
+        <VerticalStackLayout Spacing="10">
             <Button
                 Command="{Binding NavigateToSettingsPageCommand}"
                 Text="SettingsPage" />
@@ -20,5 +20,4 @@
                 Text="DeviceInfoPage" />
         </VerticalStackLayout>
     </ScrollView>
-
 </ContentPage>
