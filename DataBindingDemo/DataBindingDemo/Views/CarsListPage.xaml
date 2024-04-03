@@ -52,13 +52,5 @@
                 </DataTemplate>
             </BindableLayout.ItemTemplate>
         </HorizontalStackLayout>-->
-
-        <!--<Button
-            Command="{Binding UpdateCarCommand}"
-            Text="Update Car" />
-
-        <Button
-            Command="{Binding AddCarCommand}"
-            Text="Add Car" />-->
     </VerticalStackLayout>
 </ContentPage>
