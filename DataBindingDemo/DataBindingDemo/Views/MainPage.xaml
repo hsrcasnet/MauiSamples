@@ -12,25 +12,34 @@
         Spacing="10"
         VerticalOptions="Center">
 
-        <!--  Demo 1: Relative Bindings  -->
+        <!--  Demo: TapGestureRecognizer  -->
+        <Image Source="dotnet_bot.png">
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer
+                    Command="{Binding NavigateToPageCommand}"
+                    CommandParameter="SuperCarsListPage" />
+            </Image.GestureRecognizers>
+        </Image>
+
+        <!--  Demo: Relative Bindings  -->
         <Button
             Command="{Binding NavigateToPageCommand}"
             CommandParameter="SliderPage"
             Text="Demo 1: Relative Bindings" />
 
-        <!--  Demo 2: Data Binding with BindingContext  -->
+        <!--  Demo: Data Binding with BindingContext  -->
         <Button
             Command="{Binding NavigateToPageCommand}"
             CommandParameter="LoginPage"
             Text="Demo 2: Data Binding with MVVM" />
 
-        <!--  Demo 3: Collection Bindings  -->
+        <!--  Demo: Collection Bindings  -->
         <Button
             Command="{Binding NavigateToPageCommand}"
             CommandParameter="CarsListPage"
             Text="Demo 3: Collection Bindings" />
 
-        <!--  Demo 4: Command Bindings  -->
+        <!--  Demo: Command Bindings  -->
         <Button
             Command="{Binding NavigateToPageCommand}"
             CommandParameter="SuperCarsListPage"
