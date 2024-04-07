@@ -1,5 +1,4 @@
-﻿using DataBindingDemo.ViewModels;
-using DataBindingDemo.Views;
+﻿using DataBindingDemo.Views;
 
 namespace DataBindingDemo.Services
 {
