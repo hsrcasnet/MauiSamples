@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage
-    x:Class="PagesLayoutsControlsDemo.Views.ControlsDemoPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="PagesLayoutsControlsDemo.Views.ControlsDemoPage"
     Title="ControlsDemoPage"
     Padding="10">
     <ScrollView>
@@ -12,14 +12,16 @@
 
             <Button Text="Button" />
 
-            <Entry Placeholder="Entry" Text="Entry" />
+            <Entry
+                Placeholder="Entry Placeholder"
+                Text="Entry" />
 
             <Editor
                 AutoSize="TextChanges"
-                Placeholder="Editor"
+                Placeholder="Editor Placeholder"
                 Text="Editor" />
 
-            <Picker Title="Picker">
+            <Picker Title="Picker Title">
                 <Picker.Items>
                     <x:String>Item 1</x:String>
                     <x:String>Item 2</x:String>
@@ -31,21 +33,28 @@
 
             <TimePicker Format="T" />
 
-            <Slider Maximum="100" Minimum="0" />
+            <Slider
+                Maximum="100"
+                Minimum="0" />
 
-            <CheckBox HorizontalOptions="Start" IsChecked="True" />
+            <CheckBox
+                IsChecked="True"
+                HorizontalOptions="Start" />
 
-            <Switch HorizontalOptions="Start" IsToggled="True" />
+            <Switch
+                IsToggled="True"
+                HorizontalOptions="Start" />
 
             <BoxView
                 HeightRequest="50"
-                HorizontalOptions="Start"
                 WidthRequest="100"
-                Color="LightGray" />
+                Color="LightGray"
+                HorizontalOptions="Start" />
 
             <Frame
                 Padding="10"
                 BorderColor="LightGray"
+                CornerRadius="20"
                 HasShadow="True"
                 HorizontalOptions="Start">
                 <Label Text="Frame" />
@@ -54,9 +63,9 @@
             <Border
                 Padding="16,8"
                 BackgroundColor="LightGray"
-                HorizontalOptions="Start"
                 Stroke="Black"
-                StrokeThickness="4">
+                StrokeThickness="4"
+                HorizontalOptions="Start">
                 <Border.StrokeShape>
                     <RoundRectangle CornerRadius="10,20,0,20" />
                 </Border.StrokeShape>
