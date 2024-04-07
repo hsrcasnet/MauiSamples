@@ -11,7 +11,7 @@ namespace DataBindingDemo.ViewModels
             {
                 new Car
                 {
-                    Brand = "BWM",
+                    Brand = "BMW",
                     Model = "X5"
                 },
                 new Car
