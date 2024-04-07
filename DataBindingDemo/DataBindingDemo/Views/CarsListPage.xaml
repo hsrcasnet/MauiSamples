@@ -27,13 +27,15 @@
             <!--<ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <StackLayout Padding="5">
+                        <VerticalStackLayout
+                            Padding="10"
+                            Spacing="5">
                             <Label
                                 FontAttributes="Bold"
                                 FontSize="18"
                                 Text="{Binding Brand}" />
                             <Label Text="{Binding Model}" />
-                        </StackLayout>
+                        </VerticalStackLayout>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>-->
