@@ -1,4 +1,5 @@
 using DataBindingDemo.Model;
+using DataBindingDemo.ViewModels;
 
 namespace DataBindingDemo.Views;
 
@@ -7,6 +8,7 @@ public partial class CarsListPage : ContentPage
     public CarsListPage()
     {
         this.InitializeComponent();
+        this.BindingContext = new CarsViewModel();
     }
 
     private async void Handle_ItemTapped(object sender, ItemTappedEventArgs e)

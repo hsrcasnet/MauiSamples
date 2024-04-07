@@ -27,25 +27,19 @@ namespace DataBindingDemo.Services
                     break;
 
                 case nameof(LoginPage):
-                    page = new LoginPage { BindingContext = new LoginViewModel() };
+                    page = new LoginPage();
                     break;
 
                 case nameof(CarsListPage):
-                    page = new CarsListPage
-                    {
-                        BindingContext = new CarsViewModel()
-                    };
+                    page = new CarsListPage();
                     break;
                     
                 case nameof(SuperCarsListPage):
-                    page = new SuperCarsListPage
-                    {
-                        BindingContext = new SuperCarsViewModel()
-                    };
+                    page = new SuperCarsListPage();
                     break;
 
                 default:
-                    throw new NotSupportedException($"Page is not known");
+                    throw new NotSupportedException($"Page '{pageName}' is not known");
             }
 
             return this.currentPage.Navigation.PushAsync(page);
