@@ -17,7 +17,7 @@ namespace DataBindingDemo.Converters
                 return dateTime.ToString(this.Format);
             }
 
-            return BindableProperty.UnsetValue;
+            return null;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
