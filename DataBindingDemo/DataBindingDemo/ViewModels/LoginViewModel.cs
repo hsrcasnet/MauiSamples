@@ -120,8 +120,8 @@ namespace DataBindingDemo.ViewModels
                 return
                     !string.IsNullOrEmpty(this.Username) &&
                     !string.IsNullOrEmpty(this.Password) &&
-                    !this.IsLoggingIn &&
-                    this.AcceptTermsAndConditions;
+                    this.AcceptTermsAndConditions &&
+                    !this.IsLoggingIn;
             }
         }
 
