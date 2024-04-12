@@ -2,6 +2,7 @@
 <ContentPage
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:model="clr-namespace:DataBindingDemo.Model"
     xmlns:vm="clr-namespace:DataBindingDemo.ViewModels"
     x:DataType="vm:CarsViewModel"
     x:Class="DataBindingDemo.Views.CarsListPage"
@@ -45,7 +46,9 @@
         <!--<HorizontalStackLayout BindableLayout.ItemsSource="{Binding Cars}">
             <BindableLayout.ItemTemplate>
                 <DataTemplate>
-                    <StackLayout Padding="5">
+                    <StackLayout
+                        x:DataType="model:Car"
+                        Padding="5">
                         <Label
                             FontAttributes="Bold"
                             Text="{Binding Brand}" />
