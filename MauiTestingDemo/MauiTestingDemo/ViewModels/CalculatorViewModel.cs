@@ -62,7 +62,6 @@ namespace MauiTestingDemo.ViewModels
             await Task.Delay(1000);
 
             this.Count = this.calculatorService.Increment(this.Count);
-            ;
         }
 
         public decimal Summand1
