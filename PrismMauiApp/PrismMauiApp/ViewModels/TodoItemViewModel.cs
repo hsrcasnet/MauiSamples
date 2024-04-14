@@ -6,6 +6,7 @@ namespace PrismMauiApp.ViewModels
 {
     public class TodoItemViewModel : BindableBase
     {
+        private readonly IDateTime dateTime;
         private readonly INavigationService navigationService;
         private readonly Todo todo;
 
@@ -13,6 +14,7 @@ namespace PrismMauiApp.ViewModels
         private bool done;
 
         public TodoItemViewModel(
+            IDateTime dateTime,
             INavigationService navigationService,
             Todo todo)
         {
@@ -20,6 +22,7 @@ namespace PrismMauiApp.ViewModels
             this.Name = todo.Name;
             this.DueDate = todo.DueDate;
             this.Done = todo.Done;
+            this.dateTime = dateTime;
             this.navigationService = navigationService;
         }
 
@@ -30,7 +33,21 @@ namespace PrismMauiApp.ViewModels
         public bool Done
         {
             get => this.done;
-            set => this.SetProperty(ref this.done, value);
+            set
+            {
+                if (this.SetProperty(ref this.done, value))
+                {
+                    this.RaisePropertyChanged(nameof(this.IsOverdue));
+                }
+            }
+        }
+
+        public bool IsOverdue
+        {
+            get
+            {
+                return !this.Done && this.DueDate is DateTime dueDate && dueDate < this.dateTime.Now;
+            }
         }
 
         public ICommand NavigateToTodoDetailPageCommand => this.navigateToTodoDetailPageCommand ??= new Command(async () =>

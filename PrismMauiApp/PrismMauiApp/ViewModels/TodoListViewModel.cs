@@ -1,5 +1,4 @@
-﻿using System.Collections.ObjectModel;
-using System.Windows.Input;
+﻿using System.Windows.Input;
 using Microsoft.Extensions.Logging;
 using PrismMauiApp.Services;
 using static PrismMauiApp.App;
@@ -7,30 +6,32 @@ using NavigationMode = Prism.Navigation.NavigationMode;
 
 namespace PrismMauiApp.ViewModels
 {
-    public class TodoListViewModel : ViewModelBase, INavigatedAware
+    public class TodoListViewModel : ViewModelBase, INavigatedAware, IApplicationLifecycleAware
     {
         private readonly ILogger logger;
         private readonly INavigationService navigationService;
         private readonly IPageDialogService dialogService;
         private readonly ITodoRepository todoRepository;
+        private readonly IDateTime dateTime;
 
-        private Command loadTodosCommand;
-        private Command addItemCommand;
-        private ObservableCollection<TodoItemViewModel> items;
+        private IAsyncCommand loadTodosCommand;
+        private IAsyncCommand addItemCommand;
+        private TodoItemViewModel[] items;
 
         public TodoListViewModel(
             ILogger<TodoListViewModel> logger,
             INavigationService navigationService,
             IPageDialogService dialogService,
-            ITodoRepository todoRepository)
+            ITodoRepository todoRepository,
+            IDateTime dateTime)
         {
             this.logger = logger;
             this.navigationService = navigationService;
             this.dialogService = dialogService;
             this.todoRepository = todoRepository;
-
+            this.dateTime = dateTime;
             this.Title = "TODO Items";
-            this.Items = new ObservableCollection<TodoItemViewModel>();
+            this.Items = [];
         }
 
         public async void OnNavigatedTo(INavigationParameters parameters)
@@ -55,26 +56,20 @@ namespace PrismMauiApp.ViewModels
             // Nothing to do here...
         }
 
-        public ObservableCollection<TodoItemViewModel> Items
+        public TodoItemViewModel[] Items
         {
             get => this.items;
             private set => this.SetProperty(ref this.items, value, nameof(this.Items));
         }
 
-        public ICommand LoadTodosCommand
+        public IAsyncCommand LoadTodosCommand
         {
-            get => this.loadTodosCommand ??= new Command(async () =>
-            {
-                await this.LoadTodosAsync();
-            });
+            get => this.loadTodosCommand ??= new AsyncDelegateCommand(this.LoadTodosAsync);
         }
 
-        public ICommand AddItemCommand
+        public IAsyncCommand AddItemCommand
         {
-            get => this.addItemCommand ??= new Command(async () =>
-            {
-                await this.navigationService.NavigateAsync(Pages.NewTodoPage);
-            });
+            get => this.addItemCommand ??= new AsyncDelegateCommand(() => this.navigationService.NavigateAsync(Pages.NewTodoPage));
         }
 
         private async Task LoadTodosAsync()
@@ -106,6 +101,18 @@ namespace PrismMauiApp.ViewModels
             {
                 this.IsBusy = false;
             }
+        }
+
+        public void OnSleep()
+        {
+            // Nothing to do here
+        }
+
+        public void OnResume()
+        {
+            // Current date/time is used to display "IsOverdue".
+            // Therefore, we need to refresh the todo list if the app is resumed.
+            _ = this.LoadTodosAsync();
         }
     }
 }

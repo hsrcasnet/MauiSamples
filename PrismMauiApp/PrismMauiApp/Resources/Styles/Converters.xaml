@@ -12,7 +12,12 @@
 
     <vc:DateTimeToStringConverter
         x:Key="DateTimeToShortDateStringConverter"
-        Format="d" />
+        Format="dd.MM.yyyy" />
+
+    <vc:BoolToColorConverter
+        x:Key="BoolToOverdueTextColorConverter"
+        FalseValue="{StaticResource Gray300}"
+        TrueValue="Red" />
 
     <c:BoolToTextDecorationStrikethroughConverter x:Key="BoolToTextDecorationStrikethroughConverter" />
 

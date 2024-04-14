@@ -32,8 +32,9 @@
                 TextDecorations="{Binding Done, Converter={StaticResource BoolToTextDecorationStrikethroughConverter}}" />
             <Label
                 Text="{Binding DueDate, Converter={StaticResource DateTimeToShortDateStringConverter}}"
-                TextColor="{StaticResource Gray300}"
-                TextDecorations="{Binding Done, Converter={StaticResource BoolToTextDecorationStrikethroughConverter}}" />
+                TextColor="{Binding IsOverdue, Converter={StaticResource BoolToOverdueTextColorConverter}}"
+                TextDecorations="{Binding Done, Converter={StaticResource BoolToTextDecorationStrikethroughConverter}}"
+                HorizontalOptions="Start" />
         </VerticalStackLayout>
     </Grid>
 </ViewCell>

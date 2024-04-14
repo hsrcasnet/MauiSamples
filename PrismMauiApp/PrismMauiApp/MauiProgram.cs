@@ -43,6 +43,7 @@ namespace PrismMauiApp
             // Register platform-independent services.
             containerRegistry.RegisterSingleton<ITodoRepository, TodoRepositoryMock>();
             containerRegistry.RegisterSingleton<ILauncher>(() => Launcher.Default);
+            containerRegistry.RegisterSingleton<IDateTime, SystemDateTime>();
 
             // Register pages and view models.
             containerRegistry.RegisterForNavigation<TodoListPage, TodoListViewModel>(App.Pages.TodoListPage);
