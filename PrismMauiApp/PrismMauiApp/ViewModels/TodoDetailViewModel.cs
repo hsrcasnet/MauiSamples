@@ -101,7 +101,14 @@ namespace PrismMauiApp.ViewModels
 
         private async Task LaunchUrlAsync()
         {
-            await this.launcher.OpenAsync(this.Link);
+            try
+            {
+                await this.launcher.OpenAsync(this.Link);
+            }
+            catch (Exception ex)
+            {
+                this.logger.LogError(ex, "LaunchUrlAsync failed with exception");
+            }
         }
 
         public ICommand SaveCommand => this.saveCommand ??= new Command(() => _ = this.SaveTodoAsync());
