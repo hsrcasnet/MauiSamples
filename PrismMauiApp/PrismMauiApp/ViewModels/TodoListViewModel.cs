@@ -88,19 +88,14 @@ namespace PrismMauiApp.ViewModels
 
             try
             {
-                // Load payload from backend
-                var todos = (await this.todoRepository.GetAsync(forceRefresh: true)).ToList();
+                // Load payload from database
+                var todos = (await this.todoRepository.GetAsync(forceRefresh: true)).ToArray();
 
-                // Refresh the list by clearing all and adding one after the other
-                this.Items.Clear();
-                foreach (var todo in todos)
-                {
-                    var todoItemViewModel = new TodoItemViewModel(this.navigationService, todo);
-                    this.Items.Add(todoItemViewModel);
-                }
-
-                // Refresh the whole list in one call
-                //this.Items = new ObservableCollection<TodoItemViewModel>(todos.Select(t => new TodoItemViewModel(this.navigationService, t)));
+                // Map Todo objects to TodoItemViewModels
+                this.Items = todos
+                    .Select(t => new TodoItemViewModel(this.dateTime, this.navigationService, t))
+                    .OrderBy(t => t.DueDate)
+                    .ToArray();
             }
             catch (Exception ex)
             {
