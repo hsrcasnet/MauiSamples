@@ -33,6 +33,9 @@ namespace ForexApp.Services
             var jsonResponse = await httpResponseMessage.Content.ReadAsStringAsync();
             var latestQuotesDto = JsonConvert.DeserializeObject<LatestQuotesDto>(jsonResponse);
 
+            // Alternatively, use System.Net.Http.Json to deserialize JSON content into LatestQuotesDto:
+            //var latestQuotesDto = await httpResponseMessage.Content.ReadFromJsonAsync<LatestQuotesDto>();
+
             var quoteDtos = latestQuotesDto.Data
                 .Select(c => new QuoteDto(baseCurrency, c.Key, c.Value))
                 .ToArray();
