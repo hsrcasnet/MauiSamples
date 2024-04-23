@@ -1,6 +1,6 @@
 ﻿using CommunityToolkit.Maui;
+using LocalizationDemo.Resources.Text;
 using LocalizationDemo.Services.Localization;
-using LocalizationDemo.Translations;
 using LocalizationDemo.ViewModels;
 using LocalizationDemo.Views;
 using Microsoft.Extensions.Logging;

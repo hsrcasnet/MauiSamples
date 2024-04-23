@@ -2,7 +2,7 @@
 <ContentPage
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:t="clr-namespace:LocalizationDemo.Translations;assembly=LocalizationDemo.Translations"
+    xmlns:t="clr-namespace:LocalizationDemo.Resources.Text"
     x:Class="LocalizationDemo.Views.StaticDemoPage">
     <Label
         Text="{x:Static t:Strings.HelloWorldLabelText}"

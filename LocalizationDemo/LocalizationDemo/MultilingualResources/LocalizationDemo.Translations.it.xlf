@@ -1,18 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd">
-  <file datatype="xml" source-language="sv" target-language="de" original="LOCALIZATIONDEMO.TRANSLATIONS/STRINGS.RESX" tool-id="MultilingualAppToolkit" product-name="n/a" product-version="n/a" build-num="n/a">
+  <file datatype="xml" source-language="sv" target-language="it" original="LOCALIZATIONDEMO.TRANSLATIONS/STRINGS.RESX" tool-id="MultilingualAppToolkit" product-name="n/a" product-version="n/a" build-num="n/a">
     <header>
       <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="1.0.0.0" tool-company="Microsoft" />
     </header>
     <body>
-      <group id="LOCALIZATIONDEMO.TRANSLATIONS/STRINGS.RESX" datatype="resx">
+      <group id="LOCALIZATIONDEMO/RESOURCES/TEXT/STRINGS.RESX">
         <trans-unit id="HelloWorldLabelText" translate="yes" xml:space="preserve">
           <source>Hello World</source>
-          <target state="final">Hallo Welt</target>
+          <target state="new">Hello World</target>
         </trans-unit>
         <trans-unit id="MainPage_PageTitle" translate="yes" xml:space="preserve">
           <source>LocalizationDemo</source>
-          <target state="final">ÜbersetzungsDemo</target>
+          <target state="new">LocalizationDemo</target>
         </trans-unit>
       </group>
     </body>

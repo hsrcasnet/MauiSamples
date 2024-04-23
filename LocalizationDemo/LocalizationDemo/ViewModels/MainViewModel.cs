@@ -1,7 +1,7 @@
 ﻿using System.Globalization;
 using CommunityToolkit.Mvvm.ComponentModel;
 using LocalizationDemo.Services.Localization;
-using LocalizationDemo.Translations;
+using LocalizationDemo.Resources.Text;
 
 namespace LocalizationDemo.ViewModels
 {

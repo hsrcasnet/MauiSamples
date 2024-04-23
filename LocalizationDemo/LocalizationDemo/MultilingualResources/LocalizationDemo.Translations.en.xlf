@@ -5,14 +5,14 @@
       <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="1.0.0.0" tool-company="Microsoft" />
     </header>
     <body>
-      <group id="LOCALIZATIONDEMO.TRANSLATIONS/STRINGS.RESX" datatype="resx">
+      <group id="LOCALIZATIONDEMO/RESOURCES/TEXT/STRINGS.RESX">
         <trans-unit id="HelloWorldLabelText" translate="yes" xml:space="preserve">
           <source>Hello World</source>
-          <target state="final">Hello World</target>
+          <target state="new">Hello World</target>
         </trans-unit>
         <trans-unit id="MainPage_PageTitle" translate="yes" xml:space="preserve">
           <source>LocalizationDemo</source>
-          <target state="final">LocalizationDemo</target>
+          <target state="new">LocalizationDemo</target>
         </trans-unit>
       </group>
     </body>

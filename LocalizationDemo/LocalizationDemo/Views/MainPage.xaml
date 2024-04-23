@@ -3,7 +3,7 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:l="clr-namespace:LocalizationDemo.Services.Localization"
-    xmlns:t="clr-namespace:LocalizationDemo.Translations;assembly=LocalizationDemo.Translations"
+    xmlns:t="clr-namespace:LocalizationDemo.Resources.Text"
     xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     xmlns:vm="clr-namespace:LocalizationDemo.ViewModels"
     x:DataType="vm:MainViewModel"
