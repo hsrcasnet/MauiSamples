@@ -62,14 +62,19 @@ namespace PrismMauiApp.ViewModels
             private set => this.SetProperty(ref this.items, value, nameof(this.Items));
         }
 
+        public IAsyncCommand AddItemCommand
+        {
+            get => this.addItemCommand ??= new AsyncDelegateCommand(this.NavigateToNewTodoPageAsync);
+        }
+
+        private async Task NavigateToNewTodoPageAsync()
+        {
+            await this.navigationService.NavigateAsync(Pages.NewTodoPage);
+        }
+
         public IAsyncCommand LoadTodosCommand
         {
             get => this.loadTodosCommand ??= new AsyncDelegateCommand(this.LoadTodosAsync);
-        }
-
-        public IAsyncCommand AddItemCommand
-        {
-            get => this.addItemCommand ??= new AsyncDelegateCommand(() => this.navigationService.NavigateAsync(Pages.NewTodoPage));
         }
 
         private async Task LoadTodosAsync()
