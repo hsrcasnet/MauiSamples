@@ -2,7 +2,8 @@
 
 namespace MonitoringDemo.Services
 {
-    public interface IAnalytics
+    [Obsolete("Visual Studio App Center is scheduled for retirement on March 31, 2025.")]
+    public interface IAppCenterAnalytics
     {
         void TrackEvent(string name, IDictionary<string, string> properties = null);
 

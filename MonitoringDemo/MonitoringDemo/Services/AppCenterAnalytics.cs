@@ -3,7 +3,8 @@ using Microsoft.AppCenter.Crashes;
 
 namespace MonitoringDemo.Services
 {
-    public class AppCenterAnalytics : IAnalytics
+    [Obsolete("Visual Studio App Center is scheduled for retirement on March 31, 2025.")]
+    public class AppCenterAnalytics : IAppCenterAnalytics
     {
         public AppCenterAnalytics()
         {

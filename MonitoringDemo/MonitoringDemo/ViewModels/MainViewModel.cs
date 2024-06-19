@@ -1,15 +1,19 @@
-﻿using System.Windows.Input;
+﻿
+using System.Windows.Input;
 using MonitoringDemo.Services;
 using CommunityToolkit.Mvvm.ComponentModel;
 using Microsoft.AppCenter.Crashes;
 using Microsoft.Extensions.Logging;
+using System.Net.Http;
 
 namespace MonitoringDemo.ViewModels
 {
     public class MainViewModel : ObservableObject
     {
         private readonly ILogger<MainViewModel> logger;
-        private readonly IAnalytics analytics;
+        private readonly IAppCenterAnalytics appcenterAnalytics;
+        private readonly ISentryAnalytics sentryAnalytics;
+        private readonly IWeatherForecastService weatherForecastService;
 
         private ICommand divideCommand;
         private decimal? dividend;
@@ -20,10 +24,14 @@ namespace MonitoringDemo.ViewModels
 
         public MainViewModel(
             ILogger<MainViewModel> logger,
-            IAnalytics analytics)
+            IAppCenterAnalytics appcenterAnalytics,
+            ISentryAnalytics sentryAnalytics,
+            IWeatherForecastService weatherForecastService)
         {
             this.logger = logger;
-            this.analytics = analytics;
+            this.appcenterAnalytics = appcenterAnalytics;
+            this.sentryAnalytics = sentryAnalytics;
+            this.weatherForecastService = weatherForecastService;
         }
 
         public decimal? Dividend
@@ -49,24 +57,29 @@ namespace MonitoringDemo.ViewModels
             get => this.divideCommand ??= new Command(this.Divide);
         }
 
-        private void Divide()
+        private async void Divide()
         {
             this.logger.LogDebug("Divide");
 
             try
             {
-                this.analytics.TrackEvent("Divide", new Dictionary<string, string>
+                this.appcenterAnalytics.TrackEvent("Divide", new Dictionary<string, string>
                 {
                      { "Dividend", this.Dividend is decimal dividend ? $"{dividend}" : "null" },
                      { "Divisor", this.Divisor is decimal divisor ? $"{divisor}" : "null" },
                 });
+
+                this.sentryAnalytics.CaptureMessage("Divide");
+
+                var result = await this.weatherForecastService.GetAsync();
 
                 this.Quotient = this.Dividend / this.Divisor;
             }
             catch (Exception ex)
             {
                 this.logger.LogError(ex, $"Divide with Dividend={this.Dividend} and Divisor={this.Divisor} failed with exception");
-                this.analytics.TrackError(ex);
+                this.appcenterAnalytics.TrackError(ex);
+                this.sentryAnalytics.CaptureException(ex);
                 this.Quotient = null;
             }
         }
@@ -92,9 +105,13 @@ namespace MonitoringDemo.ViewModels
         {
             this.logger.LogDebug("ThrowUnhandledException");
 
-            this.analytics.TrackEvent("Event 1");
-            this.analytics.TrackEvent("Event 2");
-            this.analytics.TrackEvent("Event 3");
+            this.appcenterAnalytics.TrackEvent("Event 1");
+            this.appcenterAnalytics.TrackEvent("Event 2");
+            this.appcenterAnalytics.TrackEvent("Event 3");
+
+            this.sentryAnalytics.AddBreadcrumb("Event 1");
+            this.sentryAnalytics.AddBreadcrumb("Event 2");
+            this.sentryAnalytics.AddBreadcrumb("Event 3");
 
             throw new InvalidOperationException("This is just a test exception", new NullReferenceException("Something cannot be null"));
         }
