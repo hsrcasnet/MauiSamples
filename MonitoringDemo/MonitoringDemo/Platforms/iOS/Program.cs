@@ -1,6 +1,6 @@
 ﻿using UIKit;
 
-namespace AppCenterDemo
+namespace MonitoringDemo
 {
     public class Program
     {

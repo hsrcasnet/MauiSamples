@@ -1,9 +1,9 @@
-﻿using AppCenterDemo.Services;
-using AppCenterDemo.ViewModels;
-using AppCenterDemo.Views;
+﻿using MonitoringDemo.Services;
+using MonitoringDemo.ViewModels;
+using MonitoringDemo.Views;
 using Microsoft.Extensions.Logging;
 
-namespace AppCenterDemo
+namespace MonitoringDemo
 {
     public static class MauiProgram
     {

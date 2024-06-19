@@ -1,7 +1,7 @@
 ﻿using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
 
-namespace AppCenterDemo.Services
+namespace MonitoringDemo.Services
 {
     public class AppCenterAnalytics : IAnalytics
     {

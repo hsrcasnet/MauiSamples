@@ -1,6 +1,6 @@
-﻿using AppCenterDemo.ViewModels;
+﻿using MonitoringDemo.ViewModels;
 
-namespace AppCenterDemo.Views
+namespace MonitoringDemo.Views
 {
     public partial class MainPage : ContentPage
     {

@@ -1,11 +1,11 @@
 ﻿using System.IO;
 using System.Text;
-using AppCenterDemo.Views;
+using MonitoringDemo.Views;
 using Microsoft.AppCenter;
 using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
 
-namespace AppCenterDemo
+namespace MonitoringDemo
 {
     public partial class App : Application
     {

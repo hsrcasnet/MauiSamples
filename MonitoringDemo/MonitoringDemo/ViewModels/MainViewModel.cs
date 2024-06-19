@@ -1,17 +1,17 @@
 ﻿using System.Windows.Input;
-using AppCenterDemo.Services;
+using MonitoringDemo.Services;
 using CommunityToolkit.Mvvm.ComponentModel;
 using Microsoft.AppCenter.Crashes;
 using Microsoft.Extensions.Logging;
 
-namespace AppCenterDemo.ViewModels
+namespace MonitoringDemo.ViewModels
 {
     public class MainViewModel : ObservableObject
     {
         private readonly ILogger<MainViewModel> logger;
         private readonly IAnalytics analytics;
 
-        private Command divideCommand;
+        private ICommand divideCommand;
         private decimal? dividend;
         private decimal? divisor;
         private decimal? quotient;

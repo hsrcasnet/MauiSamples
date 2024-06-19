@@ -1,6 +1,6 @@
 ﻿using Microsoft.AppCenter.Crashes;
 
-namespace AppCenterDemo.Services
+namespace MonitoringDemo.Services
 {
     public interface IAnalytics
     {

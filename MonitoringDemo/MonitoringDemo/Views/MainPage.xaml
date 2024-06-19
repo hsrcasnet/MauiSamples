@@ -2,10 +2,10 @@
 <ContentPage
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:vm="clr-namespace:AppCenterDemo.ViewModels"
+    xmlns:vm="clr-namespace:MonitoringDemo.ViewModels"
     x:DataType="vm:MainViewModel"
-    x:Class="AppCenterDemo.Views.MainPage"
-    Title="AppCenterDemo">
+    x:Class="MonitoringDemo.Views.MainPage"
+    Title="MonitoringDemo">
 
     <ScrollView>
         <VerticalStackLayout
@@ -16,9 +16,9 @@
                     FontSize="32"
                     Style="{StaticResource Headline}"
                     Text="Welcome to .NET MAUI" />
-                <Image
+                <!--<Image
                     Source="appcenter_logo.png"
-                    Aspect="AspectFit" />
+                    Aspect="AspectFit" />-->
             </VerticalStackLayout>
 
             <VerticalStackLayout Spacing="8">
