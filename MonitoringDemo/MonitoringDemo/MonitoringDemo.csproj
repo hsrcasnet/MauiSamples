@@ -9,6 +9,7 @@
 		<SingleProject>true</SingleProject>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>disable</Nullable>
+		<MauiVersion>8.0.61</MauiVersion>
 
 		<!-- Display name -->
 		<ApplicationTitle>MonitoringDemo</ApplicationTitle>
@@ -53,5 +54,7 @@
 		<PackageReference Include="Sentry.Maui" Version="4.7.0" />
 		<PackageReference Include="Sentry.NLog" Version="4.7.0" />
 	</ItemGroup>
+
+	<ProjectExtensions><VisualStudio><UserProperties XamarinHotReloadUnhandledDeviceExceptionMonitoringDemoHideInfoBar="True" /></VisualStudio></ProjectExtensions>
 
 </Project>

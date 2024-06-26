@@ -6,9 +6,15 @@
         {
         }
 
-        public void CaptureMessage(string message, SentryLevel sentryLevel = SentryLevel.Info)
+        public void CaptureMessage(string message, SentryLevel sentryLevel = SentryLevel.Info, IDictionary<string, string> data = null)
         {
-            SentrySdk.CaptureMessage(message, sentryLevel);
+            SentrySdk.CaptureMessage(message, s =>
+            {
+                if (data != null)
+                {
+                    s.Contexts["data"] = data;
+                }
+            }, sentryLevel);
         }
 
         public void AddBreadcrumb(string message, IDictionary<string, string> data = null)
@@ -18,7 +24,7 @@
 
         public void CaptureException(Exception exception)
         {
-            SentrySdk.CaptureException(exception);
+            SentrySdk.CaptureException(exception, s => s.AddAttachment(new byte[] { 0x54, 0x65, 0x73, 0x74, 0x20 }, "filename.log", AttachmentType.Default));
         }
     }
 }

@@ -11,20 +11,36 @@
         <VerticalStackLayout
             Padding="16"
             Spacing="32">
-            <VerticalStackLayout>
-                <!--<Label
-                    FontSize="32"
-                    Style="{StaticResource Headline}"
-                    Text="Welcome to .NET MAUI" />-->
-                <!--<Image
-                    Source="appcenter_logo.png"
-                    Aspect="AspectFit" />-->
-            </VerticalStackLayout>
+
+
+            <Grid
+                ColumnDefinitions="Auto, *"
+                ColumnSpacing="10"
+                RowDefinitions="Auto, *"
+                RowSpacing="10">
+                <Image
+                    Grid.Row="0"
+                    Grid.RowSpan="2"
+                    Grid.Column="0"
+                    Source="dotnet_bot.png"
+                    HeightRequest="100" />
+
+                <Label
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    FontSize="22"
+                    Text="Monitoring &amp; Crash Reporting" />
+
+                <Label
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    Text="MAUI sample app with Sentry and Microsoft.Extensions.Logging integration." />
+            </Grid>
 
             <VerticalStackLayout Spacing="8">
                 <Label
                     Style="{StaticResource SubHeadline}"
-                    Text="Demo for Analytics.TrackEvent" />
+                    Text="User Tracking" />
                 <Grid
                     ColumnDefinitions="*, Auto, *, Auto, *, Auto"
                     ColumnSpacing="8">
@@ -60,7 +76,7 @@
             <VerticalStackLayout Spacing="8">
                 <Label
                     Style="{StaticResource SubHeadline}"
-                    Text="Send HTTP Requests" />
+                    Text="HTTP Requests" />
                 <Grid
                     RowDefinitions="Auto, Auto, Auto"
                     RowSpacing="8">
@@ -83,17 +99,50 @@
             <VerticalStackLayout Spacing="8">
                 <Label
                     Style="{StaticResource SubHeadline}"
-                    Text="Demo for Analytics.TrackError" />
+                    Text="Logging Integration" />
+                <VerticalStackLayout Spacing="8">
+                    <Picker
+                        Title="LogLevel"
+                        ItemsSource="{Binding LogLevels}"
+                        SelectedItem="{Binding LogLevel}" />
+                    <Entry
+                        Placeholder="Enter a log message here"
+                        Text="{Binding Message}" />
+                    <Button
+                        Command="{Binding LogMessageCommand}"
+                        Text="Log Message"
+                        HorizontalOptions="Fill" />
+                </VerticalStackLayout>
+            </VerticalStackLayout>
+
+            <VerticalStackLayout Spacing="8">
+                <Label
+                    Style="{StaticResource SubHeadline}"
+                    Text="Exception Handling" />
+                <Picker
+                    Title="Exception Type"
+                    ItemsSource="{Binding ExceptionNames}"
+                    SelectedItem="{Binding ExceptionName}" />
+                <Entry
+                    Placeholder="Enter an exception message here"
+                    Text="{Binding ExceptionMessage}" />
                 <Button
-                    Command="{Binding GenerateTestCrashCommand}"
-                    Text="Generate Test Crash"
+                    Command="{Binding LogErrorCommand}"
+                    Text="Log Error"
+                    HorizontalOptions="Fill" />
+                <Button
+                    Command="{Binding CaptureExceptionCommand}"
+                    Text="Capture Exception"
                     HorizontalOptions="Fill" />
                 <Button
                     Command="{Binding ThrowUnhandledExceptionCommand}"
                     Text="Throw Unhandled Exception"
                     HorizontalOptions="Fill" />
+                <Button
+                    Command="{Binding GenerateTestCrashCommand}"
+                    Text="Generate Test Crash"
+                    HorizontalOptions="Fill" />
             </VerticalStackLayout>
         </VerticalStackLayout>
     </ScrollView>
-
 </ContentPage>
