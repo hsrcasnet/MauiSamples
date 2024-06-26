@@ -1,10 +1,9 @@
 ﻿
 using System.Windows.Input;
-using MonitoringDemo.Services;
 using CommunityToolkit.Mvvm.ComponentModel;
 using Microsoft.AppCenter.Crashes;
 using Microsoft.Extensions.Logging;
-using System.Net.Http;
+using MonitoringDemo.Services;
 
 namespace MonitoringDemo.ViewModels
 {
@@ -13,25 +12,30 @@ namespace MonitoringDemo.ViewModels
         private readonly ILogger<MainViewModel> logger;
         private readonly IAppCenterAnalytics appcenterAnalytics;
         private readonly ISentryAnalytics sentryAnalytics;
-        private readonly IWeatherForecastService weatherForecastService;
+        private readonly IWorldTimeService worldTimeService;
 
         private ICommand divideCommand;
+        private ICommand requestTimeZoneCommand;
         private decimal? dividend;
         private decimal? divisor;
         private decimal? quotient;
         private ICommand throwUnhandledExceptionCommand;
         private ICommand generateTestCrashCommand;
+        private string timeZone;
+        private string timeZoneInfo;
 
         public MainViewModel(
             ILogger<MainViewModel> logger,
             IAppCenterAnalytics appcenterAnalytics,
             ISentryAnalytics sentryAnalytics,
-            IWeatherForecastService weatherForecastService)
+            IWorldTimeService worldTimeService)
         {
             this.logger = logger;
             this.appcenterAnalytics = appcenterAnalytics;
             this.sentryAnalytics = sentryAnalytics;
-            this.weatherForecastService = weatherForecastService;
+            this.worldTimeService = worldTimeService;
+
+            this.TimeZone = "Europe/Zurich";
         }
 
         public decimal? Dividend
@@ -71,8 +75,6 @@ namespace MonitoringDemo.ViewModels
 
                 this.sentryAnalytics.CaptureMessage("Divide");
 
-                var result = await this.weatherForecastService.GetAsync();
-
                 this.Quotient = this.Dividend / this.Divisor;
             }
             catch (Exception ex)
@@ -82,6 +84,41 @@ namespace MonitoringDemo.ViewModels
                 this.sentryAnalytics.CaptureException(ex);
                 this.Quotient = null;
             }
+        }
+
+        public ICommand RequestTimeZoneCommand
+        {
+            get => this.requestTimeZoneCommand ??= new Command(this.RequestTimeZone);
+        }
+
+        private async void RequestTimeZone()
+        {
+            this.logger.LogDebug("RequestTimeZone");
+
+            try
+            {
+                var timeZoneInfo = await this.worldTimeService.GetTimeZoneInfoAsync(this.TimeZone);
+                this.TimeZoneInfo = timeZoneInfo;
+            }
+            catch (Exception ex)
+            {
+                this.logger.LogError(ex, "RequestTimeZone failed with exception");
+                this.appcenterAnalytics.TrackError(ex);
+                this.sentryAnalytics.CaptureException(ex);
+                this.TimeZoneInfo = ex.Message;
+            }
+        }
+
+        public string TimeZone
+        {
+            get => this.timeZone;
+            set => this.SetProperty(ref this.timeZone, value);
+        }
+        
+        public string TimeZoneInfo
+        {
+            get => this.timeZoneInfo;
+            private set => this.SetProperty(ref this.timeZoneInfo, value);
         }
 
         public ICommand GenerateTestCrashCommand
