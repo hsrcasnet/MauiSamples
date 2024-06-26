@@ -74,12 +74,14 @@ namespace MonitoringDemo.ViewModels
             this.LogLevels = Enum.GetValues(typeof(LogLevel))
                 .Cast<LogLevel>()
                 .ToArray();
+
             this.LogLevel = LogLevel.Information;
 
             this.ExceptionNames = ExceptionFactories
                 .Select(f => f.Key.FullName)
                 .OrderBy(n => n)
                 .ToArray();
+
             this.ExceptionName = this.ExceptionNames.FirstOrDefault();
         }
 
@@ -103,7 +105,7 @@ namespace MonitoringDemo.ViewModels
 
         public ICommand DivideCommand
         {
-            get => this.divideCommand ??= new Command(this.Divide);
+            get => this.divideCommand ??= new RelayCommand(this.Divide);
         }
 
         private void Divide()
@@ -137,7 +139,7 @@ namespace MonitoringDemo.ViewModels
 
         public ICommand RequestTimeZoneCommand
         {
-            get => this.requestTimeZoneCommand ??= new Command(this.RequestTimeZone);
+            get => this.requestTimeZoneCommand ??= new RelayCommand(this.RequestTimeZone);
         }
 
         private async void RequestTimeZone()
@@ -189,7 +191,10 @@ namespace MonitoringDemo.ViewModels
             set => this.SetProperty(ref this.logLevel, value);
         }
 
-        public ICommand LogMessageCommand => this.logCommand ??= new RelayCommand(this.LogMessage);
+        public ICommand LogMessageCommand
+        {
+            get => this.logCommand ??= new RelayCommand(this.LogMessage);
+        }
 
         private void LogMessage()
         {
@@ -218,7 +223,10 @@ namespace MonitoringDemo.ViewModels
             set => this.SetProperty(ref this.exceptionName, value);
         }
 
-        public ICommand LogErrorCommand => this.logErrorCommand ??= new RelayCommand(this.LogError);
+        public ICommand LogErrorCommand
+        {
+            get => this.logErrorCommand ??= new RelayCommand(this.LogError);
+        }
 
         private void LogError()
         {
@@ -251,7 +259,10 @@ namespace MonitoringDemo.ViewModels
             }
         }
 
-        public ICommand CaptureExceptionCommand => this.captureExceptionCommand ??= new RelayCommand(this.CaptureException);
+        public ICommand CaptureExceptionCommand
+        {
+            get => this.captureExceptionCommand ??= new RelayCommand(this.CaptureException);
+        }
 
         private void CaptureException()
         {
@@ -264,8 +275,11 @@ namespace MonitoringDemo.ViewModels
 
             this.sentryAnalytics.CaptureException(exception);
         }
-        
-        public ICommand ThrowUnhandledExceptionCommand => this.throwUnhandledExceptionCommand ??= new RelayCommand(this.ThrowUnhandledException);
+
+        public ICommand ThrowUnhandledExceptionCommand
+        {
+            get => this.throwUnhandledExceptionCommand ??= new RelayCommand(this.ThrowUnhandledException);
+        }
 
         private void ThrowUnhandledException()
         {
@@ -281,7 +295,7 @@ namespace MonitoringDemo.ViewModels
 
         public ICommand GenerateTestCrashCommand
         {
-            get => this.generateTestCrashCommand ??= new Command(this.GenerateTestCrash);
+            get => this.generateTestCrashCommand ??= new RelayCommand(this.GenerateTestCrash);
         }
 
         private void GenerateTestCrash()
