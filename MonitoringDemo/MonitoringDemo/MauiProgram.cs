@@ -55,12 +55,12 @@ namespace MonitoringDemo
                 o.MinimumBreadcrumbLevel = LogLevel.Debug;
                 o.MinimumEventLevel = LogLevel.Warning;
 
-                // Filter exceptions by type or using a custom logic
+                // Filter exceptions by type or using custom logic
                 o.AddExceptionFilterForType<TaskCanceledException>();
                 o.AddExceptionFilter(new SentryExceptionFilter());
                 o.AddLogEntryFilter(new LogEntryFilter());
 
-                // Modifications to event before it's sent to sentry.
+                // Modifications to event before it is sent to sentry.
                 o.SetBeforeSend((e, h) =>
                 {
                     if (e.Level >= SentryLevel.Warning)
