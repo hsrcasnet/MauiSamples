@@ -2,6 +2,7 @@
 using MonitoringDemo.Services;
 using MonitoringDemo.ViewModels;
 using MonitoringDemo.Views;
+using Sentry.Extensions.Logging;
 
 namespace MonitoringDemo
 {
@@ -57,11 +58,12 @@ namespace MonitoringDemo
                 // Filter exceptions by type or using a custom logic
                 o.AddExceptionFilterForType<TaskCanceledException>();
                 o.AddExceptionFilter(new SentryExceptionFilter());
+                o.AddLogEntryFilter(new LogEntryFilter());
 
                 // Modifications to event before it's sent to sentry.
                 o.SetBeforeSend((e, h) =>
                 {
-                    if (e.Level == SentryLevel.Error || e.Level == SentryLevel.Warning)
+                    if (e.Level >= SentryLevel.Warning)
                     {
                         var content = new ByteAttachmentContent(new byte[] { 0x54, 0x65, 0x73, 0x74, 0x20 });
                         var attachment = new SentryAttachment(AttachmentType.Default, content, "logfile.log", "text/plain");
