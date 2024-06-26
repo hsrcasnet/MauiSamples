@@ -223,10 +223,9 @@ namespace MonitoringDemo.ViewModels
         private void LogError()
         {
             var exception = CreateException(this.ExceptionName, this.ExceptionMessage);
+            TryIncrementNumberInProperty(s => this.ExceptionMessage = s, () => this.ExceptionMessage);
 
             this.logger.LogError(exception, exception.Message);
-
-            TryIncrementNumberInProperty(s => this.ExceptionMessage = s, () => this.ExceptionMessage);
         }
 
         private static Exception CreateException(string exceptionName, string exceptionMessage)
@@ -261,7 +260,6 @@ namespace MonitoringDemo.ViewModels
             this.sentryAnalytics.AddBreadcrumb("Event 3");
 
             var exception = CreateException(this.ExceptionName, this.ExceptionMessage);
-
             TryIncrementNumberInProperty(s => this.ExceptionMessage = s, () => this.ExceptionMessage);
 
             this.sentryAnalytics.CaptureException(exception);
@@ -276,7 +274,6 @@ namespace MonitoringDemo.ViewModels
             this.sentryAnalytics.AddBreadcrumb("Event 3");
 
             var exception = CreateException(this.ExceptionName, this.ExceptionMessage);
-
             TryIncrementNumberInProperty(s => this.ExceptionMessage = s, () => this.ExceptionMessage);
 
             throw exception;
