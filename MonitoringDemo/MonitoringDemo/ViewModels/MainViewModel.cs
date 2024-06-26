@@ -61,7 +61,7 @@ namespace MonitoringDemo.ViewModels
             get => this.divideCommand ??= new Command(this.Divide);
         }
 
-        private async void Divide()
+        private void Divide()
         {
             this.logger.LogDebug("Divide");
 
