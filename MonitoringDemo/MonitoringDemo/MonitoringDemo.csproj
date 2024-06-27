@@ -51,10 +51,11 @@
 		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
+		<PackageReference Include="NLog.Extensions.Logging" Version="5.3.11" />
 		<PackageReference Include="Sentry.Maui" Version="4.7.0" />
 		<PackageReference Include="Sentry.NLog" Version="4.7.0" />
 	</ItemGroup>
 
-	<ProjectExtensions><VisualStudio><UserProperties XamarinHotReloadUnhandledDeviceExceptionMonitoringDemoHideInfoBar="True" /></VisualStudio></ProjectExtensions>
+	<ProjectExtensions><VisualStudio><UserProperties XamarinHotReloadDebuggerTimeoutExceptionMonitoringDemoHideInfoBar="True" XamarinHotReloadUnhandledDeviceExceptionMonitoringDemoHideInfoBar="True" /></VisualStudio></ProjectExtensions>
 
 </Project>
