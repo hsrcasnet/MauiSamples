@@ -38,12 +38,12 @@ namespace MonitoringDemo.Services.Navigation
 
                 if (pageTypes.Length == 0)
                 {
-                    throw new Exception($"Page with name '{pageName}' not found");
+                    throw new PageNavigationException($"Page with name '{pageName}' not found");
                 }
 
                 if (pageTypes.Length > 1)
                 {
-                    throw new Exception($"Multiple pages found for name '{pageName}': {string.Join($"> {Environment.NewLine}", pageTypes.Select(t => t.FullName))}");
+                    throw new PageNavigationException($"Multiple pages found for name '{pageName}': {string.Join($"> {Environment.NewLine}", pageTypes.Select(t => t.FullName))}");
                 }
 
                 var pageType = pageTypes.Single();
