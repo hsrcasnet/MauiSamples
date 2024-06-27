@@ -33,6 +33,7 @@ namespace MonitoringDemo
                 o.AddNLog(NLogLoggerConfiguration.GetLoggingConfiguration());
                 o.AddSentry(o =>
                 {
+                    // Sentry is initialized in SentryAnalytics
                     o.InitializeSdk = false;
 
                     // SentryLoggingOptions

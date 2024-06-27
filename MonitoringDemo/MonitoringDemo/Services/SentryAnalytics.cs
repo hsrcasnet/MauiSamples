@@ -1,5 +1,4 @@
-﻿using System.Net.Mail;
-using System.Net.Mime;
+﻿using System.Net.Mime;
 
 namespace MonitoringDemo.Services
 {
