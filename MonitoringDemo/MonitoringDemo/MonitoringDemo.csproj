@@ -56,6 +56,15 @@
 		<PackageReference Include="Sentry.NLog" Version="4.7.0" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <MauiXaml Update="Views\DetailPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\LogPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	</ItemGroup>
+
 	<ProjectExtensions><VisualStudio><UserProperties XamarinHotReloadDebuggerTimeoutExceptionMonitoringDemoHideInfoBar="True" XamarinHotReloadUnhandledDeviceExceptionMonitoringDemoHideInfoBar="True" /></VisualStudio></ProjectExtensions>
 
 </Project>

@@ -34,7 +34,7 @@ namespace MonitoringDemo.Services
         public static LoggingConfiguration GetLoggingConfiguration()
         {
             var config = new LoggingConfiguration();
-            var layout = "${longdate:universalTime=True}|${level}|${logger}|${message}|${exception:format=tostring}[EOL]";
+            var layout = "${longdate:universalTime=True}|${level}|${logger}|${message}${newline}${exception:format=tostring}[EOL]";
 
             // Console Target
             var consoleTarget = new ConsoleTarget("console");

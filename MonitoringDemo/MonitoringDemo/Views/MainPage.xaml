@@ -11,8 +11,6 @@
         <VerticalStackLayout
             Padding="16"
             Spacing="32">
-
-
             <Grid
                 ColumnDefinitions="Auto, *"
                 ColumnSpacing="10"
@@ -141,6 +139,26 @@
                 <Button
                     Command="{Binding GenerateTestCrashCommand}"
                     Text="Generate Test Crash"
+                    HorizontalOptions="Fill" />
+            </VerticalStackLayout>
+
+            <VerticalStackLayout Spacing="8">
+                <Label
+                    Style="{StaticResource SubHeadline}"
+                    Text="Page Navigation" />
+                <Button
+                    Command="{Binding NavigateToPageCommand}"
+                    CommandParameter="LogPage"
+                    Text="Navigate to LogPage"
+                    HorizontalOptions="Fill" />
+                <Button
+                    Command="{Binding NavigateToPageCommand}"
+                    CommandParameter="DetailPage"
+                    Text="Navigate to DetailPage" />
+                <Button
+                    Command="{Binding NavigateToPageCommand}"
+                    CommandParameter="UnknownPage"
+                    Text="Navigate to UnknownPage"
                     HorizontalOptions="Fill" />
             </VerticalStackLayout>
         </VerticalStackLayout>

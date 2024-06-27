@@ -1,5 +1,7 @@
 ﻿using Microsoft.Extensions.Logging;
 using MonitoringDemo.Services;
+using MonitoringDemo.Services.Analytics;
+using MonitoringDemo.Services.Navigation;
 using MonitoringDemo.ViewModels;
 using MonitoringDemo.Views;
 using NLog.Extensions.Logging;
@@ -44,15 +46,20 @@ namespace MonitoringDemo
                 });
             });
 
+            // Register services
             builder.Services.AddSingleton<ISentryAnalytics, SentryAnalytics>();
             builder.Services.AddSingleton<IWorldTimeService, WorldTimeService>();
             builder.Services.AddSingleton<IPreferences>(_ => Preferences.Default);
             builder.Services.AddSingleton<IAppInfo>(_ => AppInfo.Current);
             builder.Services.AddSingleton<ILogFileReader>(_ => new NLogFileReader(NLogLoggerConfiguration.LogFilePath));
             builder.Services.AddSingleton<IEnvironmentSelector, EnvironmentSelector>();
+            builder.Services.AddSingleton<INavigationService, MauiNavigationService>();
+            builder.Services.AddSingleton<IDialogService, DialogService>();
 
-            builder.Services.AddTransient<MainPage>();
-            builder.Services.AddTransient<MainViewModel>();
+            // Register pages and viewmodels
+            builder.Services.AddTransient<MainPage>().AddTransient<MainViewModel>();
+            builder.Services.AddTransient<LogPage>().AddTransient<LogViewModel>();
+            builder.Services.AddTransient<DetailPage>();
 
             return builder.Build();
         }

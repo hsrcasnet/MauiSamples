@@ -1,5 +1,4 @@
-﻿
-namespace MonitoringDemo.Services
+﻿namespace MonitoringDemo.Services.Analytics
 {
     /// <summary>
     /// Interface which abstracts sentry user tracking and error reporting features.
@@ -13,5 +12,9 @@ namespace MonitoringDemo.Services
         void AddBreadcrumb(string message, IDictionary<string, string> data = null);
 
         void CaptureException(Exception exception);
+
+        void MetricsIncrement(string key, IDictionary<string, string> tags = null);
+
+        ITransactionTracer StartTransaction(string name, string operation);
     }
 }

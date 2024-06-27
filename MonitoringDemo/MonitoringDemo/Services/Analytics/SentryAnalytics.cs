@@ -1,6 +1,6 @@
 ﻿using System.Net.Mime;
 
-namespace MonitoringDemo.Services
+namespace MonitoringDemo.Services.Analytics
 {
     public class SentryAnalytics : ISentryAnalytics, IDisposable
     {
@@ -70,6 +70,11 @@ namespace MonitoringDemo.Services
 
                 return e;
             });
+
+            o.ExperimentalMetrics = new ExperimentalMetricsOptions
+            {
+                EnableCodeLocations = true,
+            };
         }
 
         private IEnumerable<SentryAttachment> GetSentryAttachmentFromLogFiles()
@@ -119,9 +124,19 @@ namespace MonitoringDemo.Services
             });
         }
 
+        public void MetricsIncrement(string key, IDictionary<string, string> tags)
+        {
+            SentrySdk.Metrics.Increment(key, tags: tags);
+        }
+
         public void Dispose()
         {
             this.disposable?.Dispose();
+        }
+
+        public ITransactionTracer StartTransaction(string name, string operation)
+        {
+            return SentrySdk.StartTransaction(name, operation);
         }
     }
 }

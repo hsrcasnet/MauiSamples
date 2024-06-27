@@ -4,6 +4,9 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.Extensions.Logging;
 using MonitoringDemo.Services;
+using MonitoringDemo.Services.Analytics;
+using MonitoringDemo.Services.Navigation;
+using MonitoringDemo.Views;
 
 namespace MonitoringDemo.ViewModels
 {
@@ -30,6 +33,8 @@ namespace MonitoringDemo.ViewModels
         };
 
         private readonly ILogger<MainViewModel> logger;
+        private readonly INavigationService navigationService;
+        private readonly IDialogService dialogService;
         private readonly IPreferences preferences;
         private readonly ISentryAnalytics sentryAnalytics;
         private readonly IWorldTimeService worldTimeService;
@@ -51,14 +56,19 @@ namespace MonitoringDemo.ViewModels
         private ICommand throwUnhandledExceptionCommand;
         private ICommand generateTestCrashCommand;
         private string exceptionName;
+        private IAsyncRelayCommand<string> navigateToPageCommand;
 
         public MainViewModel(
             ILogger<MainViewModel> logger,
+            INavigationService navigationService,
+            IDialogService dialogService,
             IPreferences preferences,
             ISentryAnalytics sentryAnalytics,
             IWorldTimeService worldTimeService)
         {
             this.logger = logger;
+            this.navigationService = navigationService;
+            this.dialogService = dialogService;
             this.preferences = preferences;
             this.sentryAnalytics = sentryAnalytics;
             this.worldTimeService = worldTimeService;
@@ -114,18 +124,10 @@ namespace MonitoringDemo.ViewModels
 
             try
             {
-                var additionalProperties = new Dictionary<string, string>
-                {
-                     { "Dividend", this.Dividend is decimal dividend ? $"{dividend}" : "null" },
-                     { "Divisor", this.Divisor is decimal divisor ? $"{divisor}" : "null" },
-                };
+                var quotient = this.Dividend / this.Divisor;
+                this.Quotient = quotient;
 
-                this.sentryAnalytics.CaptureMessage(
-                    message: "Divide",
-                    sentryLevel: SentryLevel.Debug,
-                    data: additionalProperties);
-
-                this.Quotient = this.Dividend / this.Divisor;
+                this.sentryAnalytics.TrackDivide(this.Dividend, this.Divisor, quotient);
             }
             catch (Exception ex)
             {
@@ -303,6 +305,29 @@ namespace MonitoringDemo.ViewModels
             this.logger.LogDebug("GenerateTestCrash");
 
             SentrySdk.CauseCrash(CrashType.Managed);
+        }
+
+        public IAsyncRelayCommand<string> NavigateToPageCommand
+        {
+            get => this.navigateToPageCommand ??= new AsyncRelayCommand<string>(this.NavigateToPageAsync);
+        }
+
+        private async Task NavigateToPageAsync(string page)
+        {
+            this.logger.LogDebug("NavigateToPageAsync");
+            try
+            {
+                await this.navigationService.PushAsync(page);
+            }
+            catch (Exception ex)
+            {
+                this.logger.LogError(ex, $"NavigateToPageAsync for page={page} failed with exception");
+
+                _ = this.dialogService.DisplayAlertAsync(
+                    title: "Error",
+                    message: "The desired navigation failed with an error. Please try again later.",
+                    accept: "OK");
+            }
         }
     }
 }
