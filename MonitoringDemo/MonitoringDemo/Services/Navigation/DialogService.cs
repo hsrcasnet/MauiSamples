@@ -13,7 +13,7 @@ namespace MonitoringDemo.Services.Navigation
 
         public Task DisplayAlertAsync(string title, string message, string accept)
         {
-            this.sentryAnalytics.AddBreadcrumb("DisplayAlert");
+            this.sentryAnalytics.AddBreadcrumb("DisplayAlert(title, message, accept)");
 
             var currentPage = Application.Current.MainPage;
             return currentPage.DisplayAlert(title, message, accept);
@@ -21,7 +21,7 @@ namespace MonitoringDemo.Services.Navigation
 
         public Task<bool> DisplayAlertAsync(string title, string message, string accept, string cancel)
         {
-            this.sentryAnalytics.AddBreadcrumb("DisplayAlert");
+            this.sentryAnalytics.AddBreadcrumb("DisplayAlert(title, message, accept, cancel)");
 
             var currentPage = Application.Current.MainPage;
             return currentPage.DisplayAlert(title, message, accept, cancel);
