@@ -50,7 +50,11 @@ namespace MonitoringDemo
             builder.Services.AddSingleton<ISentryAnalytics, SentryAnalytics>();
             builder.Services.AddSingleton<IWorldTimeService, WorldTimeService>();
             builder.Services.AddSingleton<IPreferences>(_ => Preferences.Default);
+            builder.Services.AddSingleton<IEmail>(_ => Email.Default);
+            builder.Services.AddSingleton<IShare>(_ => Share.Default);
             builder.Services.AddSingleton<IAppInfo>(_ => AppInfo.Current);
+            builder.Services.AddSingleton<IDeviceInfo>(_ => DeviceInfo.Current);
+            builder.Services.AddSingleton<IFileSystem>(_ => FileSystem.Current);
             builder.Services.AddSingleton<ILogFileReader>(_ => new NLogFileReader(NLogLoggerConfiguration.LogFilePath));
             builder.Services.AddSingleton<IEnvironmentSelector, EnvironmentSelector>();
             builder.Services.AddSingleton<INavigationService, MauiNavigationService>();
