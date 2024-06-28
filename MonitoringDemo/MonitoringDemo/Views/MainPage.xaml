@@ -14,25 +14,27 @@
             <Grid
                 ColumnDefinitions="Auto, *"
                 ColumnSpacing="10"
-                RowDefinitions="Auto, *"
-                RowSpacing="10">
+                RowDefinitions="Auto, Auto"
+                RowSpacing="0">
                 <Image
                     Grid.Row="0"
-                    Grid.RowSpan="2"
                     Grid.Column="0"
                     Source="dotnet_bot.png"
-                    HeightRequest="100" />
+                    HeightRequest="80"
+                    VerticalOptions="Start" />
 
                 <Label
                     Grid.Row="0"
                     Grid.Column="1"
-                    FontSize="22"
+                    FontSize="32"
+                    LineBreakMode="WordWrap"
                     Text="Monitoring &amp; Crash Reporting" />
 
                 <Label
                     Grid.Row="1"
-                    Grid.Column="1"
-                    Text="MAUI sample app with Sentry and Microsoft.Extensions.Logging integration." />
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    Text="This MAUI demo app uses Microsoft.Extensions.Logging and ILogger as logging abstraction. Sentry is used for crash reporting and user tracking. On top of Microsoft's ILogger, NLog is used to write log messages to several log targets (e.g. to the log file)." />
             </Grid>
 
             <VerticalStackLayout Spacing="8">
