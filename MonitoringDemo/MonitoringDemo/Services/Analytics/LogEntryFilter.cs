@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Logging;
 using Sentry.Extensions.Logging;
 
-namespace MonitoringDemo
+namespace MonitoringDemo.Services.Analytics
 {
     internal class LogEntryFilter : ILogEntryFilter
     {

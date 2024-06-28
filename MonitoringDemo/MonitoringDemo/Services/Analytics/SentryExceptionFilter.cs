@@ -1,6 +1,6 @@
 ﻿using Sentry.Extensibility;
 
-namespace MonitoringDemo
+namespace MonitoringDemo.Services.Analytics
 {
     internal class SentryExceptionFilter : IExceptionFilter
     {
