@@ -31,10 +31,7 @@ namespace MonitoringDemo.Services.Navigation
             try
             {
                 var getPageTypeSpan = transaction.StartChild("get_page_type", "Get page type");
-                var pageTypes = Assembly.GetExecutingAssembly()
-                    .GetTypes()
-                    .Where(t => string.Equals(t.Name, pageName, StringComparison.InvariantCultureIgnoreCase))
-                    .ToArray();
+                var pageTypes = FindTypesWithName(pageName);
 
                 if (pageTypes.Length == 0)
                 {
@@ -43,7 +40,9 @@ namespace MonitoringDemo.Services.Navigation
 
                 if (pageTypes.Length > 1)
                 {
-                    throw new PageNavigationException($"Multiple pages found for name '{pageName}': {string.Join($"> {Environment.NewLine}", pageTypes.Select(t => t.FullName))}");
+                    throw new PageNavigationException(
+                        $"Multiple pages found for name '{pageName}': " +
+                        $"{string.Join($"> {Environment.NewLine}", pageTypes.Select(t => t.FullName))}");
                 }
 
                 var pageType = pageTypes.Single();
@@ -52,6 +51,29 @@ namespace MonitoringDemo.Services.Navigation
                 var resolvePageSpan = transaction.StartChild("resolve_page", "Resolve page");
                 var page = (Page)this.serviceProvider.GetRequiredService(pageType);
                 resolvePageSpan.Finish();
+
+                var resolveViewModelSpan = transaction.StartChild("resolve_viewmodel", "Resolve view model");
+                var viewModelName = pageName.Substring(0, pageName.LastIndexOf("Page")) + "ViewModel";
+                var viewModelTypes = FindTypesWithName(viewModelName);
+
+                if (viewModelTypes.Length == 0)
+                {
+                    this.logger.LogInformation($"View model with name '{viewModelName}' not found");
+                }
+                else if (viewModelTypes.Length == 1)
+                {
+                    var viewModelType = viewModelTypes.Single();
+                    var viewModel = this.serviceProvider.GetRequiredService(viewModelType);
+                    page.BindingContext = viewModel;
+                }
+                else
+                {
+                    throw new PageNavigationException(
+                        $"Multiple view models found for name '{viewModelName}': " +
+                        $"{string.Join($"> {Environment.NewLine}", viewModelTypes.Select(t => t.FullName))}");
+                }
+
+                resolveViewModelSpan.Finish();
 
                 var navigatePageSpan = transaction.StartChild("navigate_to_page", "Navigate to page");
                 await Application.Current.MainPage.Navigation.PushAsync(page);
@@ -65,6 +87,14 @@ namespace MonitoringDemo.Services.Navigation
                 transaction.Finish(ex);
                 throw;
             }
+        }
+
+        private static Type[] FindTypesWithName(string typeName)
+        {
+            return Assembly.GetExecutingAssembly()
+                .GetTypes()
+                .Where(t => string.Equals(t.Name, typeName, StringComparison.InvariantCultureIgnoreCase))
+                .ToArray();
         }
 
         public async Task PopAsync()
