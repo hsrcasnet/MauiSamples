@@ -52,8 +52,8 @@
 		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
 		<PackageReference Include="NLog.Extensions.Logging" Version="5.3.11" />
-		<PackageReference Include="Sentry.Maui" Version="4.7.0" />
-		<PackageReference Include="Sentry.NLog" Version="4.7.0" />
+		<PackageReference Include="Sentry.Maui" Version="4.8.1" />
+		<PackageReference Include="Sentry.NLog" Version="4.8.1" />
 	</ItemGroup>
 
 	<ItemGroup>
