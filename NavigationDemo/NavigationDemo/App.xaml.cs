@@ -2,13 +2,13 @@
 
 namespace NavigationDemo
 {
-public partial class App : Application
-{
-    public App()
+    public partial class App : Application
     {
-        this.InitializeComponent();
+        public App()
+        {
+            this.InitializeComponent();
 
-        this.MainPage = new NavigationPage(new MainPage());
-    }
+            this.MainPage = new NavigationPage(new MainPage());
+        }
     }
 }
