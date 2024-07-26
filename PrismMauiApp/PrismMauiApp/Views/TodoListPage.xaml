@@ -15,7 +15,7 @@
     </ContentPage.Resources>
     <ContentPage.ToolbarItems>
         <ToolbarItem
-            Command="{Binding AddItemCommand}"
+            Command="{Binding NavigateToNewTodoPageCommand}"
             Text="Add" />
     </ContentPage.ToolbarItems>
 

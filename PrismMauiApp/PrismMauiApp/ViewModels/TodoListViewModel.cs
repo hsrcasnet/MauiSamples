@@ -15,7 +15,7 @@ namespace PrismMauiApp.ViewModels
         private readonly IDateTime dateTime;
 
         private IAsyncCommand loadTodosCommand;
-        private IAsyncCommand addItemCommand;
+        private IAsyncCommand navigateToNewTodoPageCommand;
         private TodoItemViewModel[] items;
 
         public TodoListViewModel(
@@ -62,9 +62,9 @@ namespace PrismMauiApp.ViewModels
             private set => this.SetProperty(ref this.items, value, nameof(this.Items));
         }
 
-        public IAsyncCommand AddItemCommand
+        public IAsyncCommand NavigateToNewTodoPageCommand
         {
-            get => this.addItemCommand ??= new AsyncDelegateCommand(this.NavigateToNewTodoPageAsync);
+            get => this.navigateToNewTodoPageCommand ??= new AsyncDelegateCommand(this.NavigateToNewTodoPageAsync);
         }
 
         private async Task NavigateToNewTodoPageAsync()
