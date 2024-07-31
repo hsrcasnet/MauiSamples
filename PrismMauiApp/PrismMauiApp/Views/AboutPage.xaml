@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:vm="clr-namespace:PrismMauiApp.ViewModels"
+    x:DataType="vm:AboutViewModel"
+    x:Class="PrismMauiApp.Views.AboutPage"
+    Title="About">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem
+            Command="{Binding GoBackCommand}"
+            IconImageSource="close" />
+    </ContentPage.ToolbarItems>
+
+    <ScrollView Padding="8">
+        <VerticalStackLayout Spacing="16">
+            <VerticalStackLayout>
+                <Label
+                    Text="Company"
+                    TextColor="{StaticResource Gray500}" />
+                <Label
+                    FontSize="Medium"
+                    Text="superdev gmbh" />
+            </VerticalStackLayout>
+
+            <VerticalStackLayout>
+                <Label
+                    Text="Copyright"
+                    TextColor="{StaticResource Gray500}" />
+                <Label
+                    FontSize="Medium"
+                    Text="{Binding Copyright}" />
+            </VerticalStackLayout>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

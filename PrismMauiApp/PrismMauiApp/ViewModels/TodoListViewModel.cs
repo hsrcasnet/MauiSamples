@@ -14,9 +14,10 @@ namespace PrismMauiApp.ViewModels
         private readonly ITodoRepository todoRepository;
         private readonly IDateTime dateTime;
 
-        private IAsyncCommand loadTodosCommand;
-        private IAsyncCommand navigateToNewTodoPageCommand;
         private TodoItemViewModel[] items;
+        private IAsyncCommand loadTodosCommand;
+        private IAsyncCommand navigateToPageCommand;
+        private IAsyncCommand navigateToPageModalCommand;
 
         public TodoListViewModel(
             ILogger<TodoListViewModel> logger,
@@ -62,14 +63,25 @@ namespace PrismMauiApp.ViewModels
             private set => this.SetProperty(ref this.items, value, nameof(this.Items));
         }
 
-        public IAsyncCommand NavigateToNewTodoPageCommand
+        public IAsyncCommand NavigateToPageCommand
         {
-            get => this.navigateToNewTodoPageCommand ??= new AsyncDelegateCommand(this.NavigateToNewTodoPageAsync);
+            get => this.navigateToPageCommand ??= new AsyncDelegateCommand<string>(this.NavigateToPageAsync);
         }
 
-        private async Task NavigateToNewTodoPageAsync()
+        private async Task NavigateToPageAsync(string page)
         {
-            await this.navigationService.NavigateAsync(Pages.NewTodoPage);
+            await this.navigationService.NavigateAsync(page);
+        }
+        
+        public IAsyncCommand NavigateToPageModalCommand
+        {
+            get => this.navigateToPageModalCommand ??= new AsyncDelegateCommand<string>(this.NavigateToPageModalAsync);
+        }
+
+        private async Task NavigateToPageModalAsync(string page)
+        {
+            var path = $"NavigationPage?{KnownNavigationParameters.UseModalNavigation}=True/{page}";
+            await this.navigationService.NavigateAsync(path);
         }
 
         public IAsyncCommand LoadTodosCommand

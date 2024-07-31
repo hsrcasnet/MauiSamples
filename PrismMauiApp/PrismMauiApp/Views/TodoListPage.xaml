@@ -2,6 +2,7 @@
 <ContentPage
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:PrismMauiApp"
     xmlns:views="clr-namespace:PrismMauiApp.Views"
     xmlns:vm="clr-namespace:PrismMauiApp.ViewModels"
     x:DataType="vm:TodoListViewModel"
@@ -13,10 +14,18 @@
             <views:TodoItemTemplate />
         </DataTemplate>
     </ContentPage.Resources>
+
     <ContentPage.ToolbarItems>
         <ToolbarItem
-            Command="{Binding NavigateToNewTodoPageCommand}"
+            Command="{Binding NavigateToPageCommand}"
+            CommandParameter="{x:Static local:App+Pages.NewTodoPage}"
+            IconImageSource="plus_circle_outline"
             Text="Add" />
+        <ToolbarItem
+            Command="{Binding NavigateToPageModalCommand}"
+            CommandParameter="{x:Static local:App+Pages.AboutPage}"
+            IconImageSource="information_outline"
+            Text="About" />
     </ContentPage.ToolbarItems>
 
     <StackLayout>
