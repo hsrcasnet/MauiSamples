@@ -1,16 +1,16 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8"?>
+
 <ContentPage
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="NavigationDemo.Views.DetailPage2"
-    Padding="16"
-    Title="DetailPage2">
+    x:Class="NavigationDemo.Views.ModalPage"
+    Title="ModalPage">
     <Grid>
         <VerticalStackLayout VerticalOptions="Center">
             <Button
-                Clicked="NavigateBackAsync"
+                Clicked="NavigateBackModalAsync"
                 Text="Navigate back"
-                HorizontalOptions="Fill" />
+                HorizontalOptions="Center" />
         </VerticalStackLayout>
     </Grid>
 </ContentPage>

@@ -3,14 +3,19 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="NavigationDemo.Views.MainPage"
+    Padding="16"
     Title="MainPage">
 
     <Grid>
-        <VerticalStackLayout VerticalOptions="Center">
+        <VerticalStackLayout VerticalOptions="Center" Spacing="8">
             <Button
                 Clicked="NavigateToDetailPage1Async"
                 Text="Navigate to DetailPage1"
-                HorizontalOptions="Center" />
+                HorizontalOptions="Fill" />
+            <Button
+                Clicked="NavigateToModalPageAsync"
+                Text="Navigate to ModalPage"
+                HorizontalOptions="Fill" />
         </VerticalStackLayout>
     </Grid>
 </ContentPage>
