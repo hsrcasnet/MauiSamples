@@ -124,8 +124,8 @@ namespace PrismMauiApp.ViewModels
                 {
                     { "message", "Do you really want to save?" }
                 };
-                var result = await this.dialogService.ShowDialogAsync(App.Dialogs.NotificationDialog, dialogParameters);
-                if (result.Result == ButtonResult.OK)
+                var dialogResult = await this.dialogService.ShowDialogAsync(App.Dialogs.NotificationDialog, dialogParameters);
+                if (dialogResult.Result == ButtonResult.OK)
                 {
                     var todo = new Todo
                     {

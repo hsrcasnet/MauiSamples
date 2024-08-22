@@ -31,7 +31,7 @@
             {
                 { KnownNavigationParameters.UseModalNavigation, true }
             };
-            var result = await this.navigationService.GoBackAsync(navigationParameters);
+            await this.navigationService.GoBackAsync(navigationParameters);
         }
     }
 }
