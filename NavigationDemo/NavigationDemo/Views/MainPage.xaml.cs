@@ -1,28 +1,34 @@
 using System.Diagnostics;
 
-namespace NavigationDemo.Views;
-
-public partial class MainPage : ContentPage
+namespace NavigationDemo.Views
 {
-    public MainPage()
+    public partial class MainPage : ContentPage
     {
-        this.InitializeComponent();
-    }
+        public MainPage()
+        {
+            this.InitializeComponent();
+        }
 
-    private async void NavigateToDetailPage1Async(object sender, EventArgs e)
-    {
-        await this.Navigation.PushAsync(new DetailPage1(), animated: true);
-    }
+        private async void NavigateToDetailPage1Async(object sender, EventArgs e)
+        {
+            await this.Navigation.PushAsync(new DetailPage1(), animated: true);
+        }
 
-    protected override void OnAppearing()
-    {
-        Debug.WriteLine("MainPage: OnAppearing");
-        base.OnAppearing();
-    }
+        private async void NavigateToModalPageAsync(object sender, EventArgs e)
+        {
+            await this.Navigation.PushModalAsync(new NavigationPage(new ModalPage()), animated: true);
+        }
 
-    protected override void OnDisappearing()
-    {
-        Debug.WriteLine("MainPage: OnDisappearing");
-        base.OnDisappearing();
+        protected override void OnAppearing()
+        {
+            Debug.WriteLine("MainPage: OnAppearing");
+            base.OnAppearing();
+        }
+
+        protected override void OnDisappearing()
+        {
+            Debug.WriteLine("MainPage: OnDisappearing");
+            base.OnDisappearing();
+        }
     }
 }

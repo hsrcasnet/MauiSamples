@@ -6,7 +6,7 @@
     <OutputType>Exe</OutputType>
 		<RootNamespace>PrismMauiApp</RootNamespace>
     <UseMaui>true</UseMaui>
-    <MauiVersion>8.0.70</MauiVersion>
+    <MauiVersion>8.0.80</MauiVersion>
     <SingleProject>true</SingleProject>
     <ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>disable</Nullable>
@@ -49,7 +49,7 @@
     <PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
     <PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
     <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
-    <PackageReference Include="Prism.DryIoc.Maui" Version="9.0.401-pre" />
+    <PackageReference Include="Prism.DryIoc.Maui" Version="9.0.537" />
 		<PackageReference Include="ValueConverters.MAUI" Version="3.0.26" />
   </ItemGroup>
 
