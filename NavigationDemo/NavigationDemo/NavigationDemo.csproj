@@ -6,7 +6,7 @@
 		<OutputType>Exe</OutputType>
 		<RootNamespace>NavigationDemo</RootNamespace>
 		<UseMaui>true</UseMaui>
-    <MauiVersion>8.0.91</MauiVersion>
+    <MauiVersion>8.0.92</MauiVersion>
 		<SingleProject>true</SingleProject>
 		<ImplicitUsings>enable</ImplicitUsings>
 
